@@ -5,6 +5,8 @@ from googletrans import Translator
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import json
 
+#マージテスト
+
 # flaskの開始
 app = Flask(__name__)
 
