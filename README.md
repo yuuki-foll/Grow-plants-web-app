@@ -7,3 +7,8 @@
 4. WebAPIで感情認識を行いバックエンドに返す
 5. バックエンドからフロントエンドに感情分析結果を返す
 6. 感情分析の結果に応じて画面を変更する
+## Venv
+- pip install Flask
+- pip install textblob
+- pip install googletrans==4.0.0-rc1
+- pip install vaderSentiment
