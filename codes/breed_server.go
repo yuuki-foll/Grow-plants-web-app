@@ -70,8 +70,15 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	t := template.Must(template.ParseFiles("templates/breed_plant_main.html.tpl"))
+	if err := t.ExecuteTemplate(w, "breed_plant_main.html.tpl", nil); err != nil {
+		log.Fatal(err)
+	}
+}
 func main() {
 	fmt.Print("connection successflly\n")
 	http.HandleFunc("/page0", HtmlHandler)
+	http.HandleFunc("/home", HomeHandler)
 	http.ListenAndServe(":8999", nil) //ここで止まる
 }
