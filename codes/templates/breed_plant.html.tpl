@@ -13,9 +13,14 @@
     <h5>分析結果</h5>
     <table id="senti_list"></table>
     <div id="showson"></div>
+    <h5>感情指数</h5>
+    <div id="senti_level"></div>
 </body>
 
 <script>
+    let senti_level = 0; // 感情指数
+    document.getElementById("senti_level").innerHTML = senti_level
+
     //音声認識の準備
     const recognition = new webkitSpeechRecognition();
     recognition.lang = 'ja';
@@ -64,6 +69,15 @@
                 console.log('jsonData: ', jsonData);
                 var row = document.getElementById("senti_list").insertRow();
                 document.getElementById("showson").innerHTML = jsonData.values
+                console.log(jsonData.values)
+                console.log(JSON.parse(jsonData.values))
+                console.log(JSON.parse(jsonData.values).neg)
+                if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
+                    senti_level--; // ネガティブよりならデクリメント
+                } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
+                    senti_level++;
+                }
+                document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
             })
     }, false);//何のfalse
