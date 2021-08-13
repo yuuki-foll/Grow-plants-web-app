@@ -15,16 +15,16 @@
     <div id="showson"></div>
     <h5>感情指数</h5>
     <div id="senti_level"></div>
-
-    <img
-        src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/child.png?alt=media&token=f1a36c8b-0581-460d-ab28-f898ecb382de">
+    <img id="plant_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/child.png?alt=media&token=f1a36c8b-0581-460d-ab28-f898ecb382de" width="200" height="200">
 
 </body>
 
 <script>
-
     let senti_level = 0; // 感情指数
     document.getElementById("senti_level").innerHTML = senti_level
+
+    // 画像一覧のURLをリストで格納
+    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/child.png?alt=media&token=f1a36c8b-0581-460d-ab28-f898ecb382de","https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/adult.jpeg?alt=media&token=b337d07e-f0fd-4ae1-bb70-e4fe4413945e"]
 
     //音声認識の準備
     const recognition = new webkitSpeechRecognition();
@@ -84,6 +84,12 @@
                 }
                 document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
+
+                if (senti_level >= 1){
+                    plant_pic.src = img[1];
+                }else{
+                    plant_pic.src = img[0];
+                }
             })
     }, false);//何のfalse
 </script>
