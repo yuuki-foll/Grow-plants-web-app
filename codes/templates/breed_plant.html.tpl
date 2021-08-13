@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>音声認識サンプル</title>
+    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/bgm_nomal.mp3?alt=media&token=7f1b6487-50a5-49a9-8b43-39d4e3f0b1d2" autoplay loop></audio>
 </head>
 
 <body>
@@ -15,8 +16,11 @@
     <div id="showson"></div>
     <h5>感情指数</h5>
     <div id="senti_level"></div>
-    <img id="plant_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/child.png?alt=media&token=f1a36c8b-0581-460d-ab28-f898ecb382de" width="200" height="200">
 
+    <audio preload="auto" controls autoplay loop>
+        <source src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/bgm_nomal.mp3?alt=media&token=7f1b6487-50a5-49a9-8b43-39d4e3f0b1d2" />
+        <p>オーディオ機能未対応です</p>
+    </audio>
 </body>
 
 <script>
