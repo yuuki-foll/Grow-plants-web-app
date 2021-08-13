@@ -15,9 +15,14 @@
     <div id="showson"></div>
     <h5>感情指数</h5>
     <div id="senti_level"></div>
+
+    <img
+        src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/child.png?alt=media&token=f1a36c8b-0581-460d-ab28-f898ecb382de">
+
 </body>
 
 <script>
+
     let senti_level = 0; // 感情指数
     document.getElementById("senti_level").innerHTML = senti_level
 
