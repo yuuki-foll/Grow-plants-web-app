@@ -3,25 +3,48 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>音声認識サンプル</title>
+    <title>植物を育てよう！</title>
+
+    <!--cssの読み込み-->
+    <link rel="stylesheet" href="./../static/css/breed_plant.css" type="text/css">
 </head>
 
 <body>
-    <h2>音声認識サンプル</h2>
-    <button id="btn">start</button>
+    <!--ページタイトル-->
+    <div style="text-align: center">
+    <h2>植物を育てよう！</h2>
+    <button id="btn">植物と話す</button>
+
+
+    <h5>あなたの発言</h5>
     <div id="voice_recognition"></div>
-    <h5>分析結果</h5>
-    <table id="senti_list"></table>
+
+    <h5>感情分析結果</h5>
     <div id="showson"></div>
-    <h5>感情指数</h5>
+
+    <h5>感情レベル</h5>
     <div id="senti_level"></div>
 
+    <!--植物の画像-->
     <img id="plant_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/child.png?alt=media&token=f1a36c8b-0581-460d-ab28-f898ecb382de" width="300" height="300">
+    
+    <!--体力バー-->
+    <h5>植物の体力</h5>
+    <div id="life-frame">
+        <div id="life-bar"></div>
+        <div id="life-mark"></div>
+    </div>
+    </div>
 
+    <!--BGM関連-->
     <audio preload="auto" controls autoplay loop>
         <source src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/bgm_nomal.mp3?alt=media&token=7f1b6487-50a5-49a9-8b43-39d4e3f0b1d2" />
         <p>オーディオ機能未対応です</p>
     </audio>
+
+    <!--JavaScriptsの読み込み-->
+    <script src="./../static/js/breed_plant.js">
+    </script>
 </body>
 
 <script>
@@ -77,15 +100,21 @@
             // JSON形式で受け取った後の操作
             .then(jsonData => {
                 console.log('jsonData: ', jsonData);
-                var row = document.getElementById("senti_list").insertRow();
-                document.getElementById("showson").innerHTML = jsonData.values
+
+                var neg = JSON.parse(jsonData.values).neg
+                var pos = JSON.parse(jsonData.values).pos
+                
+                // 感分析の結果を代入
+                document.getElementById("showson").innerHTML = "neg:" + neg + "　　pos:" +pos
                 console.log(jsonData.values)
                 console.log(JSON.parse(jsonData.values))
                 console.log(JSON.parse(jsonData.values).neg)
                 if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
                     senti_level--; // ネガティブよりならデクリメント
+                    //alterLife( -1 )
                 } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
                     senti_level++;
+                    //alterLife( 1 )
                 }
                 document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
