@@ -78,6 +78,10 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 	fmt.Print("connection successflly\n")
+
+	// css・js・イメージファイル等の静的ファイル格納パス
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
+
 	http.HandleFunc("/page0", HtmlHandler)
 	http.HandleFunc("/home", HomeHandler)
 	http.ListenAndServe(":8999", nil) //ここで止まる

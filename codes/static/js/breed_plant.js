@@ -1,9 +1,11 @@
+/* JavaScriptファイルなどの変更を反映させるためには
+Chrome > Developer > Network > Disable cache
+にチェックを入れる  */
+
 const lifeBar = document.getElementById('life-bar')         // ライフバー
 const lifeMark = document.getElementById('life-mark')       // ライフの光部分
-const increaseBtn = document.getElementById('increase-btn') // + ボタン
-const decreaseBtn = document.getElementById('decrease-btn') // - ボタン
-let life = 100                                              // ライフ初期値
-lifeBar.style.width = "100%"                                // ライフ初期幅
+let life = 50                                              // ライフ初期値
+lifeBar.style.width = "50%"                                // ライフ初期幅
 
 // *** ライフ変更処理 ***
 function alterLife( value ){
