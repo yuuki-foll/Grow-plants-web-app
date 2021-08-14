@@ -45,6 +45,7 @@
     <!--JavaScriptsの読み込み-->
     <script src="./../static/js/breed_plant.js">
     </script>
+
 </body>
 
 <script>
@@ -111,10 +112,10 @@
                 console.log(JSON.parse(jsonData.values).neg)
                 if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
                     senti_level--; // ネガティブよりならデクリメント
-                    //alterLife( -1 )
+                    alterLife( -25 )
                 } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
                     senti_level++;
-                    //alterLife( 1 )
+                    alterLife( +25 )
                 }
                 document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
