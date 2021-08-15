@@ -1,33 +1,40 @@
-<html>
-    <head>
-        <title>
-            login page
-        </title>
-        <link rel="stylesheet"
-              href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        <h2>Auth Page</h2>
-                    </div>
-                    <div>
-                        <h4>いずれかのプロバイダを選択し、ログインを行なってください。</h4>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li>
-                            <a href="/auth/login/github">nasi</a>
-                        </li>
-                        <li>
-                            <a href="http://127.0.0.1:8999/auth/login/google">Google</a>
-                        </li>
-                    </ul>
-                </div>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>植物を育てよう</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div style="text-align: center">
+      <script src="https://unpkg.com/vue@next"></script>
+      <div class="container">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <div class="panel-title">
+              <h2>ログイン画面</h2>
             </div>
+            <div>
+              <h4>Googleアカウントを選択し、ログインを行なってください。</h4>
+            </div>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <a
+                href="http://127.0.0.1:8999/auth/login/google"
+                style="font-size: 15pt"
+                >Google</a
+              >
+            </ul>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+  </body>
+  <script></script>
 </html>
