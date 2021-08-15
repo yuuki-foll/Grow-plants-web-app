@@ -189,11 +189,21 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 	fmt.Print("connection successflly\n")
+<<<<<<< HEAD
 	http.HandleFunc("/", moveHandler)
 	http.Handle("/login", &templateHandler{filename: "/login.html"})
 	setAuthInfo() // 認証初期設定
 	http.HandleFunc("/auth/", authHandler)
 	http.Handle("/after", &templateHandler{filename: "/after.html"})
+=======
+
+	// css・js・イメージファイル等の静的ファイル格納パス
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
+
+>>>>>>> origin/master
+	
+	// css・js・イメージファイル等の静的ファイル格納パス
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
 	http.HandleFunc("/page0", HtmlHandler)
 	http.HandleFunc("/home", HomeHandler)
 	http.ListenAndServe(":8999", nil) //ここで止まる
