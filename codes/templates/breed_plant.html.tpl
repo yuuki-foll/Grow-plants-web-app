@@ -26,7 +26,8 @@
     <div id="senti_level"></div>
 
     <!--植物の画像-->
-    <img id="plant_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/child.png?alt=media&token=f1a36c8b-0581-460d-ab28-f898ecb382de" width="300" height="300">
+    <img id="plant_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=310330a4-364b-4ddd-a1b6-4695948fecb6
+    " width="300" height="300">
     
     <!--体力バー-->
     <h5>植物の体力</h5>
@@ -38,7 +39,7 @@
 
     <!--BGM関連-->
     <audio preload="auto" controls autoplay loop>
-        <source src="https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/bgm_nomal.mp3?alt=media&token=7f1b6487-50a5-49a9-8b43-39d4e3f0b1d2" />
+        <source src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" />
         <p>オーディオ機能未対応です</p>
     </audio>
 
@@ -53,7 +54,7 @@
     document.getElementById("senti_level").innerHTML = senti_level
 
     // 画像一覧のURLをリストで格納
-    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/child.png?alt=media&token=f1a36c8b-0581-460d-ab28-f898ecb382de","https://firebasestorage.googleapis.com/v0/b/grow-plants-d1673.appspot.com/o/adult.jpeg?alt=media&token=b337d07e-f0fd-4ae1-bb70-e4fe4413945e"]
+    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=310330a4-364b-4ddd-a1b6-4695948fecb6","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba2.png?alt=media&token=d2b4b045-d398-400d-b211-625da2e5771f"]
 
     //音声認識の準備
     const recognition = new webkitSpeechRecognition();
@@ -112,10 +113,10 @@
                 console.log(JSON.parse(jsonData.values).neg)
                 if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
                     senti_level--; // ネガティブよりならデクリメント
-                    alterLife( -25 )
+                    alterLife( -10 )
                 } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
                     senti_level++;
-                    alterLife( +25 )
+                    alterLife( +10 )
                 }
                 document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
