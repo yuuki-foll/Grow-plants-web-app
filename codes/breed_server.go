@@ -8,9 +8,9 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"path/filepath"
 	"strings"
 	"sync"
-	"path/filepath"
 
 	"github.com/stretchr/gomniauth"
 	"github.com/stretchr/gomniauth/providers/google"
@@ -23,9 +23,9 @@ type Ans struct {
 }
 
 type templateHandler struct {
-	once sync.Once
+	once     sync.Once
 	filename string
-	tmpl *template.Template
+	tmpl     *template.Template
 }
 
 func HtmlHandler(w http.ResponseWriter, r *http.Request) {
@@ -95,7 +95,7 @@ func moveHandler(w http.ResponseWriter, r *http.Request) {
 	if authCookie != nil {
 		w.Header()["location"] = []string{"/after"}
 		w.WriteHeader(http.StatusTemporaryRedirect)
-	}else {
+	} else {
 		w.Header()["location"] = []string{"/login"}
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	}
@@ -115,10 +115,10 @@ func setAuthInfo() {
 func authHandler(w http.ResponseWriter, r *http.Request) {
 	//URLを分解する
 	segs := strings.Split(r.URL.Path, "/")
-	action := segs[2] //login or callback
+	action := segs[2]        //login or callback
 	provider_name := segs[3] // google
 
-	switch action  {
+	switch action {
 	case "login":
 		provider, err := gomniauth.Provider(provider_name)
 		if err != nil {
@@ -131,7 +131,7 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 		// 認証ページにリダイレクト
 		w.Header().Set("Location", loginURL)
 		w.WriteHeader(http.StatusTemporaryRedirect)
-	
+
 	case "callback":
 		provider, err := gomniauth.Provider(provider_name)
 		if err != nil {
@@ -147,15 +147,15 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		authCookieValue := objx.New(map[string]interface{}{
-			"name": user.Name(),
+			"name":       user.Name(),
 			"avatar_url": user.AvatarURL(),
-			"provider": provider_name,
+			"provider":   provider_name,
 		}).MustBase64()
 
 		http.SetCookie(w, &http.Cookie{
-			Name: "auth",
+			Name:  "auth",
 			Value: authCookieValue,
-			Path: "/after",
+			Path:  "/after",
 		})
 
 		w.Header()["location"] = []string{"/after"}
