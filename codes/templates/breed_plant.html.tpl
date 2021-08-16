@@ -38,10 +38,17 @@
     </div>
 
     <!--BGM関連-->
-    <audio preload="auto" controls autoplay loop>
+<!--     <audio preload="auto" controls autoplay loop controlslist="nodownload">
         <source src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" />
         <p>オーディオ機能未対応です</p>
-    </audio>
+    </audio> -->
+
+    <!-- BGM変更 -->
+    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" type="audio/mpeg"></audio>
+    <button id="btn_play">再生</button>
+    <button id="btn_pause">一時停止</button>
+    <button id="btn_mute">消音</button>
+    <input type="range" id="volume" value="0.5" min="0.0" max="1.0" step="0.1">
 
     <!--JavaScriptsの読み込み-->
     <script src="./../static/js/breed_plant.js">
@@ -50,11 +57,47 @@
 </body>
 
 <script>
-    let senti_level = 0; // 感情指数
+    let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
     document.getElementById("senti_level").innerHTML = senti_level
 
     // 画像一覧のURLをリストで格納
     const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=310330a4-364b-4ddd-a1b6-4695948fecb6","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba2.png?alt=media&token=d2b4b045-d398-400d-b211-625da2e5771f"]
+
+    window.addEventListener('DOMContentLoaded', function(){
+    const btn_play = document.getElementById("btn_play");
+    const btn_pause = document.getElementById("btn_pause");
+    const btn_mute = document.getElementById("btn_mute");
+    const slider_volume = document.getElementById("volume");
+    const audioElement = document.querySelector("audio");
+
+    // BGM 再生状態から開始
+    audioElement.play();
+    // ボリュームの初期設定
+    audioElement.volume = slider_volume.value;
+
+    btn_play.addEventListener("click", e => {
+        audioElement.play();
+    });
+
+    btn_pause.addEventListener("click", e => {
+        audioElement.pause();
+    });
+
+    btn_mute.addEventListener("click", e => {
+
+        if( audioElement.muted ) {
+        audioElement.muted = false;
+        btn_mute.textContent = "消音";
+        } else {
+        audioElement.muted = true;
+        btn_mute.textContent = "消音解除";
+        }
+    });
+
+    slider_volume.addEventListener("input", e => {
+        audioElement.volume = slider_volume.value;
+    });
+    });
 
     //音声認識の準備
     const recognition = new webkitSpeechRecognition();
