@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -12,9 +13,11 @@ import (
 	"strings"
 	"sync"
 
+	firebase "firebase.google.com/go"
 	"github.com/stretchr/gomniauth"
 	"github.com/stretchr/gomniauth/providers/google"
 	"github.com/stretchr/objx"
+	"google.golang.org/api/option"
 )
 
 // jsonを受け取る構造を宣言
@@ -26,6 +29,12 @@ type templateHandler struct {
 	once     sync.Once
 	filename string
 	tmpl     *template.Template
+}
+// セーブデータの構造
+type saveData struct {
+	UserName	string
+	PlantLevel	int64
+	PhysicalStrength	int64
 }
 
 func HtmlHandler(w http.ResponseWriter, r *http.Request) {
@@ -188,6 +197,29 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.tmpl.Execute(w, data)
 }
 func main() {
+	// firebase初期化
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	// データ追加
+	_, _, err = client.Collection("save_data").Add(ctx, map[string]interface{}{
+		"username": "mori",
+		"plant_level": 1,
+		"physical_strength": 50,
+	})
+	if err != nil {
+		log.Fatalf("Failed adding alovelace: %v", err)
+	}
+	// 切断	
+	defer client.Close()
 	fmt.Print("connection successflly\n")
 	http.HandleFunc("/", moveHandler)
 	http.Handle("/login", &templateHandler{filename: "/login.html"})
