@@ -83,6 +83,7 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
+
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("templates/breed_plant_main.html.tpl"))
 	if err := t.ExecuteTemplate(w, "breed_plant_main.html.tpl", nil); err != nil {
@@ -93,7 +94,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 func moveHandler(w http.ResponseWriter, r *http.Request) {
 	authCookie, _ := r.Cookie("auth")
 	if authCookie != nil {
-		w.Header()["location"] = []string{"/after"}
+		w.Header()["location"] = []string{"/home"}
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	} else {
 		w.Header()["location"] = []string{"/login"}
@@ -169,7 +170,6 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-
 	// 指定したファイルを一度だけコンパイルする
 	t.once.Do(
 		func() {
@@ -187,6 +187,7 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	t.tmpl.Execute(w, data)
 }
+
 func main() {
 	fmt.Print("connection successflly\n")
 	http.HandleFunc("/", moveHandler)
@@ -198,5 +199,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
 	http.HandleFunc("/page0", HtmlHandler)
 	http.HandleFunc("/home", HomeHandler)
-	http.ListenAndServe(":8999", nil) //ここで止まる
+
+	// HTTPサーバの起動
+	http.ListenAndServe(":8999", nil)
 }
