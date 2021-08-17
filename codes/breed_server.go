@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -12,9 +13,12 @@ import (
 	"strings"
 	"sync"
 
+	firebase "firebase.google.com/go"
 	"github.com/stretchr/gomniauth"
 	"github.com/stretchr/gomniauth/providers/google"
 	"github.com/stretchr/objx"
+	"google.golang.org/api/option"
+	"google.golang.org/api/iterator"
 )
 
 // jsonを受け取る構造を宣言
@@ -26,6 +30,12 @@ type templateHandler struct {
 	once     sync.Once
 	filename string
 	tmpl     *template.Template
+}
+// セーブデータの構造
+type saveData struct {
+	UserName	string
+	PlantLevel	int64
+	PhysicalStrength	int64
 }
 
 func HtmlHandler(w http.ResponseWriter, r *http.Request) {
@@ -84,6 +94,49 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func registerDatabase(data objx.Map) {
+	add_f := true
+	// firebase初期化
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	iter := client.Collection("save_data").Documents(ctx)
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done{
+			break
+		}
+		if err != nil {
+			log.Fatalf("Failed to iterate: %v", err)
+		}
+		
+		if doc.Data()["username"] == data["name"] {
+			add_f = false
+			break
+		}
+		
+	}
+	if add_f {
+		// データ追加
+		_, _, err = client.Collection("save_data").Add(ctx, map[string]interface{}{
+		"username": data["name"],
+		"plant_level": 1,
+		"physical_strength": 50,
+		})	
+	}
+	if err != nil {
+		log.Fatalf("Failed adding alovelace: %v", err)
+	}
+	// 切断	
+	defer client.Close()
+}
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("templates/breed_plant_main.html.tpl"))
 	if err := t.ExecuteTemplate(w, "breed_plant_main.html.tpl", nil); err != nil {
@@ -187,9 +240,38 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		data["UserData"] = objx.MustFromBase64(authCookie.Value)
 	}
 	t.tmpl.Execute(w, data)
+	if data["UserData"] != nil {
+		registerDatabase(objx.MustFromBase64(authCookie.Value))
+		
+	}
 }
 
 func main() {
+	/*
+	// firebase初期化
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	// データ追加
+	_, _, err = client.Collection("save_data").Add(ctx, map[string]interface{}{
+		"username": "mori",
+		"plant_level": 1,
+		"physical_strength": 50,
+	})
+	if err != nil {
+		log.Fatalf("Failed adding alovelace: %v", err)
+	}
+	// 切断	
+	defer client.Close()
+	*/
 	fmt.Print("connection successflly\n")
 	http.HandleFunc("/", moveHandler)
 	http.Handle("/login", &templateHandler{filename: "/login.html"})
