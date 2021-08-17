@@ -46,11 +46,12 @@
           </table>
         </div>
     </div>
-    <div class="border-promary">
-        <form action="/logout" type="poth">
-          <input type="submit" value="ログアウト" class="btn btn-primary" />
-        </form>
-      </div>
+        <!--ログインしてない前提なのでログアウトボタンは削除-->
+        <!--     <div class="border-promary">
+                <form action="/logout" type="poth">
+                <input type="submit" value="ログアウト" class="btn btn-primary" />
+                </form>
+            </div> -->
 </body>
 <script>
 

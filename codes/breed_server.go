@@ -97,7 +97,8 @@ func moveHandler(w http.ResponseWriter, r *http.Request) {
 		w.Header()["location"] = []string{"/home"}
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	} else {
-		w.Header()["location"] = []string{"/login"}
+		// homeスタートでいいかも
+		w.Header()["location"] = []string{"/home"}
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	}
 }

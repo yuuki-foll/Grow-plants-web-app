@@ -44,11 +44,12 @@
     </audio> -->
 
     <!-- BGM変更 -->
-    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" type="audio/mpeg"></audio>
+    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" type="audio/mpeg" loop autoplay preload="auto"></audio>
     <button id="btn_play">再生</button>
     <button id="btn_pause">一時停止</button>
     <button id="btn_mute">消音</button>
-    <input type="range" id="volume" value="0.5" min="0.0" max="1.0" step="0.1">
+    <!--音量調整　マージの時にコメント削除-->
+    <input type="range" id="volume" value="0.05" min="0.0" max="0.5" step="0.01">
 
     <!--JavaScriptsの読み込み-->
     <script src="./../static/js/breed_plant.js">
@@ -70,8 +71,6 @@
     const slider_volume = document.getElementById("volume");
     const audioElement = document.querySelector("audio");
 
-    // BGM 再生状態から開始
-    audioElement.play();
     // ボリュームの初期設定
     audioElement.volume = slider_volume.value;
 
