@@ -45,6 +45,8 @@ function alterLife( value ){
         // 光部分を表示する
         lifeMark.style.visibility = 'visible'
     }
+    document.getElementById('life').innerHTML = life;
+    
     // 色の変化を適用
     lifeBar.style.backgroundColor = "rgb(" + red + "," + green + ",0)"
     // スタイル(幅)を更新する

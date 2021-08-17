@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <button id="save_btn">save</button>
     <!--ページタイトル-->
     <div style="text-align: center">
     <h2>植物を育てよう！</h2>
@@ -31,6 +32,7 @@
     
     <!--体力バー-->
     <h5>植物の体力</h5>
+    <div id="life"></div>
     <div id="life-frame">
         <div id="life-bar"></div>
         <div id="life-mark"></div>
@@ -96,6 +98,25 @@
     slider_volume.addEventListener("input", e => {
         audioElement.volume = slider_volume.value;
     });
+    });
+
+    //使用する変数を用意
+    const save = document.getElementById('save_btn');
+    // ボタンと処理
+    save.addEventListener('click', function () {
+        
+        // Fetch APIでデータ送信
+        fetch('http://127.0.0.1:8999/save', {　 // 送信先URL
+        method: "POST", // 通信メソッド
+        mode: "no-cors",
+        header: {
+            'Content-Type': 'application/json' // JSON形式のデータのヘッダー
+        },
+
+        body: JSON.stringify({ PhysicalStrength:life,
+                                PlantLevel: senti_level,
+                                Username:"name" }) // JSON形式のデータ
+        })
     });
 
     //音声認識の準備
