@@ -44,9 +44,42 @@ type saveData struct {
 func saveHandler(w http.ResponseWriter, r *http.Request) {
 	var data saveData
 	json.NewDecoder(r.Body).Decode(&data)
+	// firebase初期化
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	query := client.Collection("save_data").Where("username", "==", username).Documents(ctx)
+	for {
+		doc, err := query.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(doc.Data())
+		_, err = client.Collection("save_data").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
+			"username":	username,
+			"plant_level":	data.PlantLevel,
+			"physical_strength": data.PhysicalStrength,
+
+		})
+	}
+
+
+	// json.NewDecoder(r.Body).Decode(&data)
+	fmt.Printf("save data\n")
 	fmt.Printf("%s\n", username) //受け取った文字列を出力
 	fmt.Printf("%d\n", data.PlantLevel)
 	fmt.Printf("%d\n", data.PhysicalStrength)
+
 }
 
 func HtmlHandler(w http.ResponseWriter, r *http.Request) {
