@@ -46,12 +46,17 @@
     </audio> -->
 
     <!-- BGM変更 -->
-    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" type="audio/mpeg" loop autoplay preload="auto"></audio>
+    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" type="audio/mpeg" loop autoplay preload="auto">
+        <p>お使いの環境では再生できません。</p>
+    </audio>
     <button id="btn_play">再生</button>
     <button id="btn_pause">一時停止</button>
     <button id="btn_mute">消音</button>
     <!--音量調整　マージの時にコメント削除-->
     <input type="range" id="volume" value="0.05" min="0.0" max="0.5" step="0.01">
+
+    <!-- SE -->
+    <audio id="grow_se" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grow_se.mp3?alt=media&token=52e9d0f4-385d-47bc-adcd-cce666960928" type="audio/mpeg" preload="auto"></audio>
 
     <!--JavaScriptsの読み込み-->
     <script src="./../static/js/breed_plant.js">
@@ -184,8 +189,9 @@
                 document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
 
-                if (senti_level >= 1){
+                if (senti_level >= 3){
                     plant_pic.src = img[1];
+                    document.getElementById( "grow_se" ).play() ; // 成長時効果音を鳴らす
                 }else{
                     plant_pic.src = img[0];
                 }
