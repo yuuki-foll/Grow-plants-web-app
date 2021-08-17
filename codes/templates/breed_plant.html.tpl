@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <button id="save_btn">save</button>
     <!--ページタイトル-->
     <div style="text-align: center">
     <h2>植物を育てよう！</h2>
@@ -31,6 +32,7 @@
     
     <!--体力バー-->
     <h5>植物の体力</h5>
+    <div id="life"></div>
     <div id="life-frame">
         <div id="life-bar"></div>
         <div id="life-mark"></div>
@@ -44,11 +46,12 @@
     </audio> -->
 
     <!-- BGM変更 -->
-    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" type="audio/mpeg"></audio>
+    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" type="audio/mpeg" loop autoplay preload="auto"></audio>
     <button id="btn_play">再生</button>
     <button id="btn_pause">一時停止</button>
     <button id="btn_mute">消音</button>
-    <input type="range" id="volume" value="0.5" min="0.0" max="1.0" step="0.1">
+    <!--音量調整　マージの時にコメント削除-->
+    <input type="range" id="volume" value="0.05" min="0.0" max="0.5" step="0.01">
 
     <!--JavaScriptsの読み込み-->
     <script src="./../static/js/breed_plant.js">
@@ -70,8 +73,6 @@
     const slider_volume = document.getElementById("volume");
     const audioElement = document.querySelector("audio");
 
-    // BGM 再生状態から開始
-    audioElement.play();
     // ボリュームの初期設定
     audioElement.volume = slider_volume.value;
 
@@ -97,6 +98,25 @@
     slider_volume.addEventListener("input", e => {
         audioElement.volume = slider_volume.value;
     });
+    });
+
+    //使用する変数を用意
+    const save = document.getElementById('save_btn');
+    // ボタンと処理
+    save.addEventListener('click', function () {
+        
+        // Fetch APIでデータ送信
+        fetch('http://127.0.0.1:8999/save', {　 // 送信先URL
+        method: "POST", // 通信メソッド
+        mode: "no-cors",
+        header: {
+            'Content-Type': 'application/json' // JSON形式のデータのヘッダー
+        },
+
+        body: JSON.stringify({ PhysicalStrength:life,
+                                PlantLevel: senti_level,
+                                Username:"name" }) // JSON形式のデータ
+        })
     });
 
     //音声認識の準備
