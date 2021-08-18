@@ -5,6 +5,18 @@ body {
   background-size: cover; /*背景画像のサイズ設定 cover:画像が画面全体に拡大される*/
 }
 
+#save_btn {
+  width: 50px;
+  height: 25px;
+  font-size: 12px;
+}
+
+.titleback_btn {
+  width: 130px;
+  height: 25px;
+  font-size: 12px;
+}
+
 #senti_level {
   color: rgb(0, 0, 0);
 }
