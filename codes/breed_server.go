@@ -66,13 +66,11 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		fmt.Println(doc.Data())
 		_, err = client.Collection("save_data").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
-			"username":	username,
-			"plant_level":	data.PlantLevel,
+			"username":          username,
+			"plant_level":       data.PlantLevel,
 			"physical_strength": data.PhysicalStrength,
-
 		})
 	}
-
 
 	// json.NewDecoder(r.Body).Decode(&data)
 	fmt.Printf("save data\n")
@@ -166,13 +164,13 @@ func loadSavedata(data objx.Map) {
 		load.PhysicalStrength = doc.Data()["physical_strength"].(int64)
 
 		// struct to json
-		json_data , err := json.Marshal(load)
+		json_data, err := json.Marshal(load)
 		if err != nil {
 			log.Fatalln(err)
 			return
 		}
 		res, err := http.Post(url_str, "application/json", bytes.NewBuffer(json_data))
-		if err!= nil {
+		if err != nil {
 			log.Fatalln(err)
 		} else {
 			fmt.Println(res.Status)
@@ -250,8 +248,8 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
-			"405526073754-ob2aru8e43biapdddn9cahrprrvklnlh.apps.googleusercontent.com",
-			"cBJdbfAmu6nf6e9cHmD1hlzL",
+			googleClientId,
+			googleClientSecurityKey,
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
