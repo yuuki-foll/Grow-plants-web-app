@@ -137,6 +137,51 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
+func loadSavedata(data objx.Map) {
+	var load saveData
+	url_str := "http://127.0.0.1:8999/page0"
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	iter := client.Collection("save_data").Where("username", "==", data["name"]).Documents(ctx)
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Printf("%T\n", doc.Data()["username"])
+		load.UserName = doc.Data()["username"].(string)
+		load.PlantLevel = doc.Data()["plant_level"].(int64)
+		load.PhysicalStrength = doc.Data()["physical_strength"].(int64)
+
+		// struct to json
+		json_data , err := json.Marshal(load)
+		if err != nil {
+			log.Fatalln(err)
+			return
+		}
+		res, err := http.Post(url_str, "application/json", bytes.NewBuffer(json_data))
+		if err!= nil {
+			log.Fatalln(err)
+		} else {
+			fmt.Println(res.Status)
+		}
+		defer res.Body.Close()
+	}
+	defer client.Close()
+
+}
 
 func registerDatabase(data objx.Map) {
 	add_f := true
@@ -163,6 +208,7 @@ func registerDatabase(data objx.Map) {
 
 		if doc.Data()["username"] == data["name"] {
 			add_f = false
+			loadSavedata(data)
 			break
 		}
 
@@ -204,8 +250,8 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
-			googleClientId,
-			googleClientSecurityKey,
+			"405526073754-ob2aru8e43biapdddn9cahrprrvklnlh.apps.googleusercontent.com", //googleClientId
+			"cBJdbfAmu6nf6e9cHmD1hlzL", // googleClientSecurityKey,
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
