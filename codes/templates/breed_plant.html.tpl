@@ -10,7 +10,10 @@
 </head>
 
 <body>
+    <!-- セーブボタン　＆　タイトルバックボタン-->
     <button id="save_btn">save</button>
+    <button class="titleback_btn" onclick="location.href='http://127.0.0.1:8999/after'">タイトル画面に戻る</button>
+
     <!--ページタイトル-->
     <div style="text-align: center">
     <h2>植物を育てよう！</h2>
@@ -105,9 +108,8 @@
     });
     });
 
-    //使用する変数を用意
+    /* セーブ処理 */
     const save = document.getElementById('save_btn');
-    // ボタンと処理
     save.addEventListener('click', function () {
         
         // Fetch APIでデータ送信
@@ -175,7 +177,7 @@
                 var pos = JSON.parse(jsonData.values).pos
                 
                 // 感分析の結果を代入
-                document.getElementById("showson").innerHTML = "neg:" + neg + "　　pos:" +pos
+                document.getElementById("showson").innerHTML = "ネガティブ:" + neg + "　　ポジティブ:" +pos
                 console.log(jsonData.values)
                 console.log(JSON.parse(jsonData.values))
                 console.log(JSON.parse(jsonData.values).neg)
