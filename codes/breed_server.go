@@ -136,12 +136,12 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
-func loadSavedata(data objx.Map) {
+func loadSavedata(data objx.Map) saveData {
 	var load saveData
-	url_str := "http://127.0.0.1:8999/page0"
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
+	fmt.Println(data["name"])
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -177,9 +177,10 @@ func loadSavedata(data objx.Map) {
 			fmt.Println(res.Status)
 		}
 		defer res.Body.Close()
+
 	}
 	defer client.Close()
-
+	return load
 }
 
 func registerDatabase(data objx.Map) {
@@ -207,7 +208,6 @@ func registerDatabase(data objx.Map) {
 
 		if doc.Data()["username"] == data["name"] {
 			add_f = false
-			loadSavedata(data)
 			break
 		}
 
@@ -249,8 +249,6 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
-			"405526073754-ob2aru8e43biapdddn9cahrprrvklnlh.apps.googleusercontent.com",
-			"cBJdbfAmu6nf6e9cHmD1hlzL",
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
@@ -261,7 +259,6 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 	segs := strings.Split(r.URL.Path, "/")
 	action := segs[2]        //login or callback
 	provider_name := segs[3] // google
-
 	switch action {
 	case "login":
 		provider, err := gomniauth.Provider(provider_name)
@@ -295,13 +292,23 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"avatar_url": user.AvatarURL(),
 			"provider":   provider_name,
 		}).MustBase64()
-
+		load := loadSavedata(objx.MustFromBase64(authCookieValue))
+		saveDataCookieValue := objx.New(map[string]interface{}{
+			"name":              user.Name(),
+			"physical_strength": load.PhysicalStrength,
+			"plant_level":       load.PlantLevel,
+		}).MustBase64()
 		username = user.Name()
 
 		http.SetCookie(w, &http.Cookie{
 			Name:  "auth",
 			Value: authCookieValue,
 			Path:  "/after",
+		})
+		http.SetCookie(w, &http.Cookie{
+			Name:  "auth",
+			Value: saveDataCookieValue,
+			Path:  "/page0",
 		})
 
 		w.Header()["location"] = []string{"/after"}
