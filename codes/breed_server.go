@@ -90,6 +90,7 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" {
 			var ans Ans
 			json.NewDecoder(r.Body).Decode(&ans)
+			fmt.Printf(ans.Text)
 			fmt.Printf("%s", ans.Text) //受け取った文字列を出力
 			if ans.Text != "" {
 				//fmt.Printf("%T\n", r.Header)
@@ -248,8 +249,8 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
-			googleClientId,
-			googleClientSecurityKey,
+			"405526073754-ob2aru8e43biapdddn9cahrprrvklnlh.apps.googleusercontent.com",
+			"cBJdbfAmu6nf6e9cHmD1hlzL",
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
