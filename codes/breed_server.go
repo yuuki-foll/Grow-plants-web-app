@@ -90,7 +90,6 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" {
 			var ans Ans
 			json.NewDecoder(r.Body).Decode(&ans)
-			fmt.Printf(ans.Text)
 			fmt.Printf("%s", ans.Text) //受け取った文字列を出力
 			if ans.Text != "" {
 				//fmt.Printf("%T\n", r.Header)
@@ -163,21 +162,6 @@ func loadSavedata(data objx.Map) saveData {
 		load.UserName = doc.Data()["username"].(string)
 		load.PlantLevel = doc.Data()["plant_level"].(int64)
 		load.PhysicalStrength = doc.Data()["physical_strength"].(int64)
-
-		// struct to json
-		json_data, err := json.Marshal(load)
-		if err != nil {
-			log.Fatalln(err)
-			return
-		}
-		res, err := http.Post(url_str, "application/json", bytes.NewBuffer(json_data))
-		if err != nil {
-			log.Fatalln(err)
-		} else {
-			fmt.Println(res.Status)
-		}
-		defer res.Body.Close()
-
 	}
 	defer client.Close()
 	return load
@@ -249,6 +233,8 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
+			"405526073754-ob2aru8e43biapdddn9cahrprrvklnlh.apps.googleusercontent.com",
+			"cBJdbfAmu6nf6e9cHmD1hlzL",
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
