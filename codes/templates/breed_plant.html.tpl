@@ -69,6 +69,30 @@
 
 <script>
     let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
+    var cookies = document.cookie;
+    console.log(cookies);
+    var cookiesArray = cookies.split(';');
+
+    for (var c of cookiesArray) {
+        var cArray = c.split('=');
+        if (cArray[0] == 'auth') {
+            var savedata = atob(cArray[1]);
+        }
+    }
+    console.log(savedata)
+    var savedataArray = savedata.split(',');
+    for (var s of savedataArray) {
+        var sArray = s.split(':');
+        console.log(sArray)
+        if (sArray[0] == "\"plant_level\"") {
+            senti_level = parseInt(sArray[1].slice(0, 1))
+        }
+        else if (sArray[0] == "\"physical_strength\"") {
+            life = parseInt(sArray[1])
+            alterLife(0)
+        }
+    }
+    // let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
     document.getElementById("senti_level").innerHTML = senti_level
 
     // 画像一覧のURLをリストで格納

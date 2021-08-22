@@ -137,12 +137,12 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
-func loadSavedata(data objx.Map) {
+func loadSavedata(data objx.Map) (saveData) {
 	var load saveData
-	url_str := "http://127.0.0.1:8999/page0"
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
+	fmt.Println(data["name"])
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -164,23 +164,9 @@ func loadSavedata(data objx.Map) {
 		load.UserName = doc.Data()["username"].(string)
 		load.PlantLevel = doc.Data()["plant_level"].(int64)
 		load.PhysicalStrength = doc.Data()["physical_strength"].(int64)
-
-		// struct to json
-		json_data , err := json.Marshal(load)
-		if err != nil {
-			log.Fatalln(err)
-			return
-		}
-		res, err := http.Post(url_str, "application/json", bytes.NewBuffer(json_data))
-		if err!= nil {
-			log.Fatalln(err)
-		} else {
-			fmt.Println(res.Status)
-		}
-		defer res.Body.Close()
 	}
 	defer client.Close()
-
+	return load
 }
 
 func registerDatabase(data objx.Map) {
@@ -208,7 +194,6 @@ func registerDatabase(data objx.Map) {
 
 		if doc.Data()["username"] == data["name"] {
 			add_f = false
-			loadSavedata(data)
 			break
 		}
 
@@ -250,8 +235,8 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
-			googleClientId,
-			googleClientSecurityKey,
+			"google client id",
+			"secret key",
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
@@ -262,7 +247,6 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 	segs := strings.Split(r.URL.Path, "/")
 	action := segs[2]        //login or callback
 	provider_name := segs[3] // google
-
 	switch action {
 	case "login":
 		provider, err := gomniauth.Provider(provider_name)
@@ -296,7 +280,12 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"avatar_url": user.AvatarURL(),
 			"provider":   provider_name,
 		}).MustBase64()
-
+		load := loadSavedata(objx.MustFromBase64(authCookieValue))
+		saveDataCookieValue := objx.New(map[string]interface{}{
+			"name":	user.Name(),
+			"physical_strength": load.PhysicalStrength,
+			"plant_level": load.PlantLevel,
+		}).MustBase64()
 		username = user.Name()
 
 		http.SetCookie(w, &http.Cookie{
@@ -304,6 +293,12 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			Value: authCookieValue,
 			Path:  "/after",
 		})
+		http.SetCookie(w, &http.Cookie{
+			Name: "auth",
+			Value: saveDataCookieValue,
+			Path: "/page0",
+		})
+
 
 		w.Header()["location"] = []string{"/after"}
 		w.WriteHeader(http.StatusTemporaryRedirect)
