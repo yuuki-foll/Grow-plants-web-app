@@ -30,7 +30,7 @@
     <div id="senti_level"></div>
 
     <!--植物の画像-->
-    <img id="plant_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=310330a4-364b-4ddd-a1b6-4695948fecb6
+    <img id="plant_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=f3c63e44-7bd3-4603-b4cd-81a9d1acf8ca
     " width="300" height="300">
     
     <!--体力バー-->
@@ -96,7 +96,7 @@
     document.getElementById("senti_level").innerHTML = senti_level
 
     // 画像一覧のURLをリストで格納
-    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=310330a4-364b-4ddd-a1b6-4695948fecb6","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba2.png?alt=media&token=d2b4b045-d398-400d-b211-625da2e5771f"]
+    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=f3c63e44-7bd3-4603-b4cd-81a9d1acf8ca","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/otona.png?alt=media&token=be24cb96-e612-472d-9e5c-e353fe2e14f1"]
 
     window.addEventListener('DOMContentLoaded', function(){
     const btn_play = document.getElementById("btn_play");
