@@ -66,13 +66,11 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		fmt.Println(doc.Data())
 		_, err = client.Collection("save_data").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
-			"username":	username,
-			"plant_level":	data.PlantLevel,
+			"username":          username,
+			"plant_level":       data.PlantLevel,
 			"physical_strength": data.PhysicalStrength,
-
 		})
 	}
-
 
 	// json.NewDecoder(r.Body).Decode(&data)
 	fmt.Printf("save data\n")
@@ -137,7 +135,7 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
-func loadSavedata(data objx.Map) (saveData) {
+func loadSavedata(data objx.Map) saveData {
 	var load saveData
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
@@ -282,9 +280,9 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 		}).MustBase64()
 		load := loadSavedata(objx.MustFromBase64(authCookieValue))
 		saveDataCookieValue := objx.New(map[string]interface{}{
-			"name":	user.Name(),
+			"name":              user.Name(),
 			"physical_strength": load.PhysicalStrength,
-			"plant_level": load.PlantLevel,
+			"plant_level":       load.PlantLevel,
 		}).MustBase64()
 		username = user.Name()
 
@@ -294,11 +292,10 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			Path:  "/after",
 		})
 		http.SetCookie(w, &http.Cookie{
-			Name: "auth",
+			Name:  "auth",
 			Value: saveDataCookieValue,
-			Path: "/page0",
+			Path:  "/page0",
 		})
-
 
 		w.Header()["location"] = []string{"/after"}
 		w.WriteHeader(http.StatusTemporaryRedirect)
