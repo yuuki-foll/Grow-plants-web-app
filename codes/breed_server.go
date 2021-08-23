@@ -233,8 +233,8 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
-			"google client id",
-			"secret key",
+			google client id,
+			secret key,
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
