@@ -233,8 +233,8 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
-			"405526073754-ob2aru8e43biapdddn9cahrprrvklnlh.apps.googleusercontent.com",
-			"cBJdbfAmu6nf6e9cHmD1hlzL",
+			"google client id",
+			"secret key",
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
@@ -305,14 +305,14 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 
 func logoutHandler(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
-		Name: "auth",
+		Name:  "auth",
 		Value: "",
-		Path: "/page0",
+		Path:  "/page0",
 	})
 	http.SetCookie(w, &http.Cookie{
-		Name: "auth",
+		Name:  "auth",
 		Value: "",
-		Path: "/after",
+		Path:  "/after",
 	})
 	t := template.Must(template.ParseFiles("templates/breed_plant_main.html.tpl"))
 	if err := t.ExecuteTemplate(w, "breed_plant_main.html.tpl", nil); err != nil {
