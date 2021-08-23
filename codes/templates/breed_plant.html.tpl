@@ -31,7 +31,7 @@
 
         <!--植物の画像-->
         <img id="plant_pic"
-            src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073"
+            src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f"
             width="300" height="300">
 
         <!--体力バー-->
@@ -104,7 +104,7 @@
     document.getElementById("senti_level").innerHTML = senti_level
 
     // 画像一覧のURLをリストで格納
-    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5"]
+    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998"]
 
     window.addEventListener('DOMContentLoaded', function () {
         const btn_play = document.getElementById("btn_play");
@@ -221,15 +221,19 @@
                 } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
                     senti_level++;
                     alterLife(+10)
+                    document.getElementById("grow_se").play(); // 成長時効果音を鳴らす
                 }
                 document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
 
-                if (senti_level >= 3) {
-                    plant_pic.src = img[1];
-                    document.getElementById("grow_se").play(); // 成長時効果音を鳴らす
-                } else {
+                if (senti_level == 1) {
                     plant_pic.src = img[0];
+                } else if (senti_level >= 6) {
+                    plant_pic.src = img[3];
+                } else if (senti_level >= 4) {
+                    plant_pic.src = img[2];
+                } else if (senti_level >= 2) {
+                    plant_pic.src = img[1];
                 }
             })
     }, false);//何のfalse
