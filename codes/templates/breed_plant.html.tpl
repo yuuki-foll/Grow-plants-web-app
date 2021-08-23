@@ -16,40 +16,43 @@
 
     <!--ページタイトル-->
     <div style="text-align: center">
-    <h2>植物を育てよう！</h2>
-    <button id="btn">植物と話す</button>
+        <h2>植物を育てよう！</h2>
+        <button id="btn">植物と話す</button>
 
 
-    <h5>あなたの発言</h5>
-    <div id="voice_recognition"></div>
+        <h5>あなたの発言</h5>
+        <div id="voice_recognition"></div>
 
-    <h5>感情分析結果</h5>
-    <div id="showson"></div>
+        <h5>感情分析結果</h5>
+        <div id="showson"></div>
 
-    <h5>感情レベル</h5>
-    <div id="senti_level"></div>
+        <h5>感情レベル</h5>
+        <div id="senti_level"></div>
 
-    <!--植物の画像-->
-    <img id="plant_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=f3c63e44-7bd3-4603-b4cd-81a9d1acf8ca
-    " width="300" height="300">
-    
-    <!--体力バー-->
-    <h5>植物の体力</h5>
-    <div id="life"></div>
-    <div id="life-frame">
-        <div id="life-bar"></div>
-        <div id="life-mark"></div>
-    </div>
+        <!--植物の画像-->
+        <img id="plant_pic"
+            src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073"
+            width="300" height="300">
+
+        <!--体力バー-->
+        <h5>植物の体力</h5>
+        <div id="life"></div>
+        <div id="life-frame">
+            <div id="life-bar"></div>
+            <div id="life-mark"></div>
+        </div>
     </div>
 
     <!--BGM関連-->
-<!--     <audio preload="auto" controls autoplay loop controlslist="nodownload">
+    <!--     <audio preload="auto" controls autoplay loop controlslist="nodownload">
         <source src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" />
         <p>オーディオ機能未対応です</p>
     </audio> -->
 
     <!-- BGM変更 -->
-    <audio src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570" type="audio/mpeg" loop autoplay preload="auto">
+    <audio
+        src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570"
+        type="audio/mpeg" loop autoplay preload="auto">
         <p>お使いの環境では再生できません。</p>
     </audio>
     <button id="btn_play">再生</button>
@@ -59,7 +62,9 @@
     <input type="range" id="volume" value="0.05" min="0.0" max="0.5" step="0.01">
 
     <!-- SE -->
-    <audio id="grow_se" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grow_se.mp3?alt=media&token=52e9d0f4-385d-47bc-adcd-cce666960928" type="audio/mpeg" preload="auto"></audio>
+    <audio id="grow_se"
+        src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grow_se.mp3?alt=media&token=52e9d0f4-385d-47bc-adcd-cce666960928"
+        type="audio/mpeg" preload="auto"></audio>
 
     <!--JavaScriptsの読み込み-->
     <script src="./../static/js/breed_plant.js">
@@ -99,57 +104,59 @@
     document.getElementById("senti_level").innerHTML = senti_level
 
     // 画像一覧のURLをリストで格納
-    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/wakaba.png?alt=media&token=f3c63e44-7bd3-4603-b4cd-81a9d1acf8ca","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/otona.png?alt=media&token=be24cb96-e612-472d-9e5c-e353fe2e14f1"]
+    const img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5"]
 
-    window.addEventListener('DOMContentLoaded', function(){
-    const btn_play = document.getElementById("btn_play");
-    const btn_pause = document.getElementById("btn_pause");
-    const btn_mute = document.getElementById("btn_mute");
-    const slider_volume = document.getElementById("volume");
-    const audioElement = document.querySelector("audio");
+    window.addEventListener('DOMContentLoaded', function () {
+        const btn_play = document.getElementById("btn_play");
+        const btn_pause = document.getElementById("btn_pause");
+        const btn_mute = document.getElementById("btn_mute");
+        const slider_volume = document.getElementById("volume");
+        const audioElement = document.querySelector("audio");
 
-    // ボリュームの初期設定
-    audioElement.volume = slider_volume.value;
-
-    btn_play.addEventListener("click", e => {
-        audioElement.play();
-    });
-
-    btn_pause.addEventListener("click", e => {
-        audioElement.pause();
-    });
-
-    btn_mute.addEventListener("click", e => {
-
-        if( audioElement.muted ) {
-        audioElement.muted = false;
-        btn_mute.textContent = "消音";
-        } else {
-        audioElement.muted = true;
-        btn_mute.textContent = "消音解除";
-        }
-    });
-
-    slider_volume.addEventListener("input", e => {
+        // ボリュームの初期設定
         audioElement.volume = slider_volume.value;
-    });
+
+        btn_play.addEventListener("click", e => {
+            audioElement.play();
+        });
+
+        btn_pause.addEventListener("click", e => {
+            audioElement.pause();
+        });
+
+        btn_mute.addEventListener("click", e => {
+
+            if (audioElement.muted) {
+                audioElement.muted = false;
+                btn_mute.textContent = "消音";
+            } else {
+                audioElement.muted = true;
+                btn_mute.textContent = "消音解除";
+            }
+        });
+
+        slider_volume.addEventListener("input", e => {
+            audioElement.volume = slider_volume.value;
+        });
     });
 
     /* セーブ処理 */
     const save = document.getElementById('save_btn');
     save.addEventListener('click', function () {
-        
+
         // Fetch APIでデータ送信
         fetch('http://127.0.0.1:8999/save', {　 // 送信先URL
-        method: "POST", // 通信メソッド
-        mode: "no-cors",
-        header: {
-            'Content-Type': 'application/json' // JSON形式のデータのヘッダー
-        },
+            method: "POST", // 通信メソッド
+            mode: "no-cors",
+            header: {
+                'Content-Type': 'application/json' // JSON形式のデータのヘッダー
+            },
 
-        body: JSON.stringify({ PhysicalStrength:life,
-                                PlantLevel: senti_level,
-                                Username:"name" }) // JSON形式のデータ
+            body: JSON.stringify({
+                PhysicalStrength: life,
+                PlantLevel: senti_level,
+                Username: "name"
+            }) // JSON形式のデータ
         })
     });
 
@@ -202,26 +209,26 @@
 
                 var neg = JSON.parse(jsonData.values).neg
                 var pos = JSON.parse(jsonData.values).pos
-                
+
                 // 感分析の結果を代入
-                document.getElementById("showson").innerHTML = "ネガティブ:" + neg + "　　ポジティブ:" +pos
+                document.getElementById("showson").innerHTML = "ネガティブ:" + neg + "　　ポジティブ:" + pos
                 console.log(jsonData.values)
                 console.log(JSON.parse(jsonData.values))
                 console.log(JSON.parse(jsonData.values).neg)
                 if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
                     senti_level--; // ネガティブよりならデクリメント
-                    alterLife( -10 )
+                    alterLife(-10)
                 } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
                     senti_level++;
-                    alterLife( +10 )
+                    alterLife(+10)
                 }
                 document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
 
-                if (senti_level >= 3){
+                if (senti_level >= 3) {
                     plant_pic.src = img[1];
-                    document.getElementById( "grow_se" ).play() ; // 成長時効果音を鳴らす
-                }else{
+                    document.getElementById("grow_se").play(); // 成長時効果音を鳴らす
+                } else {
                     plant_pic.src = img[0];
                 }
             })
@@ -229,13 +236,13 @@
     var back_URL = document.getElementById("back_btn");
     console.log(back_flag)
     if (back_flag) {
-        back_URL.onclick = function() {
-            location.href='http://127.0.0.1:8999/after';
+        back_URL.onclick = function () {
+            location.href = 'http://127.0.0.1:8999/after';
         }
         console.log("True");
     } else {
-        back_URL.onclick = function() {
-            location.href='http://127.0.0.1:8999/logout';
+        back_URL.onclick = function () {
+            location.href = 'http://127.0.0.1:8999/logout';
         }
         console.log("logout");
     }
