@@ -12,7 +12,7 @@
 <body>
     <!-- セーブボタン　＆　タイトルバックボタン-->
     <button id="save_btn">save</button>
-    <button class="titleback_btn" onclick="location.href='http://127.0.0.1:8999/after'">タイトル画面に戻る</button>
+    <button id="back_btn" class="titleback_btn" onclick="">タイトル画面に戻る</button>
 
     <!--ページタイトル-->
     <div style="text-align: center">
@@ -70,6 +70,8 @@
 <script>
     let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
     var cookies = document.cookie;
+    var back_flag = new Boolean(false);
+    back_flag = false;
     console.log(cookies);
     var cookiesArray = cookies.split(';');
 
@@ -90,6 +92,7 @@
         else if (sArray[0] == "\"physical_strength\"") {
             life = parseInt(sArray[1])
             alterLife(0)
+            back_flag = true
         }
     }
     // let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
@@ -223,6 +226,19 @@
                 }
             })
     }, false);//何のfalse
+    var back_URL = document.getElementById("back_btn");
+    console.log(back_flag)
+    if (back_flag) {
+        back_URL.onclick = function() {
+            location.href='http://127.0.0.1:8999/after';
+        }
+        console.log("True");
+    } else {
+        back_URL.onclick = function() {
+            location.href='http://127.0.0.1:8999/logout';
+        }
+        console.log("logout");
+    }
 </script>
 
 </html>

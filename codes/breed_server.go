@@ -233,8 +233,8 @@ func setAuthInfo() {
 	gomniauth.SetSecurityKey("[ehah<m`[op>~1?am3mw")
 	gomniauth.WithProviders(
 		google.New(
-			"google client id",
-			"secret key",
+			"405526073754-ob2aru8e43biapdddn9cahrprrvklnlh.apps.googleusercontent.com",
+			"cBJdbfAmu6nf6e9cHmD1hlzL",
 			"http://127.0.0.1:8999/auth/callback/google",
 		),
 	)
@@ -303,6 +303,23 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func logoutHandler(w http.ResponseWriter, r *http.Request) {
+	http.SetCookie(w, &http.Cookie{
+		Name: "auth",
+		Value: "",
+		Path: "/page0",
+	})
+	http.SetCookie(w, &http.Cookie{
+		Name: "auth",
+		Value: "",
+		Path: "/after",
+	})
+	t := template.Must(template.ParseFiles("templates/breed_plant_main.html.tpl"))
+	if err := t.ExecuteTemplate(w, "breed_plant_main.html.tpl", nil); err != nil {
+		log.Fatal(err)
+	}
+}
+
 func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	path, err := filepath.Abs("./templates/") // テンプレートディレクトリの指定
 	if err != nil {
@@ -366,6 +383,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
 	http.HandleFunc("/page0", HtmlHandler)
 	http.HandleFunc("/save", saveHandler)
+	http.HandleFunc("/logout", logoutHandler)
 	http.HandleFunc("/home", HomeHandler)
 
 	// HTTPサーバの起動
