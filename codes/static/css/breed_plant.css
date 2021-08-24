@@ -43,3 +43,7 @@ body {
   filter: saturate(500%);
   /* box-shadow: 0 0 5px 3px rgb(200, 255, 255), 0 0 7px 7px rgb(0, 255, 0); */
 }
+
+#volume {
+  width: 300px;
+}
