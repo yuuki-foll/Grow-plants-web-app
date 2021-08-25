@@ -87,11 +87,11 @@
     back_flag = false;
     console.log(cookies);
     var cookiesArray = cookies.split(';');
-
+    var savedata = ""
     for (var c of cookiesArray) {
         var cArray = c.split('=');
         if (cArray[0] == 'auth') {
-            var savedata = atob(cArray[1]);
+            savedata = atob(cArray[1]);
         }
     }
     console.log(savedata)
