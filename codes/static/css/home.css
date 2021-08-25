@@ -1,0 +1,38 @@
+
+img {
+  width: 50px;
+}
+input {
+  margin: 10px;
+}
+.container {
+  margin: 10px;
+}
+.btn-hov {
+    position: relative;
+    overflow: hidden;
+    border-width: 3px;
+    z-index: 1;
+}
+.btn-hov::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: -1;
+}
+.btn-hov:hover {
+    color: white;
+}
+.btn-hov:hover::before {
+    transform: none;
+}
+h1 {
+    color: rgb(16, 185, 58);
+}
