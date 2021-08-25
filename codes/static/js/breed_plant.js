@@ -17,17 +17,22 @@ function alterLife( value ){
 
     // 色の変化
     if (value < 0) {
-        if (red <= 255) {
+        if (red < 255) {
             red += 51
         } else {
             green -= 51
         }
     } else {
-        if (green <= 255) {
+        if (green < 255) {
             green += 51
         } else {
             red -= 51
         }
+    }
+
+    if (life == 50) {
+        red = 255;
+        green = 255;
     }
 
     if ( life <= 0 ){

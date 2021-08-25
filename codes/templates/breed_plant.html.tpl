@@ -168,11 +168,29 @@
         })
     });
 
+    /* senti_levelの値により植物の画像を変更する関数 */
+    function changeImage(senti_level) {
+        if (senti_level == 1) {
+            img_path = img[0];
+        } else if (senti_level >= 6) {
+            img_path = img[3];
+        } else if (senti_level >= 4) {
+            img_path = img[2];
+        } else if (senti_level >= 2) {
+            img_path = img[1];
+        }
+        return img_path
+    }
+
     /* 植物の変更 */
     const change = document.getElementById('change_btn');
     change.addEventListener('click', function () {
         const seed = document.getElementById("change seed").value;
         console.log(seed);
+        alterLife(50 - life) // 体力を50に戻す
+        senti_level = 1;
+        document.getElementById("senti_level").innerHTML = senti_level
+
         if (seed == "sunflower"){
             img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998"]
             console.log("change sunflower");
@@ -180,6 +198,7 @@
             img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%972.png?alt=media&token=025ca678-3b54-49bc-8336-9d3b6fda7fa3","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%973.png?alt=media&token=48b6bbeb-7b1b-4dad-a1de-60600903447b","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%974.png?alt=media&token=cd7c8148-b2c0-4489-b6fd-803605ef0603"]
             console.log("change tulips");
         }
+        plant_pic.src = changeImage(senti_level);
     // 植物の変更時にステータスを引き継いでしまう
     });
 
@@ -239,7 +258,7 @@
                 console.log(JSON.parse(jsonData.values))
                 console.log(JSON.parse(jsonData.values).neg)
                 if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
-                    senti_level--; // ネガティブよりならデクリメント
+                    //senti_level--; // ネガティブよりならデクリメント
                     alterLife(-10)
                 } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
                     senti_level++;
@@ -249,15 +268,7 @@
                 document.getElementById("senti_level").innerHTML = senti_level
                 console.log(Object.keys(jsonData))
 
-                if (senti_level == 1) {
-                    plant_pic.src = img[0];
-                } else if (senti_level >= 6) {
-                    plant_pic.src = img[3];
-                } else if (senti_level >= 4) {
-                    plant_pic.src = img[2];
-                } else if (senti_level >= 2) {
-                    plant_pic.src = img[1];
-                }
+                plant_pic.src = changeImage(senti_level);
             })
     }, false);//何のfalse
     var back_URL = document.getElementById("back_btn");
