@@ -1,3 +1,10 @@
+/* 背景色の設定 */
+body {
+  /* background-color: rgb(204, 255, 247); */
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/title.png?alt=media&token=eb81cbd6-a927-45e2-a476-f3b3d0953158);
+  /* background-size: cover; 背景画像のサイズ設定 cover:画像が画面全体に拡大される */
+  background-size: 100vh, 100vw;
+}
 
 img {
   width: 50px;
@@ -9,44 +16,44 @@ input {
   margin: 10px;
 }
 .btn-hov {
-    position: relative;
-    overflow: hidden;
-    border-width: 3px;
-    z-index: 1;
+  position: relative;
+  overflow: hidden;
+  border-width: 3px;
+  z-index: 1;
 }
 .btn-hov::before {
-    content: '';
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
-    transition: transform 0.3s;
-    z-index: -1;
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  z-index: -1;
 }
 .btn-hov:hover {
-    color: white;
+  color: white;
 }
 .btn-hov:hover::before {
-    transform: none;
+  transform: none;
 }
 h1 {
-    color: rgb(16, 185, 58);
+  color: rgb(16, 185, 58);
 }
 .table {
   padding: 1em 1em;
   margin: 2em 0;
   font-weight: bold;
   background: white;
-  border: solid 3px rgb(35, 121, 1, 0.822);/*線*/
-  border-radius: 10px;/*角の丸み*/
+  border: solid 3px rgb(35, 121, 1, 0.822); /*線*/
+  border-radius: 10px; /*角の丸み*/
 }
 .table-head {
   height: 5%;
-  line-height:50px;
+  line-height: 50px;
   background-color: rgba(35, 121, 1, 0.822);
 }
 .table-body {
@@ -55,7 +62,7 @@ h1 {
 .table-main {
   width: 30%;
 }
-thead th{
+thead th {
   height: 70px;
   border-bottom: 1px solid black;
 }
