@@ -1,3 +1,9 @@
 README.txt
 codes/venv/
 codes/go.mod
+codes/path/
+codes/__pycache__
+codes/go.sum
+vemv/
+memo.txt
+
