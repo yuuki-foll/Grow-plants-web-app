@@ -1,1 +1,7 @@
 README.txt
+code/venv/
+codes/go.mod
+codes/templates/breed_plant.html
+codes/templates/breed_plant_main.html
+codes/go.sum
+path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json
