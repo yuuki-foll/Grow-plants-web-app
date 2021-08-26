@@ -36,3 +36,26 @@ input {
 h1 {
     color: rgb(16, 185, 58);
 }
+.table {
+  padding: 1em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  background: white;
+  border: solid 3px rgb(35, 121, 1, 0.822);/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
+.table-head {
+  height: 5%;
+  line-height:50px;
+  background-color: rgba(35, 121, 1, 0.822);
+}
+.table-body {
+  border: none;
+}
+.table-main {
+  width: 30%;
+}
+thead th{
+  height: 70px;
+  border-bottom: 1px solid black;
+}

@@ -23,6 +23,12 @@
         <div class="alert alert-primary">あなたの情報 : ログインされていません</div>
         <div class="panel-body">
           <table class="table">
+            <thead>
+              <tr>
+                <th>アイコン</th>
+                <th>名前</th>
+              </tr>
+            </thead>
             <tbody>
               <th>
                 <img src="{{.UserData.avatar_url}}" />
