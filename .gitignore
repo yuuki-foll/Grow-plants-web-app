@@ -4,7 +4,7 @@ codes/go.mod
 codes/templates/breed_plant.html
 codes/templates/breed_plant_main.html
 codes/go.sum
-path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json
+codes/path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json
 codes/venv/Lib/site-packages/certifi/__pycache__/__init__.cpython-38.pyc
 codes/venv/Lib/site-packages/certifi/__pycache__/core.cpython-38.pyc
 codes/venv/Lib/site-packages/chardet/__pycache__/__init__.cpython-38.pyc
@@ -58,3 +58,6 @@ codes/venv/Lib/site-packages/click/__pycache__/parser.cpython-38.pyc
 codes/venv/Lib/site-packages/click/__pycache__/termui.cpython-38.pyc
 codes/venv/Lib/site-packages/click/__pycache__/types.cpython-38.pyc
 codes/venv/Lib/site-packages/click/__pycache__/utils.cpy
+.vscode/
+codes/static/js/homepage.js
+codes/templates/bgm/
