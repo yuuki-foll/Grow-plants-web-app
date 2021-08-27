@@ -1,7 +1,8 @@
 /* 背景色の設定 */
 body {
   /* background-color: rgb(204, 255, 247); */
-  background-image: url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background_test.png?alt=media&token=b035ddb3-16fc-4c6a-a34d-8a7a76fd1bb5);
+  /* background-image: url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background_test.png?alt=media&token=b035ddb3-16fc-4c6a-a34d-8a7a76fd1bb5); */
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22);
   /* background-size: cover; 背景画像のサイズ設定 cover:画像が画面全体に拡大される */
   background-size: 100vh, 100vw;
 }
