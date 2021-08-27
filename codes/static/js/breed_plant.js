@@ -1,7 +1,7 @@
 /* JavaScriptファイルなどの変更を反映させるためには
 Chrome > Developer > Network > Disable cache
 にチェックを入れる  */
-
+/*コメント*/
 const lifeBar = document.getElementById('life-bar')         // ライフバー
 const lifeMark = document.getElementById('life-mark')       // ライフの光部分
 let life = 50                                              // ライフ初期値
