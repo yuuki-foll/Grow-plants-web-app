@@ -11,16 +11,16 @@
 
 <body>
     <!-- セーブボタン　＆　タイトルバックボタン-->
-    <button id="save_btn">save</button>
-    <button id="back_btn" class="titleback_btn" onclick="">タイトル画面に戻る</button>
+    <button class="btn" id="save_btn">save</button>
+    <button class="btn" id="back_btn" class="titleback_btn" onclick="">タイトル画面に戻る</button>
 
-    <select id="change seed" name="seed">
+    <select id="change_seed" name="seed">
         <option value="">植物を選択</option>
         <option value="sunflower">ヒマワリ</option>
         <option value="tulips">チューリップ</option>
     </select>
 
-    <button id="change_btn">植物を変更</button>
+    <button class="btn" id="change_btn">植物を変更</button>
 
     <!--ページタイトル-->
     <div style="text-align: center">
@@ -80,7 +80,7 @@
 
 </body>
 
-<script>
+<!-- script>
     let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
     var cookies = document.cookie;
     var back_flag = new Boolean(false);
@@ -284,6 +284,6 @@
         }
         console.log("logout");
     }
-</script>
-
+</script-->
+<script type="text/javascript" src="./../static/js/page0.js"></script>
 </html>

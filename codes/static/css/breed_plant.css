@@ -5,10 +5,18 @@ body {
   /* background-size: cover; 背景画像のサイズ設定 cover:画像が画面全体に拡大される */
   background-size: 100vh, 100vw;
 }
-
+.btn {
+  background-color: green;
+  border-bottom: 5px solid #000400;
+  border-radius: 100vh;
+}
+.btn:hover {
+  background-color: #03ff03;
+  border-bottom: 2px solid #000400
+}
 #save_btn {
-  width: 50px;
-  height: 25px;
+  width: 100px;
+  height: 30px;
   font-size: 12px;
 }
 
@@ -47,4 +55,23 @@ body {
 
 #volume {
   width: 300px;
+}
+
+#btn {
+  border-radius: 50%;
+  line-height: 100px;
+  width: 100px;
+  height: 100pxl;
+  padding: 0;
+  box-shadow: 0 5px 0 #583900;
+  background-color: orange;
+}
+#btn:hover {
+  transform: translate(0, 3px);
+  box-shadow: 0 2px 0 #583900;
+}
+#change_seed {
+  height: 25px;
+  background-color: green;
+  border-radius: 100vh;
 }
