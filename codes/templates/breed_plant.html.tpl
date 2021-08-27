@@ -80,7 +80,7 @@
 
 </body>
 
-<script>
+<!-- script>
     let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
     var cookies = document.cookie;
     var back_flag = new Boolean(false);
@@ -284,6 +284,7 @@
         }
         console.log("logout");
     }
-</script>
+</script-->
+<script type="text/javascript" src="./../static/js/page0.js"></script>
 
 </html>
