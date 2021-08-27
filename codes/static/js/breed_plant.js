@@ -56,4 +56,6 @@ function alterLife( value ){
     lifeBar.style.backgroundColor = "rgb(" + red + "," + green + ",0)"
     // スタイル(幅)を更新する
     lifeBar.style.width = life + "%"
+
+    return life
 }
