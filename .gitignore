@@ -4,6 +4,8 @@ codes/go.mod
 codes/path/
 codes/__pycache__
 codes/go.sum
-vemv/
+codes/templates/image/
+codes/templates/music/
+venv/
 memo.txt
 
