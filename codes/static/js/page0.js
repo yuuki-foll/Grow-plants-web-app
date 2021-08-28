@@ -122,7 +122,16 @@ const btn = document.getElementById('btn');
 // ボタンと処理
 btn.addEventListener('click', function () {
     // 音声認識をスタート
-    recognition.start();
+    if (life > 0) {
+        recognition.start();
+    } else {
+        /* ニューゲームを押したら初期化処理を行う */
+        plant_life = alterLife(50 - life) // 体力を50に戻す
+        senti_level = 1;
+        document.getElementById("senti_level").innerHTML = senti_level
+        plant_pic.src = changeImage(senti_level);
+        document.getElementById("btn").innerHTML = "植物と話す";
+    }
     
 });
 
@@ -181,14 +190,10 @@ recognition.addEventListener('result', function (evt) {
 
             plant_pic.src = changeImage(senti_level);
 
+            // 体力が0以下なら墓を表示してニューゲームボタンに切り替え
             if (plant_life <= 0) {
                 plant_pic.src = com_img[0];
-                if (!alert('植物が死にました')) {
-                    senti_level = 1;
-                    plant_life = alterLife(50 - life);
-                    plant_pic.src = changeImage(senti_level);
-                    console.log("死亡確認");
-                };
+                document.getElementById("btn").innerHTML = "ニューゲーム";
             }
         })
 }, false);//何のfalse
