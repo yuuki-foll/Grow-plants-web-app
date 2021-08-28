@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./../static/css/breed_plant.css" type="text/css">
 </head>
 
-<body>
+<body id="html_body">
     <!-- セーブボタン　＆　タイトルバックボタン-->
     <button class="btn" id="save_btn">save</button>
     <button class="btn" id="back_btn" class="titleback_btn" onclick="">タイトル画面に戻る</button>

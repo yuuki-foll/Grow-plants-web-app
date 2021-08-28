@@ -2,18 +2,18 @@
 body {
   /* background-color: rgb(204, 255, 247); */
   /* background-image: url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background_test.png?alt=media&token=b035ddb3-16fc-4c6a-a34d-8a7a76fd1bb5); */
-  background-image: url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22);
+  /* background-image: url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22); */
   /* background-size: cover; 背景画像のサイズ設定 cover:画像が画面全体に拡大される */
   background-size: 100vh, 100vw;
 }
 .btn {
-  background-color: green;
+  background-color: rgb(74, 240, 74);
   border-bottom: 5px solid #000400;
   border-radius: 100vh;
 }
 .btn:hover {
-  background-color: #03ff03;
-  border-bottom: 2px solid #000400
+  background-color: #03a803;
+  border-bottom: 2px solid #000400;
 }
 #save_btn {
   width: 100px;
@@ -64,7 +64,7 @@ body {
   width: 100px;
   height: 100pxl;
   padding: 0;
-  box-shadow: 0 5px 0 #583900;
+  box-shadow: 0 5px 0 #835501;
   background-color: orange;
 }
 #btn:hover {
@@ -73,9 +73,10 @@ body {
 }
 #change_seed {
   height: 25px;
-  background-color: green;
+  background-color: rgb(74, 240, 74);
   border-radius: 100vh;
 }
+
 #btn_mute_img {
   width:50px;
   height:　auto;

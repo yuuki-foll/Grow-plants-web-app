@@ -200,6 +200,7 @@ recognition.addEventListener('result', function (evt) {
             } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
                 senti_level++;
                 plant_life = alterLife(+10)
+                document.getElementById("grow_se").volume = 0.05; // 成長時の効果音の音量調整
                 document.getElementById("grow_se").play(); // 成長時効果音を鳴らす
             }
             document.getElementById("senti_level").innerHTML = senti_level
