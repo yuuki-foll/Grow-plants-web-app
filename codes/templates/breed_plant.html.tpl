@@ -66,6 +66,7 @@
     <button id="btn_play">再生</button>
     <button id="btn_pause">一時停止</button>
     <button id="btn_mute">消音</button>
+    <input  id="btn_mute_img" type="image" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7">
     <!--音量調整　マージの時にコメント削除-->
     <input type="range" id="volume" value="0.05" min="0.0" max="0.5" step="0.01">
 
