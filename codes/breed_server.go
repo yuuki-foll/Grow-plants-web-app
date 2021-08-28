@@ -39,6 +39,7 @@ type saveData struct {
 	UserName         string
 	PlantLevel       int64
 	PhysicalStrength int64
+	Plant			 string
 }
 
 func saveHandler(w http.ResponseWriter, r *http.Request) {
@@ -69,6 +70,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 			"username":          username,
 			"plant_level":       data.PlantLevel,
 			"physical_strength": data.PhysicalStrength,
+			"plant":             data.Plant,
 		})
 	}
 
@@ -77,6 +79,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("%s\n", username) //受け取った文字列を出力
 	fmt.Printf("%d\n", data.PlantLevel)
 	fmt.Printf("%d\n", data.PhysicalStrength)
+	fmt.Printf("%s\n", data.Plant)
 
 }
 
@@ -162,6 +165,7 @@ func loadSavedata(data objx.Map) saveData {
 		load.UserName = doc.Data()["username"].(string)
 		load.PlantLevel = doc.Data()["plant_level"].(int64)
 		load.PhysicalStrength = doc.Data()["physical_strength"].(int64)
+		load.Plant = doc.Data()["plant"].(string)
 	}
 	defer client.Close()
 	return load
@@ -202,6 +206,7 @@ func registerDatabase(data objx.Map) {
 			"username":          data["name"],
 			"plant_level":       1,
 			"physical_strength": 50,
+			"plant": "",
 		})
 	}
 	if err != nil {
@@ -283,6 +288,7 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"name":              user.Name(),
 			"physical_strength": load.PhysicalStrength,
 			"plant_level":       load.PlantLevel,
+			"plant": 			 load.Plant,
 		}).MustBase64()
 		username = user.Name()
 
