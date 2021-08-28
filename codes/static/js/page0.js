@@ -32,13 +32,15 @@ document.getElementById("senti_level").innerHTML = senti_level
 // 画像一覧のURLをリストで格納
 var img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998"]
 var com_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grave.png?alt=media&token=e882ec80-5d7e-4cb2-98c9-aa2ea3dbbb24"]
-
+var vlm_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/teisi.png?alt=media&token=3c3af8d8-eecd-4708-bf3e-3bf1a98d4c84"]
+let vlm_img_index = 0;
 window.addEventListener('DOMContentLoaded', function () {
     const btn_play = document.getElementById("btn_play");
     const btn_pause = document.getElementById("btn_pause");
     const btn_mute = document.getElementById("btn_mute");
     const slider_volume = document.getElementById("volume");
     const audioElement = document.querySelector("audio");
+    const btn_mute_img = document.getElementById("btn_mute_img");
     // ボリュームの初期設定
     audioElement.volume = slider_volume.value;
     btn_play.addEventListener("click", e => {
@@ -54,6 +56,21 @@ window.addEventListener('DOMContentLoaded', function () {
         } else {
             audioElement.muted = true;
             btn_mute.textContent = "消音解除";
+        }
+    });
+    btn_mute_img.addEventListener("click", e => {
+        if (audioElement.muted) {
+            audioElement.muted = false;
+        } else {
+            audioElement.muted = true;
+        }
+
+        if (vlm_img_index == 0) {
+            btn_mute_img.src = vlm_img[1];
+            vlm_img_index = 1;
+        } else {
+            btn_mute_img.src = vlm_img[0];
+            vlm_img_index = 0;
         }
     });
     slider_volume.addEventListener("input", e => {
