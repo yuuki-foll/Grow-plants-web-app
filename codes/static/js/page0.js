@@ -5,7 +5,8 @@ var back_flag = new Boolean(false);
 back_flag = false;
 console.log(cookies);
 var cookiesArray = cookies.split(';');
-var savedata = ""
+var savedata = "";
+var seed_name = "";
 for (var c of cookiesArray) {
     var cArray = c.split('=');
     if (cArray[0] == 'auth') {
@@ -25,6 +26,10 @@ for (var s of savedataArray) {
         plant_life = alterLife(0)
         back_flag = true
     }
+    else if (sArray[0] == "\"plant\"") {
+        seed_name = sArray[1].slice(1,-1)
+        // console.log(seed_name)
+    }
 }
 // let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
 document.getElementById("senti_level").innerHTML = senti_level
@@ -34,6 +39,12 @@ var img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspo
 var com_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grave.png?alt=media&token=e882ec80-5d7e-4cb2-98c9-aa2ea3dbbb24"]
 var vlm_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/teisi.png?alt=media&token=3c3af8d8-eecd-4708-bf3e-3bf1a98d4c84"]
 let vlm_img_index = 0;
+if (seed_name == "sunflower") {
+    img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998"]
+}
+else if (seed_name == "tulips") {
+    img = img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%972.png?alt=media&token=025ca678-3b54-49bc-8336-9d3b6fda7fa3","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%973.png?alt=media&token=48b6bbeb-7b1b-4dad-a1de-60600903447b","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/turips.gif?alt=media&token=b7740863-979f-4085-b3a5-ca34e98eff01"]
+}
 window.addEventListener('DOMContentLoaded', function () {
     const btn_play = document.getElementById("btn_play");
     const btn_pause = document.getElementById("btn_pause");
@@ -92,7 +103,8 @@ save.addEventListener('click', function () {
         body: JSON.stringify({
             PhysicalStrength: life,
             PlantLevel: senti_level,
-            Username: "name"
+            Username: "name",
+            plant: seed_name,
         }) // JSON形式のデータ
     })
 });
@@ -127,6 +139,7 @@ change.addEventListener('click', function () {
         console.log("change tulips");
     }
     plant_pic.src = changeImage(senti_level);
+    seed_name = seed;
 // 植物の変更時にステータスを引き継いでしまう
 });
 //音声認識の準備
