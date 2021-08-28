@@ -76,3 +76,7 @@ body {
   background-color: green;
   border-radius: 100vh;
 }
+#btn_mute_img {
+  width:50px;
+  height:　auto;
+}
