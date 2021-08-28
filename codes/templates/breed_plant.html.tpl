@@ -24,7 +24,7 @@
 
     <!--ページタイトル-->
     <div style="text-align: center">
-        <h2>植物を育てよう！</h2>
+        <h2><img src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/logo.png?alt=media&token=8314ea55-7225-4134-89e4-6d1b0626b0d2" width="334" height="64"></h2>
         <button id="btn">植物と話す</button>
 
 

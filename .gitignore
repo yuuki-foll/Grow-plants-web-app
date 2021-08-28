@@ -1,0 +1,11 @@
+README.txt
+codes/venv/
+codes/go.mod
+codes/path/
+codes/__pycache__
+codes/go.sum
+codes/templates/image/
+codes/templates/music/
+venv/
+memo.txt
+
