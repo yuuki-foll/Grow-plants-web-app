@@ -1,13 +1,21 @@
+.loginImage {
+  height: 70vh;
+}
+
 .container {
-    position: relative;
-    top:120px;
+  position: relative;
+  top: 120px;
 }
 .center {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
 }
 .panel-title {
-    color: #0ca57f;
+  color: #000000;
+}
+
+.panel-body {
+  color: #000000;
 }
