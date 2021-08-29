@@ -283,6 +283,7 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"avatar_url": user.AvatarURL(),
 			"provider":   provider_name,
 		}).MustBase64()
+		registerDatabase(objx.MustFromBase64(authCookieValue))
 		load := loadSavedata(objx.MustFromBase64(authCookieValue))
 		saveDataCookieValue := objx.New(map[string]interface{}{
 			"name":              user.Name(),
@@ -348,7 +349,7 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	t.tmpl.Execute(w, data)
 	if data["UserData"] != nil {
-		registerDatabase(objx.MustFromBase64(authCookie.Value))
+		// registerDatabase(objx.MustFromBase64(authCookie.Value))
 
 	}
 }
