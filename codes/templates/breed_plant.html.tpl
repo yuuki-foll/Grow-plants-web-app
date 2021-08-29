@@ -18,6 +18,7 @@
         <option value="">植物を選択</option>
         <option value="sunflower">ヒマワリ</option>
         <option value="tulips">チューリップ</option>
+        <option value="cherry">サクラ</option>
     </select>
 
     <button class="btn" id="change_btn">植物を変更</button>
