@@ -4,12 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>植物を育てよう！</title>
-
     <!--cssの読み込み-->
     <link rel="stylesheet" href="./../static/css/breed_plant.css" type="text/css">
 </head>
 
 <body id="html_body">
+    <!-- モーダル -->
+    <div class="popup" id="js-popup">
+        <div class="popup-inner">
+            <div class="close-btn">植物を選択してさい</div>
+            <button id="js-close-btn">閉じる</button>
+        </div>
+        <div class="black-background" id="js-black-bg"></div>
+    </div>
     <!-- セーブボタン　＆　タイトルバックボタン-->
     <button class="btn" id="save_btn">save</button>
     <button class="btn" id="back_btn" class="titleback_btn" onclick="">タイトル画面に戻る</button>
@@ -77,13 +84,10 @@
         type="audio/mpeg" preload="auto"></audio>
 
     <!--JavaScriptsの読み込み-->
-    <script src="./../static/js/breed_plant.js">
-    
-    </script>
+    <script src="./../static/js/breed_plant.js"></script>
 
 </body>
 
-<script type="text/javascript" src="./../static/js/page0.js">
-</script>
-
+<script type="text/javascript" src="./../static/js/page0.js"></script>
+<script type="text/javascript" src="./../static/js/micromodal.js"></script>
 </html>

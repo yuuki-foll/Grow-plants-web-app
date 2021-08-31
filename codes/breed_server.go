@@ -206,7 +206,7 @@ func registerDatabase(data objx.Map) {
 			"username":          data["name"],
 			"plant_level":       1,
 			"physical_strength": 50,
-			"plant": "",
+			"plant": "None",
 		})
 	}
 	if err != nil {
