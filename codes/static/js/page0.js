@@ -6,7 +6,7 @@ back_flag = false;
 console.log(cookies);
 var cookiesArray = cookies.split(';');
 var savedata = "";
-var seed_name = "";
+var seed_name = "None";
 for (var c of cookiesArray) {
     var cArray = c.split('=');
     if (cArray[0] == 'auth') {
