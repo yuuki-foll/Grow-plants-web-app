@@ -13,6 +13,13 @@
     <div class="popup" id="js-popup">
         <div class="popup-inner">
             <div class="close-btn">植物を選択してさい</div>
+            <div id="pick-img">
+                <input type="image" name="sunflower" id="sunflower" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998">
+                <input type="image" name="tulips" id="tulips" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%974.png?alt=media&token=cd7c8148-b2c0-4489-b6fd-803605ef0603">
+                <input type="image" name="cherry" id="cherry" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cherry3.png?alt=media&token=ed6df089-9fdd-41ba-94ee-df40ef93e3c1">
+            </div>
+            <div id="click-img"></div>
+            <div>を選択しました</div>
             <button id="js-close-btn">閉じる</button>
         </div>
         <div class="black-background" id="js-black-bg"></div>
