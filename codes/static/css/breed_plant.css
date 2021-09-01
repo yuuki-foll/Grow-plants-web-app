@@ -193,3 +193,24 @@ p {
   top: 73vh;
   left: 49%;
 }
+=======
+#cosmos {
+  position: relative;
+  width: 20%;
+  height: auto;
+}
+#dandelion {
+  position: relative;
+  width: 20%;
+  height: auto;
+}
+#palm {
+  position: relative;
+  width: 20%;
+  height: auto;
+}
+#bamboo {
+  position: relative;
+  width: 20%;
+  height: auto;
+}
