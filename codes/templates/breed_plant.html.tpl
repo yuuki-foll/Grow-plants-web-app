@@ -43,33 +43,38 @@
 
     <!--ページタイトル-->
     <div style="text-align: center">
-        <h2><img src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/logo.png?alt=media&token=8314ea55-7225-4134-89e4-6d1b0626b0d2" width="264" height="48"></h2>
-        
-        <!-- 画面左側 -->
-        <button id="btn">植物と話す</button>
+        <div class="pbox">
+            <div class="cbox boxA">
+                <h2><img src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/logo.png?alt=media&token=8314ea55-7225-4134-89e4-6d1b0626b0d2" width="264" height="48"></h2>
+                
+                <!-- 画面左側 -->
+                <button id="btn">植物と話す</button>
 
 
-        <h5>あなたの発言</h5>
-        <div id="voice_recognition"></div>
+                <p>あなたの発言</p>
+                <div id="voice_recognition"></div>
 
-        <h5>感情分析結果</h5>
-        <div id="showson"></div>
+                <p>感情分析結果</p>
+                <div id="showson"></div>
 
-        <h5>感情レベル</h5>
-        <div id="senti_level"></div>
+                <p>感情レベル</p>
+                <div id="senti_level"></div>
+            </div>
+            <!-- 画面右側 -->
+            <!--植物の画像-->
+            <div class="cbox boxB">
+                <img id="plant_pic"
+                    src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f"
+                    class="plant-img">
 
-        <!-- 画面右側 -->
-        <!--植物の画像-->
-        <img id="plant_pic"
-            src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f"
-            width="250" height="250">
-
-        <!--体力バー-->
-        <h5>植物の体力</h5>
-        <div id="life"></div>
-        <div id="life-frame">
-            <div id="life-bar"></div>
-            <div id="life-mark"></div>
+                <!--体力バー-->
+                <p class="plant-life">植物の体力</p>
+                <div id="life"></div>
+                <div id="life-frame">
+                    <div id="life-bar"></div>
+                    <div id="life-mark"></div>
+                </div>
+            </div>
         </div>
     </div>
 
