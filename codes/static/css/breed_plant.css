@@ -119,3 +119,19 @@ body {
   z-index: 1;
   cursor: pointer;
 }
+
+#sunflower {
+  position: relative;
+  width: 20%;
+  height: auto;
+}
+#tulips {
+  position: relative;
+  width: 20%;
+  height: auto;
+}
+#cherry {
+  position: relative;
+  width: 20%;
+  height: auto;
+}
