@@ -33,10 +33,13 @@ body {
 
 #life-frame {
   margin: 0 auto;
-  width: 50%;
+  width: 35vh;
   background-color: rgba(10, 0, 50, 0.6);
   display: flex;
   padding: 3px 3px;
+  position: absolute;
+  top: 80vh;
+  left: 30%;
 }
 
 #life-bar {
@@ -62,7 +65,7 @@ body {
   border-radius: 50%;
   line-height: 100px;
   width: 100px;
-  height: 100pxl;
+  height: 100px;
   padding: 0;
   box-shadow: 0 5px 0 #835501;
   background-color: orange;
@@ -78,8 +81,8 @@ body {
 }
 
 #btn_mute_img {
-  width:50px;
-  height:　auto;
+  width: 50px;
+  height: auto;
 }
 
 .popup {
@@ -91,7 +94,7 @@ body {
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  transition: .6s;
+  transition: 0.6s;
 }
 
 .popup.is-show {
@@ -135,6 +138,62 @@ body {
   width: 20%;
   height: auto;
 }
+
+p {
+  margin: 1em 0px;
+  line-height: 100%;
+}
+
+#voice_recognition {
+  margin: 1em 0px; /* 上下に1em・左右に0px */
+  line-height: 100%;
+}
+
+#showson {
+  margin: 1em 0px; /* 上下に1em・左右に0px */
+  line-height: 100%;
+}
+
+#senti_level {
+  margin: 1em 0px; /* 上下に1em・左右に0px */
+  line-height: 100%;
+}
+
+.pbox {
+  /* border: solid 1px rgb(255, 0, 0); */
+  display: flex;
+  padding: 5px;
+  height: 80vh;
+}
+.cbox {
+  position: relative;
+  /* border: solid 1px black; */
+  vertical-align: middle;
+  text-align: center;
+  width: 100vw;
+  height: 80vh;
+  line-height: 100px;
+}
+.plant-img {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  width: 35vh;
+  height: 35vh;
+}
+
+.plant-life {
+  position: absolute;
+  top: 73vh;
+  left: 45%;
+}
+
+#life {
+  position: absolute;
+  top: 73vh;
+  left: 49%;
+}
+=======
 #cosmos {
   position: relative;
   width: 20%;
