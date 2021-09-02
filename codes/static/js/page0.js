@@ -43,6 +43,7 @@ var img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspo
 var com_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grave.png?alt=media&token=e882ec80-5d7e-4cb2-98c9-aa2ea3dbbb24"]
 var vlm_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/teisi.png?alt=media&token=3c3af8d8-eecd-4708-bf3e-3bf1a98d4c84"]
 let vlm_img_index = 0;
+var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false}
 if (seed_name == "sunflower") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998"]
 }else if (seed_name == "tulips") {
@@ -129,13 +130,14 @@ save.addEventListener('click', function () {
         }) // JSON形式のデータ
     })
 });
-
 /* senti_levelの値により植物の画像を変更する関数 */
 function changeImage(senti_level) {
     if (senti_level == 1) {
         img_path = img[0];
     } else if (senti_level >= 6) {
         img_path = img[3];
+        pictbook_f[seed_name] = true
+        savePictbook(pictbook_f)
     } else if (senti_level >= 4) {
         img_path = img[2];
     } else if (senti_level >= 2) {
@@ -144,6 +146,27 @@ function changeImage(senti_level) {
     return img_path
 }
 
+function savePictbook() {
+    //Fetch でデータ送信
+    console.log(pictbook_f)
+    fetch('http://127.0.0.1:8999/pictbook', {
+        method: "POST",
+        mode: "no-cors",
+        header: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            UserName:	"name",
+	        Sunflower:	pictbook_f["sunflower"],
+	        Tulips:		pictbook_f["tulips"],
+	        Cherry:	    pictbook_f["cherry"],
+	        Cosmos:		pictbook_f["cosmos"],
+	        Dandelion:	pictbook_f["dandelion"],
+	        Palm: 		pictbook_f["palm"],
+	        Bamboo:		pictbook_f["bamboo"],
+        })
+    })
+}
 /* 植物の変更 */
 const change = document.getElementById('change_btn');
 change.addEventListener('click', function () {
