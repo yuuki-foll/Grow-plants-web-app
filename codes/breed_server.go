@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -41,7 +42,23 @@ type saveData struct {
 	PhysicalStrength int64
 	Plant			 string
 }
-
+// 植物図鑑用
+type pictBook struct {
+	UserName	string
+	Sunflower	bool
+	Tulips		bool
+	Cherry		bool
+	Cosmos		bool
+	Dandelion	bool
+	Palm 		bool
+	Bamboo		bool
+}
+func pictbookHandler(w http.ResponseWriter, r *http.Request) {
+	var data pictBook
+	json.NewDecoder(r.Body).Decode(&data)
+	fmt.Print(data.UserName)
+	fmt.Printf(strconv.FormatBool(data.Sunflower))
+}
 func saveHandler(w http.ResponseWriter, r *http.Request) {
 	var data saveData
 	json.NewDecoder(r.Body).Decode(&data)
@@ -400,6 +417,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
 	http.HandleFunc("/page0", HtmlHandler)
 	http.HandleFunc("/save", saveHandler)
+	http.HandleFunc("/pictbook", pictbookHandler)
 	http.HandleFunc("/logout", logoutHandler)
 	http.HandleFunc("/home", HomeHandler)
 
