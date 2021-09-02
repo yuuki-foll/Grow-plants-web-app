@@ -66,6 +66,27 @@ bamboo_img.addEventListener('click', function() {
     console.log("pick bamboo");
     document.getElementById('click-img').textContent = "竹";
 })
+const cactus_img = document.getElementById('cactus');
+cactus_img.addEventListener('click', function() {
+    seed_name = "cactus";
+    img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cactus1.png?alt=media&token=ec0e8d0d-6be2-4c6b-bc22-f9133e3f5ed4","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cactus2.png?alt=media&token=c2ee966f-0870-4f88-bd2b-553465a74564","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cactus3.png?alt=media&token=9a5d26d9-b4c2-4057-8a2c-a3f1756df090"]
+    console.log("pick cactus");
+    document.getElementById('click-img').textContent = "サボテン";
+})
+const flytrap_img = document.getElementById('flytrap');
+flytrap_img.addEventListener('click', function() {
+    seed_name = "flytrap";
+    img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap1.png?alt=media&token=0ae9a40f-e8bb-4c9c-a564-13f927c52886","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap2.png?alt=media&token=320376cd-62dd-49f1-a345-94554c6931f6","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap3.png?alt=media&token=ffd92ad9-ec22-44e6-b9e2-7f6ebe15e50b"]
+    console.log("pick flytrap");
+    document.getElementById('click-img').textContent = "ハエトリグサ";
+})
+const roselle_img = document.getElementById('roselle');
+roselle_img.addEventListener('click', function() {
+    seed_name = "roselle";
+    img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle1.png?alt=media&token=43c24c91-fc7f-4b75-a73a-3b981acb9f7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle2.png?alt=media&token=64795f6f-d62a-4e6e-8ddf-145e08f19267","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"]
+    console.log("pick roselle");
+    document.getElementById('click-img').textContent = "ローゼル";
+})
 
 const picbook_btn = document.getElementById("open-picbook");
 var picbook = document.getElementById('pic-book');

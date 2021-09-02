@@ -213,6 +213,18 @@ p {
   width: 20%;
   height: auto;
 }
+#cactus {
+  width: 20%;
+  height: auto;
+}
+#flytrap {
+  width: 20%;
+  height: auto;
+}
+#roselle {
+  width: 20%;
+  height: auto;
+}
 .pic-book {
   position: fixed;
   left: 0;
