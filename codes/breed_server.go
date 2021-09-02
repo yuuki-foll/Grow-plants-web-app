@@ -208,6 +208,16 @@ func registerDatabase(data objx.Map) {
 			"physical_strength": 50,
 			"plant": "None",
 		})
+		_, _, err = client.Collection("picture_book").Add(ctx, map[string]interface{}{
+			"username": data["name"],
+			"sunflower": false,
+			"tulips": false,
+			"cherry": false,
+			"cosmos": false,
+			"dandelion": false,
+			"palm": false,
+			"bamboo": false,
+		})
 	}
 	if err != nil {
 		log.Fatalf("Failed adding alovelace: %v", err)
