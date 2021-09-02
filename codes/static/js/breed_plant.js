@@ -10,6 +10,27 @@ let red = 255                        // 初期赤値
 let green = 255                      //初期緑値
 lifeBar.style.backgroundColor = "rgb(255, 255, 0)"  // 初期ライフの色　
 
+const PlantName = document.getElementById("change_seed").value; //植物の名前
+const PlantImg = document.getElementById('plant_pic')
+PlantImg.style.width = "35vh"
+PlantImg.style.height = "35vh"
+PlantImg.style.top = "48%"
+PlantImg.style.left = "30%"
+
+function changePlantImg(name) {
+    if (name == "cherry" || name == "palm" || name == "bamboo") {
+        PlantImg.style.top = "5%"
+        PlantImg.style.left = "13%"
+        PlantImg.style.width = "70vh"
+        PlantImg.style.height = "70vh"
+    } else {
+        PlantImg.style.width = "35vh"
+        PlantImg.style.height = "35vh"
+        PlantImg.style.top = "48%"
+        PlantImg.style.left = "30%"
+    }
+}
+
 const Body = document.getElementById('html_body')  
 Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22)"
 
