@@ -175,6 +175,7 @@ change.addEventListener('click', function () {
     }
     plant_pic.src = changeImage(senti_level);
     seed_name = seed;
+    changePlantImg(seed_name);
 // 植物の変更時にステータスを引き継いでしまう
 });
 //音声認識の準備
