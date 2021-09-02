@@ -188,11 +188,7 @@ const btn = document.getElementById('btn');
 btn.addEventListener('click', function () {
     // 音声認識をスタート
     if (life > 0) {
-        //recognition.start();
-        senti_level++;
-        document.getElementById("senti_level").innerHTML = senti_level
-        plant_pic.src = changeImage(senti_level);
-
+        recognition.start();
     } else {
         /* ニューゲームを押したら初期化処理を行う */
         plant_life = alterLife(50 - life) // 体力を50に戻す
