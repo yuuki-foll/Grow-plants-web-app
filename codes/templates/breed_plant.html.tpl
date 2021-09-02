@@ -65,7 +65,7 @@
         <option value="dandelion">タンポポ</option>
         <option value="palm">ヤシ</option>
         <option value="bamboo">竹</option>
-        <option value="custus">サボテン</option>
+        <option value="cactus">サボテン</option>
         <option value="flytrap">ハエトリグサ</option>
         <option value="roselle">ローゼル</option>
     </select>
