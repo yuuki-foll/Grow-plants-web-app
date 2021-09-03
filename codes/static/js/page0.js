@@ -9,6 +9,7 @@ console.log(cookies);
 var cookiesArray = cookies.split(';');
 var savedata = "";
 var seed_name = "None";
+var username = ""
 for (var c of cookiesArray) {
     var cArray = c.split('=');
     if (cArray[0] == 'auth') {
@@ -31,6 +32,9 @@ for (var s of savedataArray) {
     else if (sArray[0] == "\"plant\"") {
         seed_name = sArray[1].slice(1,-1)
         // console.log(seed_name)
+    }
+    else if (sArray[0] == "{\"name\"") {
+        username = sArray[1].slice(1, -1)
     }
 }
 // let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
@@ -125,7 +129,7 @@ save.addEventListener('click', function () {
         body: JSON.stringify({
             PhysicalStrength: life,
             PlantLevel: senti_level,
-            Username: "name",
+            Username: username,
             plant: seed_name,
         }) // JSON形式のデータ
     })
@@ -156,7 +160,7 @@ function savePictbook() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            UserName:	"name",
+            UserName:	username,
 	        Sunflower:	pictbook_f["sunflower"],
 	        Tulips:		pictbook_f["tulips"],
 	        Cherry:	    pictbook_f["cherry"],
