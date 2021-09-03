@@ -56,6 +56,38 @@ type pictBook struct {
 func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 	var data pictBook
 	json.NewDecoder(r.Body).Decode(&data)
+	// firebaseへの書き込み
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	query := client.Collection("picture_book").Where("username", "==", data.UserName).Documents(ctx)
+	for {
+		doc, err := query.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			fmt.Println(err)
+		}
+		_, err = client.Collection("picture_book").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
+			"username": data.UserName,
+			"sunflower": data.Sunflower,
+			"tulips": data.Tulips,
+			"cherry": data.Cherry,
+			"cosmos": data.Cosmos,
+			"dandelion": data.Dandelion,
+			"palm": data.Palm,
+			"bamboo": data.Palm,
+
+		})
+	}
 	fmt.Print(data.UserName)
 	fmt.Printf(strconv.FormatBool(data.Sunflower))
 }
@@ -73,7 +105,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	query := client.Collection("save_data").Where("username", "==", username).Documents(ctx)
+	query := client.Collection("save_data").Where("username", "==", data.UserName).Documents(ctx)
 	for {
 		doc, err := query.Next()
 		if err == iterator.Done {
@@ -84,7 +116,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		fmt.Println(doc.Data())
 		_, err = client.Collection("save_data").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
-			"username":          username,
+			"username":          data.UserName,
 			"plant_level":       data.PlantLevel,
 			"physical_strength": data.PhysicalStrength,
 			"plant":             data.Plant,
