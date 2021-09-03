@@ -343,6 +343,17 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"provider":   provider_name,
 		}).MustBase64()
 		registerDatabase(objx.MustFromBase64(authCookieValue))
+		pictbook := loadPictbook(user.Name())
+		pictbookCookieValue := objx.New(map[string]interface{}{
+			"username": pictbook.UserName,
+			"sunflower": pictbook.Sunflower,
+			"tulips": pictbook.Tulips,
+			"cherry": pictbook.Cherry,
+			"cosmos": pictbook.Cosmos,
+			"dandelion": pictbook.Dandelion,
+			"palm": pictbook.Palm,
+			"bamboo": pictbook.Palm,
+		}).MustBase64()
 		load := loadSavedata(objx.MustFromBase64(authCookieValue))
 		saveDataCookieValue := objx.New(map[string]interface{}{
 			"name":              user.Name(),
@@ -362,11 +373,52 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			Value: saveDataCookieValue,
 			Path:  "/page0",
 		})
+		http.SetCookie(w, &http.Cookie{
+			Name: "pictbook",
+			Value: pictbookCookieValue,
+			Path: "/page0",
+		})
 
 		w.Header()["location"] = []string{"/after"}
 		w.WriteHeader(http.StatusTemporaryRedirect)
 	}
 
+}
+
+func loadPictbook(username string) pictBook {
+	var data pictBook
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	iter := client.Collection("picture_book").Where("username", "==", username).Documents(ctx)
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(doc.Data())
+		// conv map to json
+		json_pictbook, err := json.Marshal(doc.Data())
+		if err != nil {
+			fmt.Println(err)
+		}
+		// conv json to struct
+		if err := json.Unmarshal(json_pictbook, &data); err != nil {
+			fmt. Println(err)
+		}
+	}
+
+	return data
 }
 
 func logoutHandler(w http.ResponseWriter, r *http.Request) {
