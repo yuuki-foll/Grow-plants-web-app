@@ -12,22 +12,23 @@ lifeBar.style.backgroundColor = "rgb(255, 255, 0)"  // 初期ライフの色　
 
 const PlantName = document.getElementById("change_seed").value; //植物の名前
 const PlantImg = document.getElementById('plant_pic')
-PlantImg.style.width = "35vh"
-PlantImg.style.height = "35vh"
-PlantImg.style.top = "48%"
-PlantImg.style.left = "30%"
+PlantImg.style.top = "calc(60% + (25vh - min(25vh,25vw)))"
+PlantImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
+PlantImg.style.width = "min(25vh,25vw)"
+PlantImg.style.height = "min(25vh,25vw)"
+
 
 function changePlantImg(name) {
     if (name == "cherry" || name == "palm" || name == "bamboo") {
-        PlantImg.style.top = "5%"
-        PlantImg.style.left = "13%"
-        PlantImg.style.width = "70vh"
-        PlantImg.style.height = "70vh"
+        PlantImg.style.top = "calc(5% + (70vh - min(70vh,70vw)))"
+        PlantImg.style.left = "calc(50% - (min(70vh,70vw)/2)"
+        PlantImg.style.width = "min(70vh,70vw)"
+        PlantImg.style.height = "min(70vh,70vw)"
     } else {
-        PlantImg.style.width = "35vh"
-        PlantImg.style.height = "35vh"
-        PlantImg.style.top = "48%"
-        PlantImg.style.left = "30%"
+        PlantImg.style.top = "calc(60% + (25vh - min(25vh,25vw)))"
+        PlantImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
+        PlantImg.style.width = "min(25vh,25vw)"
+        PlantImg.style.height = "min(25vh,25vw)"
     }
 }
 

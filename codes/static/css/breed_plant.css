@@ -32,14 +32,15 @@ body {
 }
 
 #life-frame {
+  position: absolute;
   margin: 0 auto;
-  width: 35vh;
+  width: 25vw;
   background-color: rgba(10, 0, 50, 0.6);
   display: flex;
   padding: 3px 3px;
   position: absolute;
   top: 80vh;
-  left: 30%;
+  left: calc(50% - 12.5vw);
 }
 
 #life-bar {
@@ -176,7 +177,8 @@ p {
 }
 .plant-img {
   position: absolute;
-  top: 40%;
+  /* border: solid 1px black; */
+  bottom: 40%;
   left: 30%;
   width: 35vh;
   height: 35vh;
@@ -184,15 +186,20 @@ p {
 
 .plant-life {
   position: absolute;
+  /* border: solid 1px black; */
+  width: 100px;
   top: 73vh;
-  left: 45%;
+  left: calc(50% - 50px);
 }
 
 #life {
   position: absolute;
+  /* border: solid 1px black; */
   top: 73vh;
-  left: 49%;
+  width: 100px;
+  left: calc(50% - 50px);
 }
+
 #cosmos {
   position: relative;
   width: 20%;
@@ -258,7 +265,7 @@ p {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
   cursor: pointer;
 }
