@@ -8,6 +8,7 @@ back_flag = false;
 console.log(cookies);
 var cookiesArray = cookies.split(';');
 var savedata = "";
+var pbdata = ""
 var seed_name = "None";
 var username = ""
 for (var c of cookiesArray) {
@@ -15,8 +16,12 @@ for (var c of cookiesArray) {
     if (cArray[0] == 'auth') {
         savedata = atob(cArray[1]);
     }
+    else if (cArray[0] == ' pictbook') {
+        pbdata = atob(cArray[1]);
+    }
 }
 console.log(savedata)
+console.log(pbdata)
 var savedataArray = savedata.split(',');
 for (var s of savedataArray) {
     var sArray = s.split(':');
