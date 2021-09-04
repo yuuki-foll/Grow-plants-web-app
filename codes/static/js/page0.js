@@ -285,7 +285,7 @@ recognition.addEventListener('result', function (evt) {
             console.log(JSON.parse(jsonData.values).neg)
             if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
                 //senti_level--; // ネガティブよりならデクリメント
-                plant_life = alterLife(-100)
+                plant_life = alterLife(-25)
                 document.getElementById("damage_se").volume = 0.05; // 成長時の効果音の音量調整
                 document.getElementById("damage_se").play(); // 成長時効果音を鳴らす
             } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
