@@ -15,6 +15,9 @@ var username = ""
 const EffectImgVision = document.getElementById('effect_pic')
 EffectImgVision.style.visibility = "hidden"
 
+/* ニューゲームのbgm切り替え用 */
+const Bgm2 = document.getElementById("game-bgm")
+
 for (var c of cookiesArray) {
     var cArray = c.split('=');
     if (cArray[0] == 'auth') {
@@ -233,6 +236,7 @@ btn.addEventListener('click', function () {
         document.getElementById("senti_level").innerHTML = senti_level
         plant_pic.src = changeImage(senti_level);
         document.getElementById("btn").innerHTML = "植物と話す";
+        Bgm2.src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570";
     }
     
 });
@@ -282,6 +286,8 @@ recognition.addEventListener('result', function (evt) {
             if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
                 //senti_level--; // ネガティブよりならデクリメント
                 plant_life = alterLife(-100)
+                document.getElementById("damage_se").volume = 0.05; // 成長時の効果音の音量調整
+                document.getElementById("damage_se").play(); // 成長時効果音を鳴らす
             } else if (JSON.parse(jsonData.values).neg < JSON.parse(jsonData.values).pos) {
                 senti_level++;
                 plant_life = alterLife(+10)

@@ -11,6 +11,8 @@ let green = 255                      //初期緑値
 lifeBar.style.backgroundColor = "rgb(255, 255, 0)"  // 初期ライフの色　
 
 const PlantName = document.getElementById("change_seed").value; //植物の名前
+const Bgm = document.getElementById("game-bgm")
+
 const PlantImg = document.getElementById('plant_pic')
 PlantImg.style.top = "calc(60% + (25vh - min(25vh,25vw)))"
 PlantImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
@@ -54,8 +56,14 @@ Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/gr
 function changeBackground(life) {
     if (life > 0) {
         Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22)"
+        
+        // 一応植物が死んでいるときに植物変更するとBGMも初期化する様にしておいた
+        if (Bgm.src != "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570") {
+            Bgm.src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570";
+        }
     } else {
         Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background_die2.png?alt=media&token=9be8009e-2980-433f-bfcf-9b8db088372f)"
+        Bgm.src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_death.mp3?alt=media&token=e9b0176f-1533-4a39-a7a2-59bef088bee7"
     }
 }
 
