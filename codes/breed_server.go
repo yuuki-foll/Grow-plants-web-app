@@ -52,6 +52,8 @@ type pictBook struct {
 	Dandelion	bool
 	Palm 		bool
 	Bamboo		bool
+	Flytrap 	bool
+	Roselle		bool
 }
 func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 	var data pictBook
@@ -85,7 +87,8 @@ func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 			"dandelion": data.Dandelion,
 			"palm": data.Palm,
 			"bamboo": data.Palm,
-
+			"flytrap": data.Flytrap,
+			"Roselle": data.Roselle,
 		})
 	}
 	fmt.Print(data.UserName)
@@ -266,6 +269,8 @@ func registerDatabase(data objx.Map) {
 			"dandelion": false,
 			"palm": false,
 			"bamboo": false,
+			"flytrap": false,
+			"roselle": false,
 		})
 	}
 	if err != nil {
@@ -353,6 +358,8 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"dandelion": pictbook.Dandelion,
 			"palm": pictbook.Palm,
 			"bamboo": pictbook.Palm,
+			"flytrap": pictbook.Flytrap,
+			"roselle": pictbook.Roselle,
 		}).MustBase64()
 		load := loadSavedata(objx.MustFromBase64(authCookieValue))
 		saveDataCookieValue := objx.New(map[string]interface{}{

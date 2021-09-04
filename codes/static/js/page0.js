@@ -20,6 +20,7 @@ const Bgm2 = document.getElementById("game-bgm")
 
 for (var c of cookiesArray) {
     var cArray = c.split('=');
+    console.log(cArray)
     if (cArray[0] == 'auth') {
         savedata = atob(cArray[1]);
     }
@@ -59,7 +60,27 @@ var img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspo
 var com_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grave.png?alt=media&token=e882ec80-5d7e-4cb2-98c9-aa2ea3dbbb24"]
 var vlm_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/teisi.png?alt=media&token=3c3af8d8-eecd-4708-bf3e-3bf1a98d4c84"]
 let vlm_img_index = 0;
-var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false}
+var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false, flytrap: false, roselle: false};
+
+function toBool(text) {
+    return text === "true"
+}
+
+var pbdataArray = pbdata.split(',');
+for (var p of pbdataArray) {
+    var pArray = p.split(':');
+    console.log(pArray)
+    if (pArray[0] == "{\"bamboo\""){
+        pictbook_f["bamboo"] = toBool(pArray[1]);
+    }
+    else if (pArray[0] == "\"username\""){
+        
+    }
+    else {
+        p_name = pArray[0].slice(1,-1)
+        pictbook_f[p_name] = toBool(pArray[1])
+    }
+}
 if (seed_name == "sunflower") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998"]
 }else if (seed_name == "tulips") {
@@ -180,6 +201,8 @@ function savePictbook() {
 	        Dandelion:	pictbook_f["dandelion"],
 	        Palm: 		pictbook_f["palm"],
 	        Bamboo:		pictbook_f["bamboo"],
+            Flytrap:    pictbook_f["flytrap"],
+            Roselle:    pictbook_f["roselle"],
         })
     })
 }
