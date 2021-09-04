@@ -269,3 +269,12 @@ p {
   z-index: 1;
   cursor: pointer;
 }
+
+.book-img {
+  position:relative;
+  left: 35%
+}
+.nx-pre-btn {
+  position: absolute;
+  left: 48%;
+}
