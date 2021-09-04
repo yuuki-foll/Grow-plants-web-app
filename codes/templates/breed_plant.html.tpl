@@ -121,7 +121,7 @@
     </audio> -->
 
     <!-- BGM変更 -->
-    <audio
+    <audio id="game-bgm"
         src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570"
         type="audio/mpeg" loop autoplay preload="auto">
         <p>お使いの環境では再生できません。</p>
@@ -136,6 +136,10 @@
     <!-- SE -->
     <audio id="grow_se"
         src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grow_se.mp3?alt=media&token=52e9d0f4-385d-47bc-adcd-cce666960928"
+        type="audio/mpeg" preload="auto"></audio>
+
+        <audio id="damage_se"
+        src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/se_damage.mp3?alt=media&token=58ce4bda-96d1-45e2-82ef-b27a30805b6e"
         type="audio/mpeg" preload="auto"></audio>
 
     <!--JavaScriptsの読み込み-->
