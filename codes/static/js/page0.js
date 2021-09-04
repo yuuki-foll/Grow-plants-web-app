@@ -11,6 +11,10 @@ var savedata = "";
 var pbdata = ""
 var seed_name = "None";
 var username = ""
+/* キラキラを非表示に */
+const EffectImgVision = document.getElementById('effect_pic')
+EffectImgVision.style.visibility = "hidden"
+
 for (var c of cookiesArray) {
     var cArray = c.split('=');
     if (cArray[0] == 'auth') {
@@ -283,6 +287,10 @@ recognition.addEventListener('result', function (evt) {
                 plant_life = alterLife(+10)
                 document.getElementById("grow_se").volume = 0.05; // 成長時の効果音の音量調整
                 document.getElementById("grow_se").play(); // 成長時効果音を鳴らす
+
+                /* 成長エフェクトを1秒間だけ表示して非表示に戻す */
+                EffectImgVision.style.visibility = "visible"
+                setTimeout('EffectImgVision.style.visibility = "hidden"', 1000);
             }
             document.getElementById("senti_level").innerHTML = senti_level
             console.log(Object.keys(jsonData))

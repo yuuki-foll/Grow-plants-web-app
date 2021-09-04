@@ -17,6 +17,12 @@ PlantImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
 PlantImg.style.width = "min(25vh,25vw)"
 PlantImg.style.height = "min(25vh,25vw)"
 
+const EffectImg = document.getElementById('effect_pic')
+EffectImg.style.top = "calc(60% + (25vh - min(25vh,25vw)))"
+EffectImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
+EffectImg.style.width = "min(25vh,25vw)"
+EffectImg.style.height = "min(25vh,25vw)"
+
 
 function changePlantImg(name) {
     if (name == "cherry" || name == "palm" || name == "bamboo") {
@@ -24,13 +30,22 @@ function changePlantImg(name) {
         PlantImg.style.left = "calc(50% - (min(70vh,70vw)/2)"
         PlantImg.style.width = "min(70vh,70vw)"
         PlantImg.style.height = "min(70vh,70vw)"
+        EffectImg.style.top = "calc(5% + (70vh - min(70vh,70vw)))"
+        EffectImg.style.left = "calc(50% - (min(70vh,70vw)/2)"
+        EffectImg.style.width = "min(70vh,70vw)"
+        EffectImg.style.height = "min(70vh,70vw)"
     } else {
         PlantImg.style.top = "calc(60% + (25vh - min(25vh,25vw)))"
         PlantImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
         PlantImg.style.width = "min(25vh,25vw)"
         PlantImg.style.height = "min(25vh,25vw)"
+        EffectImg.style.top = "calc(60% + (25vh - min(25vh,25vw)))"
+        EffectImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
+        EffectImg.style.width = "min(25vh,25vw)"
+        EffectImg.style.height = "min(25vh,25vw)"
     }
 }
+
 
 const Body = document.getElementById('html_body')  
 Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22)"

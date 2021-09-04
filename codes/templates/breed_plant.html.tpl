@@ -98,6 +98,7 @@
                     src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f"
                     class="plant-img">
 
+                <img id="effect_pic" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grow_effect.gif?alt=media&token=65deae10-7314-4735-8a08-189066dfbbb7" class="effect-img">
                 <!--体力バー-->
                 <p class="plant-life">植物の体力</p>
                 <div id="life"></div>
