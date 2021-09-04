@@ -175,6 +175,10 @@ p {
   height: 80vh;
   line-height: 100px;
 }
+.boxB {
+  /* border: solid 1px rgb(140, 0, 255); */
+  position: relative;
+}
 .plant-img {
   position: absolute;
   /* border: solid 1px black; */
@@ -182,6 +186,15 @@ p {
   left: 30%;
   width: 35vh;
   height: 35vh;
+}
+.effect-img {
+  position: absolute;
+  /* border: solid 1px black; */
+  bottom: 40%;
+  left: 30%;
+  width: 35vh;
+  height: 35vh;
+  /* animation: fadeIn 0.2s ease 0.3s 1 normal; */
 }
 
 .plant-life {
