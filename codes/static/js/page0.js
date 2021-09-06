@@ -60,7 +60,7 @@ var img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspo
 var com_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grave.png?alt=media&token=e882ec80-5d7e-4cb2-98c9-aa2ea3dbbb24"]
 var vlm_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/teisi.png?alt=media&token=3c3af8d8-eecd-4708-bf3e-3bf1a98d4c84"]
 let vlm_img_index = 0;
-var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false, flytrap: false, roselle: false};
+var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false, cactus: false, flytrap: false, roselle: false};
 
 function toBool(text) {
     return text === "true"
@@ -201,6 +201,7 @@ function savePictbook() {
 	        Dandelion:	pictbook_f["dandelion"],
 	        Palm: 		pictbook_f["palm"],
 	        Bamboo:		pictbook_f["bamboo"],
+            Cactus:     pictbook_f["cactus"],
             Flytrap:    pictbook_f["flytrap"],
             Roselle:    pictbook_f["roselle"],
         })

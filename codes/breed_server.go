@@ -52,6 +52,7 @@ type pictBook struct {
 	Dandelion	bool
 	Palm 		bool
 	Bamboo		bool
+	Cactus		bool
 	Flytrap 	bool
 	Roselle		bool
 }
@@ -87,6 +88,7 @@ func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 			"dandelion": data.Dandelion,
 			"palm": data.Palm,
 			"bamboo": data.Palm,
+			"cactus": data.Cactus,
 			"flytrap": data.Flytrap,
 			"Roselle": data.Roselle,
 		})
@@ -269,6 +271,7 @@ func registerDatabase(data objx.Map) {
 			"dandelion": false,
 			"palm": false,
 			"bamboo": false,
+			"cactus": false,
 			"flytrap": false,
 			"roselle": false,
 		})
@@ -358,6 +361,7 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"dandelion": pictbook.Dandelion,
 			"palm": pictbook.Palm,
 			"bamboo": pictbook.Palm,
+			"cactus": pictbook.Cactus,
 			"flytrap": pictbook.Flytrap,
 			"roselle": pictbook.Roselle,
 		}).MustBase64()

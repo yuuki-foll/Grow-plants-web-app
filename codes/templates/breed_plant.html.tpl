@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>植物を育てよう！</title>
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
     <!--cssの読み込み-->
     <link rel="stylesheet" href="./../static/css/breed_plant.css" type="text/css">
 </head>
@@ -35,7 +39,10 @@
     <!--辞書-->
     <div class="pic-book" id="pic-book">
         <div class="pic-book-inner">
-            <div class="pic-book-title">植物図鑑</div>
+            <div class="pic-book-fonts">
+                <div class="pic-book-title">植物図鑑</div>
+                <div id="pic-book-pname">ヒマワリ</div>
+            </div>
             <div class="book-img">
                 <input type="image" name="sunflower" id="pict-book-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f">
                 <!--input type="image" name="tulips" id="tulips" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%974.png?alt=media&token=cd7c8148-b2c0-4489-b6fd-803605ef0603">
