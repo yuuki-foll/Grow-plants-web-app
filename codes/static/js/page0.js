@@ -101,6 +101,8 @@ if (seed_name == "sunflower") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap1.png?alt=media&token=0ae9a40f-e8bb-4c9c-a564-13f927c52886","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap2.png?alt=media&token=320376cd-62dd-49f1-a345-94554c6931f6","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap3.png?alt=media&token=ffd92ad9-ec22-44e6-b9e2-7f6ebe15e50b"]
 }else if (seed_name == "roselle") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle1.png?alt=media&token=43c24c91-fc7f-4b75-a73a-3b981acb9f7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle2.png?alt=media&token=64795f6f-d62a-4e6e-8ddf-145e08f19267","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"]
+}else if (seed_name == "rose") {
+    img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose1.png?alt=media&token=b3130d3b-34bf-4d30-ad05-e2a2dccfe1f9", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose2.png?alt=media&token=abe6a4eb-bf47-41b6-b810-0872c98bda0a", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040"]
 }
 
 plant_pic.src = changeImage(senti_level)
@@ -171,13 +173,17 @@ save.addEventListener('click', function () {
 function changeImage(senti_level) {
     if (senti_level == 1) {
         img_path = img[0];
-    } else if (senti_level >= 6) {
-        img_path = img[3];
+    } else if (senti_level == 6) {
+        if (seed_name == "rose" || seed_name == "cosmos" || seed_name == "pansy" || seed_name == "tulips") {
+            img_path = random_choice(seed_name)
+        } else {
+            img_path = img[3];
+        }
         pictbook_f[seed_name] = true
         savePictbook(pictbook_f)
-    } else if (senti_level >= 4) {
+    } else if (senti_level == 4) {
         img_path = img[2];
-    } else if (senti_level >= 2) {
+    } else if (senti_level == 2) {
         img_path = img[1];
     }
     return img_path
@@ -234,6 +240,8 @@ change.addEventListener('click', function () {
         img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap1.png?alt=media&token=0ae9a40f-e8bb-4c9c-a564-13f927c52886","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap2.png?alt=media&token=320376cd-62dd-49f1-a345-94554c6931f6","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap3.png?alt=media&token=ffd92ad9-ec22-44e6-b9e2-7f6ebe15e50b"]
     }else if (seed == "roselle") {
         img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle1.png?alt=media&token=43c24c91-fc7f-4b75-a73a-3b981acb9f7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle2.png?alt=media&token=64795f6f-d62a-4e6e-8ddf-145e08f19267","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"]
+    }else if (seed == "rose") {
+        img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose1.png?alt=media&token=b3130d3b-34bf-4d30-ad05-e2a2dccfe1f9", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose2.png?alt=media&token=abe6a4eb-bf47-41b6-b810-0872c98bda0a", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040"]
     }
     seed_name = seed;
     plant_pic.src = changeImage(senti_level);
@@ -273,6 +281,11 @@ recognition.addEventListener('result', function (evt) {
     if (txt) {
         sentence += `${txt}\n`;
         // テキストを「voice_recognition」としてHTML Elementにする
+        
+        /* 秘密の呪文関係（簡易的なもの） */
+        if (txt == "ありがとうございます") {
+            img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rafflesia.png?alt=media&token=91d6cdbb-9033-482c-87f1-3f7f4ae88a7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rafflesia.png?alt=media&token=91d6cdbb-9033-482c-87f1-3f7f4ae88a7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rafflesia.png?alt=media&token=91d6cdbb-9033-482c-87f1-3f7f4ae88a7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rafflesia.png?alt=media&token=91d6cdbb-9033-482c-87f1-3f7f4ae88a7c"]
+        }
         document.getElementById("voice_recognition").innerHTML = sentence;
     }
     // Fetch APIでデータ送信
