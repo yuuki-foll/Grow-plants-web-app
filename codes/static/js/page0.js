@@ -60,7 +60,7 @@ var img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspo
 var com_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grave.png?alt=media&token=e882ec80-5d7e-4cb2-98c9-aa2ea3dbbb24"]
 var vlm_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/teisi.png?alt=media&token=3c3af8d8-eecd-4708-bf3e-3bf1a98d4c84"]
 let vlm_img_index = 0;
-var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false, flytrap: false, roselle: false};
+var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false, cactus: false, flytrap: false, roselle: false};
 
 function toBool(text) {
     return text === "true"
@@ -103,6 +103,8 @@ if (seed_name == "sunflower") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle1.png?alt=media&token=43c24c91-fc7f-4b75-a73a-3b981acb9f7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle2.png?alt=media&token=64795f6f-d62a-4e6e-8ddf-145e08f19267","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"]
 }else if (seed_name == "rose") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose1.png?alt=media&token=b3130d3b-34bf-4d30-ad05-e2a2dccfe1f9", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose2.png?alt=media&token=abe6a4eb-bf47-41b6-b810-0872c98bda0a", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040"]
+}else if (seed_name == "pansy") {
+    img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy1.png?alt=media&token=1469e9d4-a5aa-48fe-ae5e-8b8094894871", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy2.png?alt=media&token=c4c7b5b8-0272-4c61-b2aa-5bbf9af09e3b", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy3.png?alt=media&token=46afa025-ea4a-42ef-b6a3-570ad63b395a"]
 }
 
 plant_pic.src = changeImage(senti_level)
@@ -178,6 +180,9 @@ function changeImage(senti_level) {
             img_path = random_choice(seed_name)
         } else {
             img_path = img[3];
+    } 
+    if (!pictbook_f[seed_name]) {
+        openResults()
         }
         pictbook_f[seed_name] = true
         savePictbook(pictbook_f)
@@ -207,6 +212,7 @@ function savePictbook() {
 	        Dandelion:	pictbook_f["dandelion"],
 	        Palm: 		pictbook_f["palm"],
 	        Bamboo:		pictbook_f["bamboo"],
+            Cactus:     pictbook_f["cactus"],
             Flytrap:    pictbook_f["flytrap"],
             Roselle:    pictbook_f["roselle"],
         })
@@ -242,7 +248,10 @@ change.addEventListener('click', function () {
         img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle1.png?alt=media&token=43c24c91-fc7f-4b75-a73a-3b981acb9f7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle2.png?alt=media&token=64795f6f-d62a-4e6e-8ddf-145e08f19267","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"]
     }else if (seed == "rose") {
         img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose1.png?alt=media&token=b3130d3b-34bf-4d30-ad05-e2a2dccfe1f9", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose2.png?alt=media&token=abe6a4eb-bf47-41b6-b810-0872c98bda0a", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040"]
+    }else if (seed == "pansy") {
+        img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy1.png?alt=media&token=1469e9d4-a5aa-48fe-ae5e-8b8094894871", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy2.png?alt=media&token=c4c7b5b8-0272-4c61-b2aa-5bbf9af09e3b", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy3.png?alt=media&token=46afa025-ea4a-42ef-b6a3-570ad63b395a"]
     }
+    
     seed_name = seed;
     plant_pic.src = changeImage(senti_level);
     changePlantImg(seed_name);

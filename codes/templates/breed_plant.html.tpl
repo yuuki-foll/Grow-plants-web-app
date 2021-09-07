@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>植物を育てよう！</title>
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
     <!--cssの読み込み-->
     <link rel="stylesheet" href="./../static/css/breed_plant.css" type="text/css">
 </head>
@@ -35,9 +39,12 @@
     <!--辞書-->
     <div class="pic-book" id="pic-book">
         <div class="pic-book-inner">
-            <div class="pic-book-title">植物図鑑</div>
+            <div class="pic-book-fonts">
+                <div class="pic-book-title">植物図鑑</div>
+                <div id="pic-book-pname">ヒマワリ</div>
+            </div>
             <div class="book-img">
-                <input type="image" name="sunflower" id="pict-book-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f">
+                <input type="image" name="plant" id="pict-book-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/secret.png?alt=media&token=d4ee3617-5644-43b3-9e0c-4e4bef3f9b5b">
                 <!--input type="image" name="tulips" id="tulips" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%974.png?alt=media&token=cd7c8148-b2c0-4489-b6fd-803605ef0603">
                 <input type="image" name="cherry" id="cherry" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cherry3.png?alt=media&token=ed6df089-9fdd-41ba-94ee-df40ef93e3c1">
                 <input type="image" name="cosmos" id="cosmos" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cosmos3.png?alt=media&token=0ca30a09-fcb0-42bd-a1ad-d51e48b3aaf5">
@@ -49,12 +56,29 @@
                 <input type="image" name="roselle" id="roselle" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"-->
             </div>
             <div class="nx-pre-btn">
-                <button id="pre-btn">前へ</button>
-                <button id="nxt-btn">次へ</button>
+                <input type="image" name="pre" id="left-arrow-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/green_left_arrow.png?alt=media&token=66183185-a86f-4ff2-a615-1a4b973882b5">
+                <input type="image" name="nex" id="right-arrow-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/green_right_arrow.png?alt=media&token=707742b7-9462-4c7d-871f-8622853d9145">
             </div>
             <button id="js-close-picbook">閉じる</button>
         </div>
         <div class="black-background-picbook" id="js-black-bg-picbook"></div>
+    </div>
+    <!--結果画面-->
+    <div class="results" id="js-results">
+        <div class="results-inner">
+            <div class="result-fonts">
+                <div>やったね</div>
+                <div id="results-plantname"></div>
+            </div>
+            <div class="results-plantimg">
+                <input type="image" name="plant" id="results-plant-img" src="">
+            </div>
+            <div class="results-btn">
+                <button id="result-close">閉じる</button>
+                <button id="result-tweet">twitterで共有</button>
+            </div>
+        </div>
+        <div class="black-background-result"></div>
     </div>
     <!-- セーブボタン　＆　タイトルバックボタン-->
     <button class="btn" id="save_btn">save</button>
@@ -73,6 +97,7 @@
         <option value="flytrap">ハエトリグサ</option>
         <option value="roselle">ローゼル</option>
         <option value="rose">バラ</option>
+        <option value="pansy">パンジー</option>
     </select>
 
     <button class="btn" id="change_btn">植物を変更</button>
