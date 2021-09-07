@@ -151,3 +151,13 @@ picbook_btn.addEventListener('click', function(){
         document.getElementById("pict-book-img").src = pict_book_img_src[0];
     }
 })
+r_modal = document.getElementById('js-results');
+function openResults() {
+    document.getElementById('results-plantname').textContent = plant_name_jp[plant_name.indexOf(seed_name)] + "が育ちました！！";
+    document.getElementById('results-plant-img').src = pict_book_img_src[plant_name.indexOf(seed_name)]
+    r_modal.classList.add('is-show');
+}
+r_close_btn = document.getElementById('result-close')
+r_close_btn.addEventListener('click', function() {
+    r_modal.classList.remove('is-show')
+})
