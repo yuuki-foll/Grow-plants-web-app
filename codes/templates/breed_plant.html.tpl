@@ -96,6 +96,8 @@
         <option value="cactus">サボテン</option>
         <option value="flytrap">ハエトリグサ</option>
         <option value="roselle">ローゼル</option>
+        <option value="rose">バラ</option>
+        <option value="pansy">パンジー</option>
     </select>
 
     <button class="btn" id="change_btn">植物を変更</button>
@@ -173,4 +175,5 @@
 
 <script type="text/javascript" src="./../static/js/page0.js"></script>
 <script type="text/javascript" src="./../static/js/micromodal.js"></script>
+<script type="text/javascript" src="./../static/js/choice_color.js"></script>
 </html>
