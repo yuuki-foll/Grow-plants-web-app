@@ -44,7 +44,7 @@
                 <div id="pic-book-pname">ヒマワリ</div>
             </div>
             <div class="book-img">
-                <input type="image" name="sunflower" id="pict-book-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/secret.png?alt=media&token=d4ee3617-5644-43b3-9e0c-4e4bef3f9b5b">
+                <input type="image" name="plant" id="pict-book-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/secret.png?alt=media&token=d4ee3617-5644-43b3-9e0c-4e4bef3f9b5b">
                 <!--input type="image" name="tulips" id="tulips" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%974.png?alt=media&token=cd7c8148-b2c0-4489-b6fd-803605ef0603">
                 <input type="image" name="cherry" id="cherry" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cherry3.png?alt=media&token=ed6df089-9fdd-41ba-94ee-df40ef93e3c1">
                 <input type="image" name="cosmos" id="cosmos" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cosmos3.png?alt=media&token=0ca30a09-fcb0-42bd-a1ad-d51e48b3aaf5">
@@ -62,6 +62,23 @@
             <button id="js-close-picbook">閉じる</button>
         </div>
         <div class="black-background-picbook" id="js-black-bg-picbook"></div>
+    </div>
+    <!--結果画面-->
+    <div class="results" id="js-results">
+        <div class="results-inner">
+            <div class="result-fonts">
+                <div>やったね</div>
+                <div id="results-plantname"></div>
+            </div>
+            <div class="results-plantimg">
+                <input type="image" name="plant" id="results-plant-img" src="">
+            </div>
+            <div class="results-btn">
+                <button id="result-close">閉じる</button>
+                <button id="result-tweet">twitterで共有</button>
+            </div>
+        </div>
+        <div class="black-background-result"></div>
     </div>
     <!-- セーブボタン　＆　タイトルバックボタン-->
     <button class="btn" id="save_btn">save</button>

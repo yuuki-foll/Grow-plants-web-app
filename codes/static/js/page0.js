@@ -173,6 +173,9 @@ function changeImage(senti_level) {
         img_path = img[0];
     } else if (senti_level >= 6) {
         img_path = img[3];
+        if (!pictbook_f[seed_name]) {
+            openResults()
+        }
         pictbook_f[seed_name] = true
         savePictbook(pictbook_f)
     } else if (senti_level >= 4) {
