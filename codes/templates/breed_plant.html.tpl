@@ -175,7 +175,7 @@
 
 </body>
 <script type="text/javascript" src="./../static/js/choice_color.js"></script>
-<script type="text/javascript" src="./../static/js/page0.js"></script>
 <script type="text/javascript" src="./../static/js/evolution.js"></script>
+<script type="text/javascript" src="./../static/js/page0.js"></script>
 <script type="text/javascript" src="./../static/js/micromodal.js"></script>
 </html>
