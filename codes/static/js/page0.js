@@ -173,9 +173,13 @@ save.addEventListener('click', function () {
 });
 /* senti_levelの値により植物の画像を変更する関数 */
 function changeImage(senti_level) {
+    var evo_num = 0;
     if (senti_level == 1) {
+        evo_num = 0 
         img_path = img[0];
     } else if (senti_level == 6) {
+        evo_num = 3
+        plant_evolution(img,evo_num)
         if (seed_name == "rose" || seed_name == "cosmos" || seed_name == "pansy" || seed_name == "tulips") {
             img_path = random_choice(seed_name)
         } else {
@@ -187,8 +191,12 @@ function changeImage(senti_level) {
         pictbook_f[seed_name] = true
         savePictbook(pictbook_f)
     } else if (senti_level == 4) {
+        evo_num = 2
+        plant_evolution(img,evo_num)
         img_path = img[2];
     } else if (senti_level == 2) {
+        evo_num = 1
+        plant_evolution(img,evo_num)
         img_path = img[1];
     }
     return img_path
