@@ -154,10 +154,15 @@ picbook_btn.addEventListener('click', function(){
 r_modal = document.getElementById('js-results');
 function openResults() {
     document.getElementById('results-plantname').textContent = plant_name_jp[plant_name.indexOf(seed_name)] + "が育ちました！！";
-    document.getElementById('results-plant-img').src = pict_book_img_src[plant_name.indexOf(seed_name)]
+    document.getElementById('results-plant-img').src = pict_book_img_src[plant_name.indexOf(seed_name)];
     r_modal.classList.add('is-show');
 }
-r_close_btn = document.getElementById('result-close')
+r_close_btn = document.getElementById('result-close');
 r_close_btn.addEventListener('click', function() {
-    r_modal.classList.remove('is-show')
+    r_modal.classList.remove('is-show');
+})
+
+tweet_btn = document.getElementById('result-tweet');
+tweet_btn.addEventListener('click', function(){
+    location.href = "https://twitter.com/intent/tweet?text=「植物を育てよう」で" + plant_name_jp[plant_name.indexOf(seed_name)] + "をそだてました。";
 })
