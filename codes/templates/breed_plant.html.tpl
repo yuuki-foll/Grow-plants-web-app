@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998" />
     <title>植物を育てよう！</title>
     <!--google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -172,9 +174,8 @@
     <script src="./../static/js/breed_plant.js"></script>
 
 </body>
-
+<script type="text/javascript" src="./../static/js/choice_color.js"></script>
 <script type="text/javascript" src="./../static/js/page0.js"></script>
 <script type="text/javascript" src="./../static/js/evolution.js"></script>
 <script type="text/javascript" src="./../static/js/micromodal.js"></script>
-<script type="text/javascript" src="./../static/js/choice_color.js"></script>
 </html>
