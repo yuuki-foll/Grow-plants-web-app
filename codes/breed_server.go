@@ -40,22 +40,30 @@ type saveData struct {
 	UserName         string
 	PlantLevel       int64
 	PhysicalStrength int64
-	Plant			 string
+	Plant            string
 }
+
 // 植物図鑑用
 type pictBook struct {
-	UserName	string
-	Sunflower	bool
-	Tulips		bool
-	Cherry		bool
-	Cosmos		bool
-	Dandelion	bool
-	Palm 		bool
-	Bamboo		bool
-	Cactus		bool
-	Flytrap 	bool
-	Roselle		bool
+	UserName  string
+	Sunflower bool
+	Tulips    bool
+	Cherry    bool
+	Cosmos    bool
+	Dandelion bool
+	Palm      bool
+	Bamboo    bool
+	Cactus    bool
+	Flytrap   bool
+	Roselle   bool
 }
+
+// 植物の説明用
+type plantExplanation struct {
+	PlantName   string
+	Explanation string
+}
+
 func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 	var data pictBook
 	json.NewDecoder(r.Body).Decode(&data)
@@ -80,17 +88,17 @@ func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(err)
 		}
 		_, err = client.Collection("picture_book").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
-			"username": data.UserName,
+			"username":  data.UserName,
 			"sunflower": data.Sunflower,
-			"tulips": data.Tulips,
-			"cherry": data.Cherry,
-			"cosmos": data.Cosmos,
+			"tulips":    data.Tulips,
+			"cherry":    data.Cherry,
+			"cosmos":    data.Cosmos,
 			"dandelion": data.Dandelion,
-			"palm": data.Palm,
-			"bamboo": data.Palm,
-			"cactus": data.Cactus,
-			"flytrap": data.Flytrap,
-			"Roselle": data.Roselle,
+			"palm":      data.Palm,
+			"bamboo":    data.Palm,
+			"cactus":    data.Cactus,
+			"flytrap":   data.Flytrap,
+			"Roselle":   data.Roselle,
 		})
 	}
 	fmt.Print(data.UserName)
@@ -260,20 +268,20 @@ func registerDatabase(data objx.Map) {
 			"username":          data["name"],
 			"plant_level":       1,
 			"physical_strength": 50,
-			"plant": "None",
+			"plant":             "None",
 		})
 		_, _, err = client.Collection("picture_book").Add(ctx, map[string]interface{}{
-			"username": data["name"],
+			"username":  data["name"],
 			"sunflower": false,
-			"tulips": false,
-			"cherry": false,
-			"cosmos": false,
+			"tulips":    false,
+			"cherry":    false,
+			"cosmos":    false,
 			"dandelion": false,
-			"palm": false,
-			"bamboo": false,
-			"cactus": false,
-			"flytrap": false,
-			"roselle": false,
+			"palm":      false,
+			"bamboo":    false,
+			"cactus":    false,
+			"flytrap":   false,
+			"roselle":   false,
 		})
 	}
 	if err != nil {
@@ -353,24 +361,24 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 		registerDatabase(objx.MustFromBase64(authCookieValue))
 		pictbook := loadPictbook(user.Name())
 		pictbookCookieValue := objx.New(map[string]interface{}{
-			"username": pictbook.UserName,
+			"username":  pictbook.UserName,
 			"sunflower": pictbook.Sunflower,
-			"tulips": pictbook.Tulips,
-			"cherry": pictbook.Cherry,
-			"cosmos": pictbook.Cosmos,
+			"tulips":    pictbook.Tulips,
+			"cherry":    pictbook.Cherry,
+			"cosmos":    pictbook.Cosmos,
 			"dandelion": pictbook.Dandelion,
-			"palm": pictbook.Palm,
-			"bamboo": pictbook.Palm,
-			"cactus": pictbook.Cactus,
-			"flytrap": pictbook.Flytrap,
-			"roselle": pictbook.Roselle,
+			"palm":      pictbook.Palm,
+			"bamboo":    pictbook.Palm,
+			"cactus":    pictbook.Cactus,
+			"flytrap":   pictbook.Flytrap,
+			"roselle":   pictbook.Roselle,
 		}).MustBase64()
 		load := loadSavedata(objx.MustFromBase64(authCookieValue))
 		saveDataCookieValue := objx.New(map[string]interface{}{
 			"name":              user.Name(),
 			"physical_strength": load.PhysicalStrength,
 			"plant_level":       load.PlantLevel,
-			"plant": 			 load.Plant,
+			"plant":             load.Plant,
 		}).MustBase64()
 		username = user.Name()
 
@@ -385,9 +393,9 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			Path:  "/page0",
 		})
 		http.SetCookie(w, &http.Cookie{
-			Name: "pictbook",
+			Name:  "pictbook",
 			Value: pictbookCookieValue,
-			Path: "/page0",
+			Path:  "/page0",
 		})
 
 		w.Header()["location"] = []string{"/after"}
@@ -425,7 +433,7 @@ func loadPictbook(username string) pictBook {
 		}
 		// conv json to struct
 		if err := json.Unmarshal(json_pictbook, &data); err != nil {
-			fmt. Println(err)
+			fmt.Println(err)
 		}
 	}
 
@@ -476,6 +484,39 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func loadExplanationHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Print("説明取得")
+	var data plantExplanation
+	json.NewDecoder(r.Body).Decode(&data)
+	fmt.Print(data)
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	iter := client.Collection("plant_explanation").Where("plant_name", "==", data.PlantName).Documents(ctx)
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			fmt.Println(err)
+		}
+		_, err = client.Collection("plant_explanation").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
+			"plant_name":   data.PlantName,
+			"explanationr": data.Explanation,
+		})
+	}
+	fmt.Print(data.PlantName)
+	fmt.Printf(data.Explanation)
+}
+
 func main() {
 	/*
 		// firebase初期化
@@ -513,6 +554,7 @@ func main() {
 	http.HandleFunc("/page0", HtmlHandler)
 	http.HandleFunc("/save", saveHandler)
 	http.HandleFunc("/pictbook", pictbookHandler)
+	http.HandleFunc("/explanation", loadExplanationHandler)
 	http.HandleFunc("/logout", logoutHandler)
 	http.HandleFunc("/home", HomeHandler)
 

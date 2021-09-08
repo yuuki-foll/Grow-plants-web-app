@@ -139,6 +139,7 @@ function slide_img(slides) {
         index = index + slides;
     }
     document.getElementById("pic-book-pname").textContent = plant_name_jp[index];
+    get_explanation(plant_name[index])
     if (pictbook_f[plant_name[index]]) {
         document.getElementById("pict-book-img").src = pict_book_img_src[index];
     }
@@ -166,3 +167,19 @@ tweet_btn = document.getElementById('result-tweet');
 tweet_btn.addEventListener('click', function(){
     location.href = "https://twitter.com/intent/tweet?text=「植物を育てよう」で" + plant_name_jp[plant_name.indexOf(seed_name)] + "をそだてました。";
 })
+
+function get_explanation(plant_name) {
+    console.log("説明が欲しい植物の名前："+ plant_name);
+    // Fetch APIでデータ送信
+    fetch('http://127.0.0.1:8999/explanation', {　 // 送信先URL
+        method: "POST", // 通信メソッド
+        mode: "no-cors",
+        header: {
+            'Content-Type': 'application/json' // JSON形式のデータのヘッダー
+        },
+        body: JSON.stringify({
+            explanation: "",
+            plant_name: plant_name,
+        }) // JSON形式のデータ
+    })
+}
