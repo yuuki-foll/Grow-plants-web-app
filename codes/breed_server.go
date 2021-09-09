@@ -59,9 +59,15 @@ type pictBook struct {
 }
 
 // 植物の説明用
-type plantExplanation struct {
-	PlantName   string
-	Explanation string
+type plantExplanationIn struct {
+	PlantName   string `json:"plant_name"`
+	Explanation string `json:"explanation"`
+}
+
+// 植物の説明用
+type plantExplanationOut struct {
+	PlantName   string `json:"plant_name"`
+	Explanation string `json:"explanation"`
 }
 
 func pictbookHandler(w http.ResponseWriter, r *http.Request) {
@@ -406,8 +412,10 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 
 func loadPictbook(username string) pictBook {
 	var data pictBook
+
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+
 	app, err := firebase.NewApp(ctx, nil, sa)
 	if err != nil {
 		log.Fatalln(err)
@@ -485,16 +493,21 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func loadExplanationHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Print("説明取得")
-	var data plantExplanation
+	fmt.Println(r.Method)
+	fmt.Println(r.Header.Get("Referer"))
+	var data plantExplanationIn
 	json.NewDecoder(r.Body).Decode(&data)
-	fmt.Print(data)
+	fmt.Printf("%s", data.PlantName) //受け取った文字列を出力
+	fmt.Print("説明取得")
+
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
+
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	client, err := app.Firestore(ctx)
 	if err != nil {
 		log.Fatalln(err)
@@ -506,15 +519,18 @@ func loadExplanationHandler(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 		if err != nil {
+			panic(err)
+		}
+		fmt.Println(doc.Data())
+		// Convert map to json string
+		jsonStr, err := json.Marshal(doc.Data())
+		if err != nil {
 			fmt.Println(err)
 		}
-		_, err = client.Collection("plant_explanation").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
-			"plant_name":   data.PlantName,
-			"explanationr": data.Explanation,
-		})
+		// Output
+		fmt.Println(string(jsonStr))
+		fmt.Fprint(w, string(jsonStr))
 	}
-	fmt.Print(data.PlantName)
-	fmt.Printf(data.Explanation)
 }
 
 func main() {

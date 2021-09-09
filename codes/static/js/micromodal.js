@@ -169,17 +169,33 @@ tweet_btn.addEventListener('click', function(){
 })
 
 function get_explanation(plant_name) {
-    console.log("説明が欲しい植物の名前："+ plant_name);
-    // Fetch APIでデータ送信
-    fetch('http://127.0.0.1:8999/explanation', {　 // 送信先URL
+    console.log("説明が欲しい植物の名前：" + plant_name);
+    const data = { "plant_name": plant_name }
+    const param = {
         method: "POST", // 通信メソッド
         mode: "no-cors",
-        header: {
+        headers: {
             'Content-Type': 'application/json' // JSON形式のデータのヘッダー
         },
-        body: JSON.stringify({
-            explanation: "",
-            plant_name: plant_name,
-        }) // JSON形式のデータ
+        body: JSON.stringify(data)
+    };
+
+    // Fetch APIでデータ送信
+    fetch('http://127.0.0.1:8999/explanation', param)
+    .then(response => {
+        if (!response.ok) {
+            console.log("error");
+        } else {
+            console.log("ok");
+        }
+        console.log(response.status)
+        return response.json(); //レスポンスをJSON形式で受け取るように指定
     })
+
+    // JSON形式で受け取った後の操作
+    .then(jsonData => {
+        console.log("json 説明読み込み")    
+        console.log('jsonData: ', jsonData);
+        document.getElementById("plant-explanation").innerHTML = jsonData["explanation"]
+    });
 }
