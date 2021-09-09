@@ -46,6 +46,7 @@
                 <div class="pic-book-title">植物図鑑</div>
                 <div id="pic-book-pname">ヒマワリ</div>
             </div>
+            <div id="plant-explanation">説明</div>
             <div class="book-img">
                 <input type="image" name="plant" id="pict-book-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/secret.png?alt=media&token=d4ee3617-5644-43b3-9e0c-4e4bef3f9b5b">
                 <!--input type="image" name="tulips" id="tulips" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%974.png?alt=media&token=cd7c8148-b2c0-4489-b6fd-803605ef0603">
