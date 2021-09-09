@@ -109,14 +109,15 @@ if (seed_name == "sunflower") {
 
 plant_pic.src = changeImage(senti_level)
 window.addEventListener('DOMContentLoaded', function () {
-    const btn_play = document.getElementById("btn_play");
-    const btn_pause = document.getElementById("btn_pause");
-    const btn_mute = document.getElementById("btn_mute");
+    // const btn_play = document.getElementById("btn_play");
+    // const btn_pause = document.getElementById("btn_pause");
+    // const btn_mute = document.getElementById("btn_mute");
     const slider_volume = document.getElementById("volume");
     const audioElement = document.querySelector("audio");
     const btn_mute_img = document.getElementById("btn_mute_img");
     // ボリュームの初期設定
     audioElement.volume = slider_volume.value;
+    /*
     btn_play.addEventListener("click", e => {
         audioElement.play();
     });
@@ -132,6 +133,7 @@ window.addEventListener('DOMContentLoaded', function () {
             btn_mute.textContent = "消音解除";
         }
     });
+    */
     btn_mute_img.addEventListener("click", e => {
         if (audioElement.muted) {
             audioElement.muted = false;
