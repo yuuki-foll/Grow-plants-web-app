@@ -179,7 +179,7 @@ function changeImage(senti_level) {
         img_path = img[0];
     } else if (senti_level == 6) {
         evo_num = 3
-        plant_evolution(img,evo_num)
+        // plant_evolution(img,evo_num)
         if (seed_name == "rose" || seed_name == "cosmos" || seed_name == "pansy" || seed_name == "tulips") {
             img_path = random_choice(seed_name)
         } else {
