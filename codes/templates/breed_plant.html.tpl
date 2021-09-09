@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
     <!--cssの読み込み-->
     <link rel="stylesheet" href="./../static/css/breed_plant.css" type="text/css">
 </head>
@@ -43,7 +44,7 @@
     <div class="pic-book" id="pic-book">
         <div class="pic-book-inner">
             <div class="pic-book-fonts">
-                <div class="pic-book-title">植物図鑑</div>
+                <div class="pic-book-title">しょくぶつ　づかん</div>
                 <div id="pic-book-pname">ヒマワリ</div>
             </div>
             <div id="plant-explanation">説明</div>
@@ -85,45 +86,49 @@
         <div class="black-background-result"></div>
     </div>
     <!-- セーブボタン　＆　タイトルバックボタン-->
-    <button class="btn" id="save_btn">save</button>
-    <button class="btn" id="back_btn" class="titleback_btn" onclick="">タイトル画面に戻る</button>
+    <div>
+        <div class="save-btn"><button class="btn" id="save_btn">save</button></div>
+        <span class="back-btn"><button class="btn" id="back_btn" class="titleback_btn" onclick="">タイトル画面</button></span>
 
-    <select id="change_seed" name="seed">
-        <option value="">植物を選択</option>
-        <option value="sunflower">ヒマワリ</option>
-        <option value="tulips">チューリップ</option>
-        <option value="cherry">サクラ</option>
-        <option value="cosmos">コスモス</option>
-        <option value="dandelion">タンポポ</option>
-        <option value="palm">ヤシ</option>
-        <option value="bamboo">竹</option>
-        <option value="cactus">サボテン</option>
-        <option value="flytrap">ハエトリグサ</option>
-        <option value="roselle">ローゼル</option>
-        <option value="rose">バラ</option>
-        <option value="pansy">パンジー</option>
-    </select>
+        <div class="change-seed">
+            <select id="change_seed" name="seed">
+                <option value="">植物を選択</option>
+                <option value="sunflower">ヒマワリ</option>
+                <option value="tulips">チューリップ</option>
+                <option value="cherry">サクラ</option>
+                <option value="cosmos">コスモス</option>
+                <option value="dandelion">タンポポ</option>
+                <option value="palm">ヤシ</option>
+                <option value="bamboo">竹</option>
+                <option value="cactus">サボテン</option>
+                <option value="flytrap">ハエトリグサ</option>
+                <option value="roselle">ローゼル</option>
+                <option value="rose">バラ</option>
+                <option value="pansy">パンジー</option>
+            </select>
+        </div>
 
-    <button class="btn" id="change_btn">植物を変更</button>
-
+        <div class="change-btn"><button class="btn" id="change_btn">タネをかえる</button></div>
+    </div>   
     <!--ページタイトル-->
     <div style="text-align: center">
         <div class="pbox">
             <div class="cbox boxA">
-                <h2><img src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/logo.png?alt=media&token=8314ea55-7225-4134-89e4-6d1b0626b0d2" width="264" height="48"></h2>
-                
+                <!-- h2><img src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/logo.png?alt=media&token=8314ea55-7225-4134-89e4-6d1b0626b0d2" width="264" height="48"></h2 -->
+                <h2>しょくぶつをそだてよう！</h2>
                 <!-- 画面左側 -->
-                <button id="btn">植物と話す</button>
+                <button id="btn">はなしかける</button>
 
+                <div class="voice-result">
+                    <p>あなたの発言</p>
+                    <div id="voice_recognition"></div>
 
-                <p>あなたの発言</p>
-                <div id="voice_recognition"></div>
+                    <p>感情分析結果</p>
+                    <div id="showson"></div>
 
-                <p>感情分析結果</p>
-                <div id="showson"></div>
-
-                <p>感情レベル</p>
-                <div id="senti_level"></div>
+                    <p>感情レベル</p>
+                    <div id="senti_level"></div>
+                </div>
             </div>
             <!-- 画面右側 -->
             <!--植物の画像-->
@@ -156,13 +161,13 @@
         type="audio/mpeg" loop autoplay preload="auto">
         <p>お使いの環境では再生できません。</p>
     </audio>
-    <button id="btn_play">再生</button>
+    <!--button id="btn_play">再生</button>
     <button id="btn_pause">一時停止</button>
-    <button id="btn_mute">消音</button>
+    <button id="btn_mute">消音</button -->
     <input  id="btn_mute_img" type="image" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7">
     <!--音量調整　マージの時にコメント削除-->
     <input type="range" id="volume" value="0.05" min="0.0" max="0.5" step="0.01">
-    <button id="open-picbook">図鑑を表示</button>
+    <button id="open-picbook">ずかんを表示</button>
     <!-- SE -->
     <audio id="grow_se"
         src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grow_se.mp3?alt=media&token=52e9d0f4-385d-47bc-adcd-cce666960928"

@@ -6,6 +6,33 @@ body {
   /* background-size: cover; 背景画像のサイズ設定 cover:画像が画面全体に拡大される */
   background-size: 100vh, 100vw;
 }
+.save-btn {
+  display: inline-block;
+  position: relative;
+  left: 0;
+  top: 25px;
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+}
+.back-btn {
+  display: inline-block;
+  position: relative;
+  left: 5%;
+  top: 25px;
+}
+.change-seed {
+  display: inline-block;
+  position: relative;
+  left: 10%;
+  top: 25px;  
+}
+.change-btn {
+  display: inline-block;
+  position: relative;
+  left: 15%;
+  top: 25px;
+}
 .btn {
   background-color: rgb(74, 240, 74);
   border-bottom: 5px solid #000400;
@@ -17,16 +44,24 @@ body {
 }
 #save_btn {
   width: 100px;
-  height: 30px;
-  font-size: 12px;
+  height: 50px;
+  font-size: 18px;
 }
 
-.titleback_btn {
+#back_btn {
   width: 130px;
-  height: 25px;
-  font-size: 12px;
+  height: 50px;
+  font-size: 18px;
 }
-
+#change_seed {
+  width: 130px;
+  height: 50px;
+}
+#change_btn {
+  width: 130px;
+  height: 50px;
+  font-size: 18px;
+}
 #senti_level {
   color: rgb(0, 0, 0);
 }
@@ -337,4 +372,18 @@ p {
   background-color: rgba(0,0,0,0.8);
   z-index: 1;
   cursor: pointer;
+}
+.voice-result {
+  position: relative;
+  padding: 5px;
+  left: 25%;
+  top: 20%;
+  width: 50%;
+  background-color: white;
+  border: 5px solid;
+  border-color: rgb(105, 27, 27);
+  z-index: 2;
+}
+h2 {
+  font-family: 'Otomanopee One', sans-serif;
 }
