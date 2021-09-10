@@ -133,8 +133,11 @@
                     <div id="voice_recognition"></div>
 
                     <p>感情分析結果</p>
-                    <div id="showson"></div>
-
+                    <!-- <div id="showson"></div> -->
+                    <div class="heart_area">
+                        <input type="image" id="senti_heart" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/heart.png?alt=media&token=b7bed379-c717-4a08-abb7-3437ace5ef48">
+                        <div id="heart_color"></div>
+                    </div>
                     <p>感情レベル</p>
                     <div id="senti_level"></div>
                 </div>

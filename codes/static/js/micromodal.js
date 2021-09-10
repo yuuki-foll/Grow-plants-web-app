@@ -116,7 +116,7 @@ const picbook_btn = document.getElementById("open-picbook");
 var picbook = document.getElementById('pic-book');
 picbook_btn.addEventListener('click', function() {
     picbook.classList.add('is-show');
-
+    get_explanation("sunflower") // 図鑑起動時の説明を取得（図鑑を開いたときは必ずヒマワリのページからなので"sunflower"の説明を取得）
 })
 
 
