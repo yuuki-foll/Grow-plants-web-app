@@ -53,7 +53,7 @@ for (var s of savedataArray) {
 // let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
 document.getElementById("senti_level").innerHTML = senti_level
 document.getElementById("voice_recognition").innerHTML = voice_recognition
-document.getElementById("showson").innerHTML = showson
+// document.getElementById("showson").innerHTML = showson
 
 // 画像一覧のURLをリストで格納
 var img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998"]
@@ -336,10 +336,14 @@ recognition.addEventListener('result', function (evt) {
             var pos = JSON.parse(jsonData.values).pos
 
             // 感分析の結果を代入
-            document.getElementById("showson").innerHTML = "ネガティブ:" + neg + "　　ポジティブ:" + pos
+            // document.getElementById("showson").innerHTML = "ネガティブ:" + neg + "　　ポジティブ:" + pos
             console.log(jsonData.values)
             console.log(JSON.parse(jsonData.values))
             console.log(JSON.parse(jsonData.values).neg)
+
+            // ハートの背景を決める
+            changeHeartColor(JSON.parse(jsonData.values).neg,JSON.parse(jsonData.values).pos)
+            
             if (JSON.parse(jsonData.values).neg > JSON.parse(jsonData.values).pos) {
                 //senti_level--; // ネガティブよりならデクリメント
                 plant_life = alterLife(-25)

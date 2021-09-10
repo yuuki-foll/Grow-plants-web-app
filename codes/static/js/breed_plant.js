@@ -25,6 +25,23 @@ EffectImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
 EffectImg.style.width = "min(25vh,25vw)"
 EffectImg.style.height = "min(25vh,25vw)"
 
+/* 感情分析結果のハート関連 */
+const HeartBack = document.getElementById('heart_color')
+HeartBack.style.height = "0px"
+HeartBack.style.background = "rgb(255, 0, 0)"
+function changeHeartColor(senti_neg, senti_pos) {
+    console.log(senti_pos);
+    if (senti_neg > senti_pos) {
+        HeartBack.style.background = "rgb(0, 0, 255)"
+        var heart_height = 100 * senti_neg
+        HeartBack.style.height = heart_height + "px"
+    } else {
+        HeartBack.style.background = "rgb(255, 0, 0)"
+        var heart_height = 100 * senti_pos
+        HeartBack.style.height = heart_height + "px"
+    }
+}
+
 
 function changePlantImg(name) {
     if (name == "cherry" || name == "palm" || name == "bamboo") {
