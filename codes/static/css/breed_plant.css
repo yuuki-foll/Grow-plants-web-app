@@ -5,13 +5,15 @@ body {
   /* background-image: url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22); */
   /* background-size: cover; 背景画像のサイズ設定 cover:画像が画面全体に拡大される */
   background-size: 100vh, 100vw;
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 22px;
 }
 .save-btn {
   display: inline-block;
   position: relative;
   left: 0;
   top: 25px;
-  width: 100px;
+  width: 120px;
   height: 30px;
   font-size: 12px;
 }
@@ -25,6 +27,7 @@ body {
   display: inline-block;
   position: relative;
   left: 10%;
+  height: 50px;
   top: 25px;
 }
 .change-btn {
@@ -43,24 +46,29 @@ body {
   border-bottom: 2px solid #000400;
 }
 #save_btn {
-  width: 100px;
+  width: 120px;
   height: 50px;
-  font-size: 18px;
+  font-size: 22px;
+  font-family: "Yusei Magic", sans-serif;
 }
 
 #back_btn {
-  width: 130px;
+  width: 150px;
   height: 50px;
-  font-size: 18px;
+  font-size: 22px;
+  font-family: "Yusei Magic", sans-serif;
 }
 #change_seed {
-  width: 130px;
-  height: 50px;
-}
-#change_btn {
-  width: 130px;
+  width: 200px;
   height: 50px;
   font-size: 18px;
+  font-family: "Yusei Magic", sans-serif;
+}
+#change_btn {
+  width: 150px;
+  height: 50px;
+  font-size: 22px;
+  font-family: "Yusei Magic", sans-serif;
 }
 #senti_level {
   color: rgb(0, 0, 0);
@@ -100,11 +108,13 @@ body {
 #btn {
   border-radius: 50%;
   line-height: 100px;
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   padding: 0;
   box-shadow: 0 5px 0 #835501;
   background-color: orange;
+  font-size: 20px;
+  font-family: "Yusei Magic", sans-serif;
 }
 #btn:hover {
   transform: translate(0, 3px);
@@ -238,9 +248,9 @@ p {
 .plant-life {
   position: absolute;
   /* border: solid 1px black; */
-  width: 100px;
+  width: 150px;
   top: 73vh;
-  left: calc(50% - 50px);
+  left: calc(50% - 75px);
 }
 
 #life {
@@ -318,6 +328,9 @@ p {
   z-index: 2;
   cursor: pointer;
 }
+.plant-explanation {
+  border: solid 1px black;
+}
 .black-background-picbook {
   position: absolute;
   left: 0;
@@ -328,7 +341,23 @@ p {
   z-index: 1;
   cursor: pointer;
 }
+#js-close-picbook {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 22px;
+}
+#js-close-btn {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 22px;
+}
+.result-close {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 22px;
+}
 
+#open-picbook {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 22px;
+}
 .book-img {
   position: relative;
   left: 35%;
@@ -380,18 +409,19 @@ p {
   position: relative;
   padding: 5px;
   left: 25%;
-  top: 20%;
+  top: 5%;
   width: 50%;
   background-color: white;
   border: 5px solid;
   border-color: rgb(105, 27, 27);
   z-index: 2;
 }
-h2 {
-  font-family: 'Otomanopee One', sans-serif;
+
+h1 {
+  font-family: "Otomanopee One", sans-serif;
 }
 .get-colors {
-  font-family: 'Yusei Magic', sans-serif;
+  font-family: "Yusei Magic", sans-serif;
 }
 .color-1 {
   display: inline-block;
@@ -411,7 +441,7 @@ h2 {
 }
 .color-3 {
   display: inline-block;
-  background-color: #FF5722;
+  background-color: #ff5722;
   width: 50px;
   height: 50px;
   border-radius: 50%;
