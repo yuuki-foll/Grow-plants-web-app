@@ -68,8 +68,8 @@
             <div class="color-5" id="color-5"></div>
             <div class="color-6" id="color-6"></div>
             <div class="nx-pre-btn">
-                <input type="image" name="pre" id="left-arrow-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/green_left_arrow.png?alt=media&token=66183185-a86f-4ff2-a615-1a4b973882b5">
-                <input type="image" name="nex" id="right-arrow-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/green_right_arrow.png?alt=media&token=707742b7-9462-4c7d-871f-8622853d9145">
+                <input type="image" name="pre" id="left-arrow-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/green_left_arrow.png?alt=media&token=dbf46706-93a4-4d9a-b3b8-4255e5a77f9a">
+                <input type="image" name="nex" id="right-arrow-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/green_right_arrow.png?alt=media&token=0271af8c-609a-4848-b425-d703a3fbd66f">
             </div>
             <div>
                 <button id="js-close-picbook" class="btn">とじる</button>
