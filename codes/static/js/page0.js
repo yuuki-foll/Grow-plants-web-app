@@ -8,7 +8,8 @@ back_flag = false;
 console.log(cookies);
 var cookiesArray = cookies.split(';');
 var savedata = "";
-var pbdata = ""
+var pbdata = "";
+var cv_data = "";
 var seed_name = "None";
 var username = ""
 /* キラキラを非表示に */
@@ -21,15 +22,19 @@ const Bgm2 = document.getElementById("game-bgm")
 for (var c of cookiesArray) {
     var cArray = c.split('=');
     console.log(cArray)
-    if (cArray[0] == 'auth') {
+    if (cArray[0] == ' auth') {
         savedata = atob(cArray[1]);
     }
-    else if (cArray[0] == ' pictbook') {
+    else if (cArray[0] == 'pictbook') {
         pbdata = atob(cArray[1]);
+    }
+    else if (cArray[0] == ' color_variation') {
+        cv_data = atob(cArray[1]);
     }
 }
 console.log(savedata)
 console.log(pbdata)
+console.log(cv_data)
 var savedataArray = savedata.split(',');
 for (var s of savedataArray) {
     var sArray = s.split(':');
@@ -50,6 +55,72 @@ for (var s of savedataArray) {
         username = sArray[1].slice(1, -1)
     }
 }
+var colorValiation_array = cv_data.split('],');
+for (var cv of colorValiation_array) {
+    var cvArray = cv.split(':');
+    if (cvArray[0] == "{\"cosmos\"") {
+        var cosmos_color_array = [false, false, false];
+        var cosArray = cvArray[1].split(",");
+        for (let i=0; i < cosArray.length; i++) {
+            var cos_c = cosArray[i];
+            if (cos_c[0] == "[") {
+                cos_c = cos_c.slice(1,0);
+                cosmos_color_array[i] = toBool(cos_c);
+            }
+            else {
+                cosmos_color_array[i] = toBool(cos_c);
+            }
+        }
+    }
+    else if (cvArray[0] == "\"pansy\"") {
+        var pansy_color_array = [false, false, false, false];
+        var panArray = cvArray[1].split(",");
+        for (let i=0; i < panArray.length; i++) {
+            var pan_c = panArray[i];
+            if (pan_c[0] == "[") {
+                pan_c = pan_c.slice(1,0);
+                pansy_color_array[i] = toBool(pan_c);
+            }
+            else {
+                pansy_color_array[i] = toBool(pan_c);
+            }
+        }
+    }
+    else if (cvArray[0] == "\"rose\"") {
+        var rose_color_array = [false, false, false, false];
+        var rosArray = cvArray[1].split(",");
+        for (let i=0; i < rosArray.length; i++) {
+            var ros_c = rosArray[i];
+            if (ros_c[0] == "[") {
+                ros_c = ros_c.slice(1,0);
+                rose_color_array[i] = toBool(ros_c);
+            }
+            else {
+                rose_color_array[i] = toBool(ros_c);
+            }
+        }
+    }
+    else if (cvArray[0] == "\"tulips\"") {
+        var tulips_color_array = [false, false, false, false, false, false];
+        var tulArray = cvArray[1].split(",");
+        for (let i=0; i < tulArray.length; i++) {
+            var tul_c = tulArray[i]
+            if (tul_c[0] == "[") {
+                tul_c = tul_c.slice(1,0)
+                tulips_color_array[i] = toBool(ros_c);
+            }
+            else {
+                tulips_color_array[i] = toBool(ros_c);
+            }
+        }
+    }
+}
+/*
+console.log(cosmos_color_array)
+console.log(pansy_color_array)
+console.log(rose_color_array)
+console.log(tulips_color_array)
+*/
 // let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
 document.getElementById("senti_level").innerHTML = senti_level
 document.getElementById("voice_recognition").innerHTML = voice_recognition
@@ -61,7 +132,8 @@ var com_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.ap
 var vlm_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/teisi.png?alt=media&token=3c3af8d8-eecd-4708-bf3e-3bf1a98d4c84"]
 let vlm_img_index = 0;
 var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false, cactus: false, flytrap: false, roselle: false, rose: false, pansy: false};
-
+var color_variation_f = [rose_color_array, cosmos_color_array, pansy_color_array, tulips_color_array]
+console.log(color_variation_f)
 function toBool(text) {
     return text === "true"
 }

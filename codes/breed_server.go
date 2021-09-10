@@ -71,7 +71,14 @@ type plantExplanationOut struct {
 	PlantName   string `json:"plant_name"`
 	Explanation string `json:"explanation"`
 }
-
+// 植物の色を格納　育てたらture
+type colorVariation struct {
+	Username string
+	Rose []bool
+	Cosmos []bool
+	Pansy []bool
+	Tulips []bool
+}
 func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 	var data pictBook
 	json.NewDecoder(r.Body).Decode(&data)
@@ -295,6 +302,13 @@ func registerDatabase(data objx.Map) {
 			"rose": false,
 			"pansy": false,
 		})
+		_, _, err = client.Collection("color_variation").Add(ctx, map[string]interface{}{
+			"username": data["name"],
+			"rose": [4] bool {false, false, false, false},
+			"cosmos": [3] bool {false, false, false},
+			"pansy": [4] bool {false, false, false, false},
+			"tulips": [6] bool {false, false, false, false, false, false},
+		})
 	}
 	if err != nil {
 		log.Fatalf("Failed adding alovelace: %v", err)
@@ -386,6 +400,14 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"rose": pictbook.Rose,
 			"pansy": pictbook.Pansy,
 		}).MustBase64()
+		color_variation := loadColorvariation(user.Name())
+		color_variationValue := objx.New(map[string]interface{}{
+			"username": color_variation.Username,
+			"rose": color_variation.Rose,
+			"cosmos": color_variation.Cosmos,
+			"pansy": color_variation.Pansy,
+			"tulips": color_variation.Tulips,
+		}).MustBase64()
 		load := loadSavedata(objx.MustFromBase64(authCookieValue))
 		saveDataCookieValue := objx.New(map[string]interface{}{
 			"name":              user.Name(),
@@ -409,6 +431,11 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			Name:  "pictbook",
 			Value: pictbookCookieValue,
 			Path:  "/page0",
+		})
+		http.SetCookie(w, &http.Cookie{
+			Name: "color_variation",
+			Value: color_variationValue,
+			Path: "/page0",
 		})
 
 		w.Header()["location"] = []string{"/after"}
@@ -452,6 +479,39 @@ func loadPictbook(username string) pictBook {
 		}
 	}
 
+	return data
+}
+func loadColorvariation(username string) colorVariation {
+	var data colorVariation
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	iter := client.Collection("color_variation").Where("username", "==", username).Documents(ctx)
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(doc.Data())
+		json_color_variation, err := json.Marshal(doc.Data())
+		if err != nil {
+			fmt.Println(err)
+		}
+		if err := json.Unmarshal(json_color_variation, &data); err != nil {
+			fmt.Println(err)
+		}
+
+	}
 	return data
 }
 
