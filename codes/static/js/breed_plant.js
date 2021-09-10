@@ -42,9 +42,9 @@ function changeHeartColor(senti_neg, senti_pos) {
     }
 }
 
-
 function changePlantImg(name) {
     if (name == "cherry" || name == "palm" || name == "bamboo") {
+        document.getElementById('plant_pic').setAttribute('src', "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/tree.png?alt=media&token=c0efacb6-ecc9-4e22-8754-b1768dc0f11c");
         PlantImg.style.top = "calc(5% + (70vh - min(70vh,70vw)))"
         PlantImg.style.left = "calc(50% - (min(70vh,70vw)/2)"
         PlantImg.style.width = "min(70vh,70vw)"
@@ -54,6 +54,7 @@ function changePlantImg(name) {
         EffectImg.style.width = "min(70vh,70vw)"
         EffectImg.style.height = "min(70vh,70vw)"
     } else {
+        document.getElementById('plant_pic').setAttribute('src', "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f");
         PlantImg.style.top = "calc(60% + (25vh - min(25vh,25vw)))"
         PlantImg.style.left = "calc(50% - (min(25vh,25vw)/2)"
         PlantImg.style.width = "min(25vh,25vw)"
