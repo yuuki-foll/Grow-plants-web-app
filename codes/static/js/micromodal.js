@@ -152,8 +152,10 @@ function slide_img(slides) {
     else {
         index = index + slides;
     }
+    document.getElementById("plant-explanation").textContent = "";
     document.getElementById("pic-book-pname").textContent = plant_name_jp[index];
     get_explanation(plant_name[index])
+    show_color_variations(plant_name[index])
     if (pictbook_f[plant_name[index]]) {
         document.getElementById("pict-book-img").src = pict_book_img_src[index];
     }
@@ -212,4 +214,24 @@ function get_explanation(plant_name) {
         console.log('jsonData: ', jsonData);
         document.getElementById("plant-explanation").innerHTML = jsonData["explanation"]
     });
+}
+function show_color_variations(pt_name) {
+    const color_dic = {rose:0, cosmos:1, pansy:2, tulips:3};
+    const colors_array = [["red", "yellow", "orange", "white"], ["pink", "red", "white"], ["red", "purple", "white", "yellow"], ["orange", "pink", "purple", "red", "white", "yellow"]];
+    if (pt_name in color_dic) {
+        for (let i=0; i < colors_array[color_dic[pt_name]].length; i++) {
+            id_name = "color-" + String(i+1);
+            //console.log(id_name)
+            document.getElementById(id_name).style.backgroundColor = colors_array[color_dic[pt_name]][i];
+            document.getElementById(id_name).style.border = "2px solid";
+            //console.log(colors_array[color_dic[pt_name]][i])
+        }
+    }
+    else {
+        for (let i=0; i < 6; i++){
+            id_name = "color-" + String(i+1);
+            document.getElementById(id_name).style.backgroundColor = "white";
+            document.getElementById(id_name).style.border = "none";
+        }
+    }
 }

@@ -363,7 +363,7 @@ p {
   left: 35%;
 }
 .nx-pre-btn {
-  position: absolute;
+  position: relative;
   left: 45%;
 }
 .pic-book-fonts {
@@ -416,10 +416,65 @@ p {
   border-color: rgb(105, 27, 27);
   z-index: 2;
 }
+
 h1 {
   font-family: "Otomanopee One", sans-serif;
 }
-
+.get-colors {
+  font-family: "Yusei Magic", sans-serif;
+}
+.color-1 {
+  display: inline-block;
+  background-color: rgb(255, 0, 0);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+.color-2 {
+  display: inline-block;
+  background-color: yellow;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+.color-3 {
+  display: inline-block;
+  background-color: #ff5722;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+.color-4 {
+  display: inline-block;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+.color-5 {
+  display: inline-block;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+.color-6 {
+  display: inline-block;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+#js-close-picbook {
+  margin: 10px;
+  width: 10%;
+}
 .heart_area {
   position: relative;
   margin: auto;
