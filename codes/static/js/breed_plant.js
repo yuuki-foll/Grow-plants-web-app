@@ -68,7 +68,7 @@ function changePlantImg(name) {
 
 
 const Body = document.getElementById('html_body')  
-Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22)"
+Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.gif?alt=media&token=c44a176b-0cc8-4d77-b4ef-4ab62abc26ff)"
 
 
 function changeBackground(life) {
