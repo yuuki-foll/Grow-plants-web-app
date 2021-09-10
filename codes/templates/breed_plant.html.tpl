@@ -60,11 +60,20 @@
                 <input type="image" name="flytrap" id="flytrap" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap3.png?alt=media&token=ffd92ad9-ec22-44e6-b9e2-7f6ebe15e50b">
                 <input type="image" name="roselle" id="roselle" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"-->
             </div>
+            <div class="get-colors">そだてたいろ</div>
+            <div class="color-1" id="color-1"></div>
+            <div class="color-2" id="color-2"></div>
+            <div class="color-3" id="color-3"></div>
+            <div class="color-4" id="color-4"></div>
+            <div class="color-5" id="color-5"></div>
+            <div class="color-6" id="color-6"></div>
             <div class="nx-pre-btn">
                 <input type="image" name="pre" id="left-arrow-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/green_left_arrow.png?alt=media&token=66183185-a86f-4ff2-a615-1a4b973882b5">
                 <input type="image" name="nex" id="right-arrow-img" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/green_right_arrow.png?alt=media&token=707742b7-9462-4c7d-871f-8622853d9145">
             </div>
-            <button id="js-close-picbook">閉じる</button>
+            <div>
+                <button id="js-close-picbook" class="btn">とじる</button>
+            </div>
         </div>
         <div class="black-background-picbook" id="js-black-bg-picbook"></div>
     </div>
