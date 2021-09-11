@@ -121,6 +121,37 @@ func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Print(data.UserName)
 	fmt.Printf(strconv.FormatBool(data.Sunflower))
 }
+func colorvariationHandler(w http.ResponseWriter, r *http.Request) {
+	var data colorVariation
+	json.NewDecoder(r.Body).Decode(&data)
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("path/to/grow-plant-webapp-firebase-adminsdk-bf93i-cb28b9790b.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+	query := client.Collection("color_variation").Where("username", "==", data.Username).Documents(ctx)
+	for {
+		doc, err := query.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			fmt.Println(err)
+		}
+		_, err = client.Collection("color_variation").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
+			"username": data.Username,
+			"rose": data.Rose,
+			"cosmos": data.Cosmos,
+			"pansy": data.Pansy,
+			"tulips": data.Tulips,
+		})
+	}
+}
 func saveHandler(w http.ResponseWriter, r *http.Request) {
 	var data saveData
 	json.NewDecoder(r.Body).Decode(&data)
@@ -637,6 +668,7 @@ func main() {
 	http.HandleFunc("/page0", HtmlHandler)
 	http.HandleFunc("/save", saveHandler)
 	http.HandleFunc("/pictbook", pictbookHandler)
+	http.HandleFunc("/colorvariation", colorvariationHandler)
 	http.HandleFunc("/explanation", loadExplanationHandler)
 	http.HandleFunc("/logout", logoutHandler)
 	http.HandleFunc("/home", HomeHandler)
