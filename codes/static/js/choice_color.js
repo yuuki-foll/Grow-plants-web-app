@@ -11,7 +11,7 @@ function random_choice(color_seed) {
     var imageNo = 0
     if (color_seed == "rose") {
         // 4色　赤、黄色、オレンジ、白
-        var images = ['https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_yellow.png?alt=media&token=5dcd2231-15cb-4776-a46f-1e1caf1e2a21', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_white.png?alt=media&token=dac14c21-019b-4027-9a04-3c8d848a72dd', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_orange.png?alt=media&token=3a7482f3-0346-44b9-b322-6b50a5011a8a'];
+        var images = ['https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_yellow.png?alt=media&token=5dcd2231-15cb-4776-a46f-1e1caf1e2a21','https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_orange.png?alt=media&token=3a7482f3-0346-44b9-b322-6b50a5011a8a', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_white.png?alt=media&token=dac14c21-019b-4027-9a04-3c8d848a72dd'];
         if (random < 35) { 
             imageNo = 0;
             color_variation_f[0][0] = true; 
