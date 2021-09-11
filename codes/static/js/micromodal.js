@@ -117,16 +117,21 @@ var picbook = document.getElementById('pic-book');
 picbook_btn.addEventListener('click', function() {
     picbook.classList.add('is-show');
     get_explanation("sunflower") // 図鑑起動時の説明を取得（図鑑を開いたときは必ずヒマワリのページからなので"sunflower"の説明を取得）
+    document.getElementById("pic-book-pname").textContent = "ヒマワリ";
 })
 
 
 var blackBg = document.getElementById('js-black-bg-picbook');
 blackBg.addEventListener('click', function() {
     picbook.classList.remove('is-show');
+    index = 0;
+    //document.getElementById("pic-book-pname").textContent = plant_name_jp[0];
 }) 
 var picbook_close_btn = document.getElementById('js-close-picbook');
 picbook_close_btn.addEventListener('click', function() {
     picbook.classList.remove('is-show');
+    index = 0;
+    //document.getElementById("pic-book-pname").textContent = plant_name_jp[0];
 })
 
 var pre_btn = document.getElementById('left-arrow-img');
