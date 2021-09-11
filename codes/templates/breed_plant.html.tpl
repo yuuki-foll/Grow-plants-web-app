@@ -60,7 +60,7 @@
                 <input type="image" name="flytrap" id="flytrap" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/flytrap3.png?alt=media&token=ffd92ad9-ec22-44e6-b9e2-7f6ebe15e50b">
                 <input type="image" name="roselle" id="roselle" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"-->
             </div>
-            <div class="get-colors">そだてたいろ</div>
+            <div class="get-colors" id ="get-colors"></div>
             <div class="color-1" id="color-1"></div>
             <div class="color-2" id="color-2"></div>
             <div class="color-3" id="color-3"></div>
@@ -179,7 +179,7 @@
     <input  id="btn_mute_img" type="image" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7">
     <!--音量調整　マージの時にコメント削除-->
     <input type="range" id="volume" value="0.05" min="0.0" max="0.5" step="0.01">
-    <button id="open-picbook">ずかんをみる</button>
+    <button id="open-picbook" class="btn">ずかんをみる</button>
     <!-- SE -->
     <audio id="grow_se"
         src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/grow_se.mp3?alt=media&token=52e9d0f4-385d-47bc-adcd-cce666960928"

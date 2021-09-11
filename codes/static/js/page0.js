@@ -107,10 +107,10 @@ for (var cv of colorValiation_array) {
             var tul_c = tulArray[i]
             if (tul_c[0] == "[") {
                 tul_c = tul_c.slice(1,0)
-                tulips_color_array[i] = toBool(ros_c);
+                tulips_color_array[i] = toBool(tul_c);
             }
             else {
-                tulips_color_array[i] = toBool(ros_c);
+                tulips_color_array[i] = toBool(tul_c);
             }
         }
     }

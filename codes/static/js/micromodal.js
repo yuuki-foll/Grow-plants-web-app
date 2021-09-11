@@ -167,6 +167,7 @@ picbook_btn.addEventListener('click', function(){
     if (pictbook_f["sunflower"]) {
         document.getElementById("pict-book-img").src = pict_book_img_src[0];
     }
+    show_color_variations("sunflower")
 })
 r_modal = document.getElementById('js-results');
 function openResults() {
@@ -219,6 +220,7 @@ function show_color_variations(pt_name) {
     const color_dic = {rose:0, cosmos:1, pansy:2, tulips:3};
     const colors_array = [["red", "yellow", "orange", "white"], ["pink", "red", "white"], ["red", "purple", "white", "yellow"], ["orange", "pink", "purple", "red", "white", "yellow"]];
     if (pt_name in color_dic) {
+        document.getElementById("get-colors").textContent = "そだてた　いろ";
         console.log(color_variation_f[color_dic[pt_name]])
         for (let i=0; i < colors_array[color_dic[pt_name]].length; i++) {
             id_name = "color-" + String(i+1);
@@ -238,6 +240,7 @@ function show_color_variations(pt_name) {
         }
     }
     else {
+        document.getElementById("get-colors").textContent = "";
         for (let i=0; i < 6; i++){
             id_name = "color-" + String(i+1);
             document.getElementById(id_name).style.backgroundColor = "white";
