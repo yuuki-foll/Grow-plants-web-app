@@ -219,10 +219,20 @@ function show_color_variations(pt_name) {
     const color_dic = {rose:0, cosmos:1, pansy:2, tulips:3};
     const colors_array = [["red", "yellow", "orange", "white"], ["pink", "red", "white"], ["red", "purple", "white", "yellow"], ["orange", "pink", "purple", "red", "white", "yellow"]];
     if (pt_name in color_dic) {
+        console.log(color_variation_f[color_dic[pt_name]])
         for (let i=0; i < colors_array[color_dic[pt_name]].length; i++) {
             id_name = "color-" + String(i+1);
             //console.log(id_name)
-            document.getElementById(id_name).style.backgroundColor = colors_array[color_dic[pt_name]][i];
+            console.log(color_variation_f[color_dic[pt_name]][i])
+            if (color_variation_f[color_dic[pt_name]][i]) {
+                document.getElementById(id_name).style.backgroundColor = colors_array[color_dic[pt_name]][i];
+                console.log("true")
+            }
+            else {
+                document.getElementById(id_name).style.backgroundColor = "black";
+                console.log("false")
+            }
+            // document.getElementById(id_name).style.backgroundColor = colors_array[color_dic[pt_name]][i];
             document.getElementById(id_name).style.border = "2px solid";
             //console.log(colors_array[color_dic[pt_name]][i])
         }

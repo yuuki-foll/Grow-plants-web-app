@@ -258,12 +258,13 @@ function changeImage(senti_level) {
             img_path = random_choice(seed_name)
         } else {
             img_path = img[3];
-    } 
-    if (!pictbook_f[seed_name]) {
-        openResults()
+        } 
+        if (!pictbook_f[seed_name]) {
+            openResults()
         }
         pictbook_f[seed_name] = true
         savePictbook(pictbook_f)
+        saveColorVariations()
     } else if (senti_level == 4) {
         evo_num = 2
         plant_evolution(img,evo_num)
@@ -299,6 +300,24 @@ function savePictbook() {
             Roselle:    pictbook_f["roselle"],
             Rose:       pictbook_f["rose"],
             Pansy:      pictbook_f["pansy"],
+        })
+    })
+}
+function saveColorVariations() {
+    console.log(color_variation_f);
+    console.log(username);
+    fetch('http://127.0.0.1:8999/colorvariation', {
+        method: "POST",
+        mode: "no-cors",
+        header: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            UserName: username,
+            Rose: color_variation_f[0],
+            Cosmos: color_variation_f[1],
+            Pansy: color_variation_f[2],
+            Tulips: color_variation_f[3],
         })
     })
 }
