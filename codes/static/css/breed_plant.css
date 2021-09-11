@@ -499,3 +499,8 @@ h1 {
   background: rgb(255, 0, 0);
   z-index: 1;
 }
+.results-plantimg {
+  position: relative;
+  top: 0;
+  left: 50%;
+}
