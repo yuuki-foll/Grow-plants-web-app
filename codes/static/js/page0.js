@@ -328,6 +328,7 @@ function saveColorVariations() {
     })
 }
 /* 植物の変更 */
+/*
 const change = document.getElementById('change_btn');
 change.addEventListener('click', function () {
     const seed = document.getElementById("change_seed").value;
@@ -366,6 +367,7 @@ change.addEventListener('click', function () {
     changePlantImg(seed_name);
 // 植物の変更時にステータスを引き継いでしまう
 });
+*/
 //音声認識の準備
 const recognition = new webkitSpeechRecognition();
 recognition.lang = 'ja';
