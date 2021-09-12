@@ -566,6 +566,16 @@ func logoutHandler(w http.ResponseWriter, r *http.Request) {
 		Path:  "/page0",
 	})
 	http.SetCookie(w, &http.Cookie{
+		Name:  "pictbook",
+		Value: "",
+		Path:  "/page0",
+	})
+	http.SetCookie(w, &http.Cookie{
+		Name:  "color_variation",
+		Value: "",
+		Path:  "/page0",
+	})
+	http.SetCookie(w, &http.Cookie{
 		Name:  "auth",
 		Value: "",
 		Path:  "/after",
