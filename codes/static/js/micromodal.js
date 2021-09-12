@@ -191,6 +191,7 @@ tweet_btn.addEventListener('click', function(){
 })
 
 function get_explanation(plant_name) {
+    var current_host = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
     console.log("説明が欲しい植物の名前：" + plant_name);
     const data = { "plant_name": plant_name }
     const param = {
@@ -203,7 +204,8 @@ function get_explanation(plant_name) {
     };
 
     // Fetch APIでデータ送信
-    fetch('http://127.0.0.1:8999/explanation', param)
+    // fetch('http://127.0.0.1:8999/explanation', param)
+    fetch(current_host+'/explanation', param)
     .then(response => {
         if (!response.ok) {
             console.log("error");
