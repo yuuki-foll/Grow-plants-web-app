@@ -10,7 +10,7 @@ let red = 255                        // 初期赤値
 let green = 255                      //初期緑値
 lifeBar.style.backgroundColor = "rgb(255, 255, 0)"  // 初期ライフの色　
 
-const PlantName = document.getElementById("change_seed").value; //植物の名前
+// const PlantName = document.getElementById("change_seed").value; //植物の名前
 const Bgm = document.getElementById("game-bgm")
 
 const PlantImg = document.getElementById('plant_pic')

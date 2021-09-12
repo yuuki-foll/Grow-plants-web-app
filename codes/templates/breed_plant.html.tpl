@@ -99,7 +99,7 @@
         <div class="save-btn"><button class="btn" id="save_btn">きろくする</button></div>
         <span class="back-btn"><button class="btn" id="back_btn" class="titleback_btn" onclick="">タイトルに戻る</button></span>
 
-        <div class="change-seed">
+        <!--div class="change-seed">
             <select id="change_seed" name="seed">
                 <option value="">しょくぶつをえらぶ</option>
                 <option value="sunflower">ヒマワリ</option>
@@ -115,9 +115,10 @@
                 <option value="rose">バラ</option>
                 <option value="pansy">パンジー</option>
             </select>
-        </div>
+        </div-->
 
-        <div class="change-btn"><button class="btn" id="change_btn">タネをかえる</button></div>
+        <!-- div class="change-btn"><button class="btn" id="change_btn">タネをかえる</button></div-->
+        <div class="change-btn"><button class="btn" id="chenge-seed-btn">タネをかえる</button></div>
     </div>   
     <!--ページタイトル-->
     <div style="text-align: center">
