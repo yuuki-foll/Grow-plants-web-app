@@ -223,6 +223,7 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 					panic("Error")
 				}
 				url_str := fmt.Sprintf("http://127.0.0.1:8998/ana_sent") //fraskのurlを宣言
+				// url_str := fmt.Sprintf("https://growapp-sentiment.herokuapp.com/ana_sent") //fraskのurlを宣言
 				req, err := http.NewRequest("POST", url_str, bytes.NewBuffer(jsonString))
 				if err != nil {
 					panic("Error")

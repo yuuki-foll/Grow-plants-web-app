@@ -73,7 +73,7 @@ Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/gr
 
 function changeBackground(life) {
     if (life > 0) {
-        Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.png?alt=media&token=ec0a9f35-9252-4c96-8a52-f99d0ae67b22)"
+        Body.style.backgroundImage = "url(https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/background.gif?alt=media&token=c44a176b-0cc8-4d77-b4ef-4ab62abc26ff)"
         
         // 一応植物が死んでいるときに植物変更するとBGMも初期化する様にしておいた
         if (Bgm.src != "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570") {
