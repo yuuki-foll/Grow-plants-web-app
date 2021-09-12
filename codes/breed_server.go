@@ -385,7 +385,7 @@ func setAuthInfo() {
 			"google client id",
 			"secret key",
 			"http://127.0.0.1:8999/auth/callback/google",
-			//"http:"+os.Getenv("PORT")+"/auth/callback/google",
+			//"https://grow-plant-app.herokuapp.com/auth/callback/google",
 		),
 	)
 }
