@@ -1,6 +1,6 @@
 /* ゲストで遊ぶ */
-const start = document.getElementById('start_btn');
-start.addEventListener('click', function () {
+const start_game = document.getElementById('start_btn');
+start_game.addEventListener('click', function () {
 
     var move_url = ""
     move_url += window.location.protocol
@@ -28,7 +28,7 @@ member.addEventListener('click', function () {
 });
 
 /* ログアウトする */
-const logout = document.getElementById('logout_btn');
+/* const logout = document.getElementById('logout_btn');
 logout.addEventListener('click', function () {
     var move_url = ""
     move_url += window.location.protocol
@@ -39,4 +39,4 @@ logout.addEventListener('click', function () {
     move_url += "/logout"
     console.log(move_url)
     window.location.href = move_url; // 通常の遷移
-});
+}); */

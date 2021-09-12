@@ -15,7 +15,7 @@
 
 <body>
     <h1>植物を育てよう</h1>
-    <button class="btn-hov" id = "start_btn" >ゲストモード</button> <br>
+    <button class="btn-hov" id = "start_btn"  >ゲストモード</button> <br>
     <button class="btn-hov " id = "member_btn" >ログイン</button>
     <script src="https://unpkg.com/vue@next"></script>
     

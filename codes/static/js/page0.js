@@ -12,6 +12,9 @@ var pbdata = "";
 var cv_data = "";
 var seed_name = "None";
 var username = ""
+
+var current_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
+
 /* キラキラを非表示に */
 const EffectImgVision = document.getElementById('effect_pic')
 EffectImgVision.style.visibility = "hidden"
@@ -231,6 +234,7 @@ save.addEventListener('click', function () {
 
     // Fetch APIでデータ送信
     fetch('http://127.0.0.1:8999/save', {　 // 送信先URL
+    //fetch( current_url+'/save', {　 // 送信先URL
         method: "POST", // 通信メソッド
         mode: "no-cors",
         header: {
@@ -281,6 +285,7 @@ function savePictbook() {
     //Fetch でデータ送信
     console.log(pictbook_f)
     fetch('http://127.0.0.1:8999/pictbook', {
+    //fetch(current_url + '/pictbook', {
         method: "POST",
         mode: "no-cors",
         header: {
@@ -307,6 +312,7 @@ function saveColorVariations() {
     console.log(color_variation_f);
     console.log(username);
     fetch('http://127.0.0.1:8999/colorvariation', {
+    //fetch(current_url + '/colorvariation', {
         method: "POST",
         mode: "no-cors",
         header: {
@@ -402,6 +408,7 @@ recognition.addEventListener('result', function (evt) {
     }
     // Fetch APIでデータ送信
     fetch('http://127.0.0.1:8999/page0', {　 // 送信先URL
+    //fetch(current_url + '/page0', {
         method: "POST", // 通信メソッド
         mode: "no-cors",
         header: {
@@ -467,11 +474,13 @@ console.log(back_flag)
 if (back_flag) {
     back_URL.onclick = function () {
         location.href = 'http://127.0.0.1:8999/after';
+        //window.location.href = current_url + "/after";
     }
     console.log("True");
 } else {
     back_URL.onclick = function () {
         location.href = 'http://127.0.0.1:8999/logout';
+        //window.location.href = current_url + "/logout";
     }
     console.log("logout");
 }
