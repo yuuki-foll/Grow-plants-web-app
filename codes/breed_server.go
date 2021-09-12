@@ -9,6 +9,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
+	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -56,7 +58,7 @@ type pictBook struct {
 	Cactus    bool
 	Flytrap   bool
 	Roselle   bool
-	Rose	  bool
+	Rose      bool
 	Pansy     bool
 }
 
@@ -71,14 +73,16 @@ type plantExplanationOut struct {
 	PlantName   string `json:"plant_name"`
 	Explanation string `json:"explanation"`
 }
+
 // 植物の色を格納　育てたらture
 type colorVariation struct {
 	Username string
-	Rose []bool
-	Cosmos []bool
-	Pansy []bool
-	Tulips []bool
+	Rose     []bool
+	Cosmos   []bool
+	Pansy    []bool
+	Tulips   []bool
 }
+
 func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 	var data pictBook
 	json.NewDecoder(r.Body).Decode(&data)
@@ -113,9 +117,9 @@ func pictbookHandler(w http.ResponseWriter, r *http.Request) {
 			"bamboo":    data.Palm,
 			"cactus":    data.Cactus,
 			"flytrap":   data.Flytrap,
-			"roselle": data.Roselle,
-			"rose": data.Rose,
-			"pansy": data.Pansy,
+			"roselle":   data.Roselle,
+			"rose":      data.Rose,
+			"pansy":     data.Pansy,
 		})
 	}
 	fmt.Print(data.UserName)
@@ -145,10 +149,10 @@ func colorvariationHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		_, err = client.Collection("color_variation").Doc(doc.Ref.ID).Set(ctx, map[string]interface{}{
 			"username": data.Username,
-			"rose": data.Rose,
-			"cosmos": data.Cosmos,
-			"pansy": data.Pansy,
-			"tulips": data.Tulips,
+			"rose":     data.Rose,
+			"cosmos":   data.Cosmos,
+			"pansy":    data.Pansy,
+			"tulips":   data.Tulips,
 		})
 	}
 }
@@ -198,7 +202,15 @@ func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 	//fmt.Println(r)
 	fmt.Println(r.Method)
 	fmt.Println(r.Header.Get("Referer"))
-	if r.Header.Get("Referer") == "http://127.0.0.1:8999/page0" { //8989(フロント)から受信した場合
+
+	/* urlからエンドポイントを取得 */
+	u, err := url.Parse(r.Header.Get("Referer"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	if u.Path == "/page0" { //8989(フロント)から受信した場合
+		fmt.Println(getListenPort())
+		//if r.Header.Get("Referer") == "http:"+os.Getenv("PORT")+"/page0" { //8989(フロント)から受信した場合
 		// POSTの時
 		if r.Method == "POST" {
 			var ans Ans
@@ -330,15 +342,15 @@ func registerDatabase(data objx.Map) {
 			"cactus":    false,
 			"flytrap":   false,
 			"roselle":   false,
-			"rose": false,
-			"pansy": false,
+			"rose":      false,
+			"pansy":     false,
 		})
 		_, _, err = client.Collection("color_variation").Add(ctx, map[string]interface{}{
 			"username": data["name"],
-			"rose": [4] bool {false, false, false, false},
-			"cosmos": [3] bool {false, false, false},
-			"pansy": [4] bool {false, false, false, false},
-			"tulips": [6] bool {false, false, false, false, false, false},
+			"rose":     [4]bool{false, false, false, false},
+			"cosmos":   [3]bool{false, false, false},
+			"pansy":    [4]bool{false, false, false, false},
+			"tulips":   [6]bool{false, false, false, false, false, false},
 		})
 	}
 	if err != nil {
@@ -373,6 +385,7 @@ func setAuthInfo() {
 			"google client id",
 			"secret key",
 			"http://127.0.0.1:8999/auth/callback/google",
+			//"http:"+os.Getenv("PORT")+"/auth/callback/google",
 		),
 	)
 }
@@ -428,16 +441,16 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"bamboo":    pictbook.Palm,
 			"cactus":    pictbook.Cactus,
 			"flytrap":   pictbook.Flytrap,
-			"rose": pictbook.Rose,
-			"pansy": pictbook.Pansy,
+			"rose":      pictbook.Rose,
+			"pansy":     pictbook.Pansy,
 		}).MustBase64()
 		color_variation := loadColorvariation(user.Name())
 		color_variationValue := objx.New(map[string]interface{}{
 			"username": color_variation.Username,
-			"rose": color_variation.Rose,
-			"cosmos": color_variation.Cosmos,
-			"pansy": color_variation.Pansy,
-			"tulips": color_variation.Tulips,
+			"rose":     color_variation.Rose,
+			"cosmos":   color_variation.Cosmos,
+			"pansy":    color_variation.Pansy,
+			"tulips":   color_variation.Tulips,
 		}).MustBase64()
 		load := loadSavedata(objx.MustFromBase64(authCookieValue))
 		saveDataCookieValue := objx.New(map[string]interface{}{
@@ -464,9 +477,9 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			Path:  "/page0",
 		})
 		http.SetCookie(w, &http.Cookie{
-			Name: "color_variation",
+			Name:  "color_variation",
 			Value: color_variationValue,
-			Path: "/page0",
+			Path:  "/page0",
 		})
 
 		w.Header()["location"] = []string{"/after"}
@@ -631,6 +644,14 @@ func loadExplanationHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func getListenPort() string {
+	port := os.Getenv("PORT")
+	if port != "" {
+		return ":" + port
+	}
+	return ":8999"
+}
+
 func main() {
 	/*
 		// firebase初期化
@@ -657,6 +678,11 @@ func main() {
 		// 切断
 		defer client.Close()
 	*/
+
+	server := http.Server{
+		Addr: getListenPort(),
+	}
+
 	fmt.Print("connection successflly\n")
 	http.HandleFunc("/", moveHandler)
 	http.Handle("/login", &templateHandler{filename: "/login.html"})
@@ -674,5 +700,5 @@ func main() {
 	http.HandleFunc("/home", HomeHandler)
 
 	// HTTPサーバの起動
-	http.ListenAndServe(":8999", nil)
+	server.ListenAndServe()
 }
