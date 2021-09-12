@@ -135,7 +135,13 @@ var com_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.ap
 var vlm_img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/saisei.png?alt=media&token=84e291fa-f530-41e9-b699-de29a53c34e7", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/teisi.png?alt=media&token=3c3af8d8-eecd-4708-bf3e-3bf1a98d4c84"]
 let vlm_img_index = 0;
 var pictbook_f = {sunflower: false, tulips: false, cherry: false, cosmos: false, dandelion: false, palm: false, bamboo: false, cactus: false, flytrap: false, roselle: false, rose: false, pansy: false};
-var color_variation_f = [rose_color_array, cosmos_color_array, pansy_color_array, tulips_color_array]
+if (typeof rose_color_array === 'undefined') {
+    var color_variation_f = [[false, false, false, false], [false, false, false], [false, false, false, false], [false, false, false, false, false, false]]
+} else {
+    var color_variation_f = [rose_color_array, cosmos_color_array, pansy_color_array, tulips_color_array]
+}
+
+
 console.log(color_variation_f)
 function toBool(text) {
     return text === "true"
