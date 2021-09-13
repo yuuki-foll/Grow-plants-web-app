@@ -139,8 +139,17 @@
                         <input type="image" id="senti_heart" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/heart.png?alt=media&token=b7bed379-c717-4a08-abb7-3437ace5ef48">
                         <div id="heart_color"></div>
                     </div>
-                    <p>うれしさレベル</p>
-                    <div id="senti_level"></div>
+                    <p>しあわせメーター</p>
+                    <!-- <div id="senti_level"></div> -->
+                    <table class = "happy-meter">
+                        <tr>
+                            <td><img id="empty_heart" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/empty_heart.png?alt=media&token=4c6db183-b641-41c2-ab10-f2a82f5afb17"  width="50%" height="50%"></td>
+                            <td><img id="max_heart" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/max_heart.png?alt=media&token=00a11988-da13-49ff-ab52-31fe03d75303"  width="50%" height="50%"></td>
+                            <td><div id="happy-frame">
+                                <div id="happy-bar"></div>
+                            </div></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <!-- 画面右側 -->

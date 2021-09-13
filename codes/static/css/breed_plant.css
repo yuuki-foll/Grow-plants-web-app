@@ -185,11 +185,6 @@ body {
   height: auto;
 }
 
-p {
-  margin: 1em 0px;
-  line-height: 100%;
-}
-
 #voice_recognition {
   margin: 1em 0px; /* 上下に1em・左右に0px */
   line-height: 100%;
@@ -329,7 +324,7 @@ p {
   cursor: pointer;
 }
 .plant-explanation {
-  border: solid 1px black;
+  /* border: solid 1px black; */
 }
 .black-background-picbook {
   position: absolute;
@@ -411,6 +406,7 @@ p {
   left: 25%;
   top: 5%;
   width: 50%;
+  height: 45%;
   background-color: white;
   border: 5px solid;
   border-color: rgb(105, 27, 27);
@@ -477,6 +473,7 @@ h1 {
 }
 .heart_area {
   position: relative;
+  /* border: solid 1px black; */
   margin: auto;
   width: 100px;
   height: 100px;
@@ -503,4 +500,53 @@ h1 {
   position: relative;
   top: 0;
   left: 50%;
+}
+
+.happy-meter {
+  position: absolute;
+  height: 10%;
+  top: 85%;
+  width: 100%;
+  left: 0%;
+  /* border: solid 1px black; */
+  display: inline-block;
+  margin: auto;
+}
+#empty_heart {
+  /* border: solid 1px black; */
+  position: absolute;
+  left: 5%;
+  width: 15%;
+  height: 100%;
+}
+#max_heart {
+  /* border: solid 1px black; */
+  position: absolute;
+  left: 80%;
+  width: 15%;
+  height: 100%;
+}
+#happy-frame {
+  position: absolute;
+  margin: 0 auto;
+  width: 50%;
+  top: 30%;
+  height: 5%;
+  left: 25%;
+  background-color: rgba(10, 0, 50, 0.6);
+  padding: 3px 3px;
+}
+#happy-bar {
+  position: absolute;
+  top: 20%;
+  height: 60%;
+  width: 90%;
+  left: 5%;
+  background-color: rgb(255, 0, 0);
+  transition: 300ms;
+}
+
+p {
+  margin: 10px 10px;
+  line-height: 100%;
 }

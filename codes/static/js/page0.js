@@ -125,7 +125,7 @@ console.log(rose_color_array)
 console.log(tulips_color_array)
 */
 // let senti_level = 1; // 感情指数(レベルとして1スタートに変更)
-document.getElementById("senti_level").innerHTML = senti_level
+// document.getElementById("senti_level").innerHTML = senti_level
 document.getElementById("voice_recognition").innerHTML = voice_recognition
 // document.getElementById("showson").innerHTML = showson
 
@@ -384,8 +384,9 @@ btn.addEventListener('click', function () {
         /* ニューゲームを押したら初期化処理を行う */
         plant_life = alterLife(50 - life) // 体力を50に戻す
         senti_level = 1;
-        document.getElementById("senti_level").innerHTML = senti_level
+        // document.getElementById("senti_level").innerHTML = senti_level
         plant_pic.src = changeImage(senti_level);
+        alterHappy(value); // 嬉しさメーターの初期化
         document.getElementById("btn").innerHTML = "植物と話す";
         Bgm2.src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570";
     }
@@ -454,12 +455,13 @@ recognition.addEventListener('result', function (evt) {
                 plant_life = alterLife(+10)
                 document.getElementById("grow_se").volume = 0.05; // 成長時の効果音の音量調整
                 document.getElementById("grow_se").play(); // 成長時効果音を鳴らす
+                alterHappy(senti_level);
 
                 /* 成長エフェクトを1秒間だけ表示して非表示に戻す */
                 EffectImgVision.style.visibility = "visible"
                 setTimeout('EffectImgVision.style.visibility = "hidden"', 1000);
             }
-            document.getElementById("senti_level").innerHTML = senti_level
+            // document.getElementById("senti_level").innerHTML = senti_level
             console.log(Object.keys(jsonData))
 
             plant_pic.src = changeImage(senti_level);
