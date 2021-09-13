@@ -35,8 +35,8 @@
                 <input type="image" name="pansy" id="pansy" src="https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy3.png?alt=media&token=46afa025-ea4a-42ef-b6a3-570ad63b395a">
             </div>
             <div id="click-img"></div>
-            <div>を選択しました</div>
-            <button id="js-close-btn">閉じる</button>
+            <div>をそだてる</div>
+            <button id="js-close-btn" class="btn">とじる</button>
         </div>
         <div class="black-background" id="js-black-bg"></div>
     </div>
