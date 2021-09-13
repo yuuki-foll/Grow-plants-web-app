@@ -14,19 +14,23 @@ function random_choice(color_seed) {
         var images = ['https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_yellow.png?alt=media&token=5dcd2231-15cb-4776-a46f-1e1caf1e2a21','https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_orange.png?alt=media&token=3a7482f3-0346-44b9-b322-6b50a5011a8a', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_white.png?alt=media&token=dac14c21-019b-4027-9a04-3c8d848a72dd'];
         if (random < 35) { 
             imageNo = 0;
-            color_variation_f[0][0] = true; 
+            color_variation_f[0][0] = true;
+            flower_color = "red"; 
         }
         else if (random < 50) { 
             imageNo = 1;
             color_variation_f[0][1] = true; 
+            flower_color = "yellow";
         }
         else if (random < 65) { 
             imageNo = 2 ;
             color_variation_f[0][2] = true;
+            flower_color = "orange";
         }
         else if (random < 100) { 
             imageNo = 3;
             color_variation_f[0][3] = true;
+            flower_color = "white";
         }
         console.log("バラ",imageNo)
     } else if (color_seed == "cosmos") {
@@ -35,14 +39,17 @@ function random_choice(color_seed) {
         if (random < 40) { 
             imageNo = 0;
             color_variation_f[1][0] = true;
+            flower_color = "pink";
         }
         else if (random < 60) { 
             imageNo = 1;
             color_variation_f[1][1] = true;
+            flower_color = "red";
          }
         else if (random < 100) {
              imageNo = 2;
              color_variation_f[1][2] = true;
+             flower_color = "white";
             }
     } else if (color_seed == "pansy") {
         // 4色 赤、紫、白、黄色
@@ -50,18 +57,22 @@ function random_choice(color_seed) {
         if (random < 30) { 
             imageNo = 0;
             color_variation_f[2][0] = true;
+            flower_color = "red";
         }
         else if (random < 60) { 
             imageNo = 1;
             color_variation_f[2][1] = true;
+            flower_color = "purple";
         }
         else if (random < 70) { 
             imageNo = 2;
             color_variation_f[2][2] = true;
+            flower_color = "white";
         }
         else if (random < 100) { 
             imageNo = 3; 
             color_variation_f[2][3] = true;
+            flower_color = "yellow"; 
         }
     } else if (color_seed == "tulips") {
         // 6色 オレンジ、ピンク、紫、赤、白、黄色
@@ -69,26 +80,32 @@ function random_choice(color_seed) {
         if (random < 5) { 
             imageNo = 0;
             color_variation_f[3][0] = true;
+            flower_color = "orange";
         }
         else if (random < 15) { 
             imageNo = 1;
             color_variation_f[3][1] = true;
+            flower_color = "pink";
         }
         else if (random < 25) { 
             imageNo = 2;
             color_variation_f[3][2] = true;
+            flower_color = "purple";
         }
         else if (random < 50) { 
             imageNo = 3;
             color_variation_f[3][3] = true;
+            flower_color = "red";
         }
         else if (random < 75) { 
             imageNo = 4;
             color_variation_f[3][4] = true;
+            flower_color = "white";
         }
         else if (random < 100) { 
             imageNo = 5;
             color_variation_f[3][5] = true;
+            flower_color = "yellow";
         }
     }
     return images[imageNo];
