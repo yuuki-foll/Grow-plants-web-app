@@ -43,6 +43,7 @@ type saveData struct {
 	PlantLevel       int64
 	PhysicalStrength int64
 	Plant            string
+	FlowerColor		 string
 }
 
 // 植物図鑑用
@@ -185,6 +186,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 			"plant_level":       data.PlantLevel,
 			"physical_strength": data.PhysicalStrength,
 			"plant":             data.Plant,
+			"flower_color": 	 data.FlowerColor,
 		})
 	}
 
@@ -194,6 +196,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("%d\n", data.PlantLevel)
 	fmt.Printf("%d\n", data.PhysicalStrength)
 	fmt.Printf("%s\n", data.Plant)
+	fmt.Printf("%s\n", data.FlowerColor)
 
 }
 
@@ -289,6 +292,7 @@ func loadSavedata(data objx.Map) saveData {
 		load.PlantLevel = doc.Data()["plant_level"].(int64)
 		load.PhysicalStrength = doc.Data()["physical_strength"].(int64)
 		load.Plant = doc.Data()["plant"].(string)
+		load.FlowerColor = doc.Data()["flower_color"].(string)
 	}
 	defer client.Close()
 	return load
@@ -330,6 +334,7 @@ func registerDatabase(data objx.Map) {
 			"plant_level":       1,
 			"physical_strength": 50,
 			"plant":             "None",
+			"flower_color": "None",
 		})
 		_, _, err = client.Collection("picture_book").Add(ctx, map[string]interface{}{
 			"username":  data["name"],
@@ -459,6 +464,7 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 			"physical_strength": load.PhysicalStrength,
 			"plant_level":       load.PlantLevel,
 			"plant":             load.Plant,
+			"flower_color":      load.FlowerColor,
 		}).MustBase64()
 		username = user.Name()
 

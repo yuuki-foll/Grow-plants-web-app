@@ -25,10 +25,10 @@ const Bgm2 = document.getElementById("game-bgm")
 for (var c of cookiesArray) {
     var cArray = c.split('=');
     console.log(cArray)
-    if (cArray[0] == ' auth') {
+    if (cArray[0] == 'auth') {
         savedata = atob(cArray[1]);
     }
-    else if (cArray[0] == 'pictbook') {
+    else if (cArray[0] == ' pictbook') {
         pbdata = atob(cArray[1]);
     }
     else if (cArray[0] == ' color_variation') {
@@ -39,6 +39,7 @@ console.log(savedata)
 console.log(pbdata)
 console.log(cv_data)
 var savedataArray = savedata.split(',');
+let flower_color = ""
 for (var s of savedataArray) {
     var sArray = s.split(':');
     console.log(sArray)
@@ -54,8 +55,11 @@ for (var s of savedataArray) {
         seed_name = sArray[1].slice(1,-1)
         // console.log(seed_name)
     }
-    else if (sArray[0] == "{\"name\"") {
+    else if (sArray[0] == "\"name\"") {
         username = sArray[1].slice(1, -1)
+    }
+    else if (sArray[0] == "{\"flower_color\"") {
+        flower_color = sArray[1].slice(1, -1);
     }
 }
 var colorValiation_array = cv_data.split('],');
@@ -166,10 +170,32 @@ if (seed_name == "sunflower") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA.png?alt=media&token=71f54a3b-5f37-481a-8086-abc7be1d6073", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA2.png?alt=media&token=7b96a6f2-9c13-4d91-88f3-cadc2948e4e5", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA3.png?alt=media&token=97fd9d06-ae82-4bc8-b0c4-681d1d8c3998"]
 }else if (seed_name == "tulips") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%972.png?alt=media&token=025ca678-3b54-49bc-8336-9d3b6fda7fa3","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%973.png?alt=media&token=48b6bbeb-7b1b-4dad-a1de-60600903447b","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/turips.gif?alt=media&token=b7740863-979f-4085-b3a5-ca34e98eff01"]
+    let tulips_variations = ['https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/tulip_orange.png?alt=media&token=18c6d0e5-cc81-4d17-971e-a75acc433841','https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/tulip_pink.png?alt=media&token=80304804-aaa3-4eee-a1ef-8d0a4a3987a4', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/tulip_purple.png?alt=media&token=b5700c92-f495-4757-af94-ad9f7776975e', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/tulip_red.png?alt=media&token=4ad89090-e40f-4f48-894f-6d026ec97558', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/tulip_white.png?alt=media&token=1bf5e18d-f5c4-4363-a145-58c5ff1342e6', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/tulip_yellow.png?alt=media&token=f733e5eb-dfca-4071-9f68-aa4b2ed8e9b0']
+    if (flower_color === "orange") {
+        img[3] = tulips_variations[0];
+    }else if (flower_color === "pink") {
+        img[3] = tulips_variations[1];
+    }else if (flower_color === "purple") {
+        img[3] = tulips_variations[2];
+    }else if (flower_color === "red") {
+        img[3] = tulips_variations[3];
+    }else if (flower_color === "white") {
+        img[3] = tulips_variations[4];
+    }else if (flower_color === "yellow") {
+        img[3] = tulips_variations[5];
+    }
 }else if (seed_name == "cherry") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/tree.png?alt=media&token=c0efacb6-ecc9-4e22-8754-b1768dc0f11c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cherry1.png?alt=media&token=674824d4-d18d-46cf-ab68-6bee32d69e43","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cherry2.png?alt=media&token=543b9b77-4c7f-4a20-a46e-f19d11b47952","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cherry3.png?alt=media&token=ed6df089-9fdd-41ba-94ee-df40ef93e3c1"]
 }else if (seed_name == "cosmos") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cosmos1.png?alt=media&token=dbf4e15b-bab5-4411-9da6-1d81f9b6337f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cosmos2.png?alt=media&token=51423780-3eda-4bf0-a267-9d7eb97eb3ba","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cosmos3.png?alt=media&token=0ca30a09-fcb0-42bd-a1ad-d51e48b3aaf5"]
+    let cosmos_variations = ['https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cosmos3.png?alt=media&token=0ca30a09-fcb0-42bd-a1ad-d51e48b3aaf5', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cosmos3_red.png?alt=media&token=834adf4a-6f2f-41e0-9990-3dc98a5de29c', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/cosmos3_white.png?alt=media&token=8c33490d-d851-4936-84d3-5a58fcdfaea1'];
+    if (flower_color === "pink") {
+        img[3] = cosmos_variations[0];
+    }else if(flower_color === "red") {
+        img[3] = cosmos_variations[1];
+    }else if(flower_color === "white") {
+        img[3] = cosmos_variations[2];
+    }
 }else if (seed_name == "dandelion") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/dandelions1.png?alt=media&token=00a41927-b769-42e3-b044-119d64d158d8", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/dandelions2.png?alt=media&token=4bf36afd-a321-4b3f-9c34-42520a8b8c24", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/dandelions3.png?alt=media&token=3de2fbc9-3f3a-40c3-9e7f-fee6daeafa30"]
 }else if (seed_name == "palm") {
@@ -184,11 +210,32 @@ if (seed_name == "sunflower") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle1.png?alt=media&token=43c24c91-fc7f-4b75-a73a-3b981acb9f7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle2.png?alt=media&token=64795f6f-d62a-4e6e-8ddf-145e08f19267","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/roselle3.png?alt=media&token=03a04642-361b-43cd-a4fa-8f294e9a9c80"]
 }else if (seed_name == "rose") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose1.png?alt=media&token=b3130d3b-34bf-4d30-ad05-e2a2dccfe1f9", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose2.png?alt=media&token=abe6a4eb-bf47-41b6-b810-0872c98bda0a", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040"]
+    let rose_variations = ['https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3.png?alt=media&token=691c5682-0ddb-4a38-8197-09d143ef2040', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_yellow.png?alt=media&token=5dcd2231-15cb-4776-a46f-1e1caf1e2a21','https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_orange.png?alt=media&token=3a7482f3-0346-44b9-b322-6b50a5011a8a', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rose3_white.png?alt=media&token=dac14c21-019b-4027-9a04-3c8d848a72dd'];
+    if (flower_color === "red") {
+        img[3] = rose_variations[0];
+    }else if (flower_color === "yellow") {
+        img[3] = rose_variations[1];
+    }else if (flower_color === "orange") {
+        img[3] = rose_variations[2];
+    }else if (flower_color === "white") {
+        img[3] = rose_variations[3];
+    }
+
 }else if (seed_name == "pansy") {
     img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/%E3%83%92%E3%83%9E%E3%83%AF%E3%83%AA_%E7%A8%AE.png?alt=media&token=c0243462-1efb-4a1f-a2ba-453afc8f7c7f","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy1.png?alt=media&token=1469e9d4-a5aa-48fe-ae5e-8b8094894871", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy2.png?alt=media&token=c4c7b5b8-0272-4c61-b2aa-5bbf9af09e3b", "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy3.png?alt=media&token=46afa025-ea4a-42ef-b6a3-570ad63b395a"]
+    let pansy_variations= ['https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy3.png?alt=media&token=46afa025-ea4a-42ef-b6a3-570ad63b395a', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy3_purple.png?alt=media&token=dab89c47-1059-4dac-9edf-6e8553498956', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy3_white.png?alt=media&token=b864b172-db56-4dee-9052-97a1b3af1014', 'https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/pansy3_yellow.png?alt=media&token=0122ee5c-231d-43bd-9c10-d7926aed417a'];
+    if (flower_color === "red") {
+        img[3] = pansy_variations[0];
+    }else if (flower_color === "purple") {
+        img[3] = pansy_variations[1];
+    }else if (flower_color === "white") {
+        img[3] = pansy_variations[2];
+    }else if (flower_color === "yellow") {
+        img[3] = pansy_variations[3];
+    }
 }
 
-plant_pic.src = changeImage(senti_level)
+plant_pic.src = changeImage(senti_level, false)
 window.addEventListener('DOMContentLoaded', function () {
     // const btn_play = document.getElementById("btn_play");
     // const btn_pause = document.getElementById("btn_pause");
@@ -237,7 +284,7 @@ window.addEventListener('DOMContentLoaded', function () {
 /* セーブ処理 */
 const save = document.getElementById('save_btn');
 save.addEventListener('click', function () {
-
+    console.log(flower_color)
     // Fetch APIでデータ送信
     //fetch('http://127.0.0.1:8999/save', {　 // 送信先URL
     fetch( current_host+'/save', {　 // 送信先URL
@@ -252,11 +299,12 @@ save.addEventListener('click', function () {
             PlantLevel: senti_level,
             Username: username,
             plant: seed_name,
+            FlowerColor: flower_color,
         }) // JSON形式のデータ
     })
 });
 /* senti_levelの値により植物の画像を変更する関数 */
-function changeImage(senti_level) {
+function changeImage(senti_level, random_f) {
     var evo_num = 0;
     if (senti_level == 1) {
         evo_num = 0 
@@ -264,7 +312,7 @@ function changeImage(senti_level) {
     } else if (senti_level == 6) {
         evo_num = 3
         // plant_evolution(img,evo_num)
-        if (seed_name == "rose" || seed_name == "cosmos" || seed_name == "pansy" || seed_name == "tulips") {
+        if (seed_name == "rose" || seed_name == "cosmos" || seed_name == "pansy" || seed_name == "tulips" && random_f) {
             img_path = random_choice(seed_name)
         } else {
             img_path = img[3];
@@ -391,7 +439,7 @@ btn.addEventListener('click', function () {
         plant_life = alterLife(50 - life) // 体力を50に戻す
         senti_level = 1;
         document.getElementById("senti_level").innerHTML = senti_level
-        plant_pic.src = changeImage(senti_level);
+        plant_pic.src = changeImage(senti_level, true);
         document.getElementById("btn").innerHTML = "植物と話す";
         Bgm2.src = "https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/bgm_nomal.mp3?alt=media&token=39bda9bc-de03-45c9-b85c-a61d62918570";
     }
@@ -468,7 +516,7 @@ recognition.addEventListener('result', function (evt) {
             document.getElementById("senti_level").innerHTML = senti_level
             console.log(Object.keys(jsonData))
 
-            plant_pic.src = changeImage(senti_level);
+            plant_pic.src = changeImage(senti_level, true);
 
             // 体力が0以下なら墓を表示してニューゲームボタンに切り替え
             if (plant_life <= 0) {
