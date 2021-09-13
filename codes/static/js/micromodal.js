@@ -266,7 +266,8 @@ document.getElementById("js-close-btn").addEventListener("click", function() {
     const change_seed_modal = document.getElementById("js-popup");
     plant_life = alterLife(50 - life);// 体力を50に戻す
     senti_level = 1;
-    document.getElementById("senti_level").textContent = senti_level;
+    // document.getElementById("senti_level").textContent = senti_level;
+    alterHappy(senti_level)
     changeHeartColor(0, 0);
     change_seed_modal.classList.remove("is-show");
 })

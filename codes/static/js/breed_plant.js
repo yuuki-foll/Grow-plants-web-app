@@ -137,3 +137,16 @@ function alterLife( value ){
 
     return life
 }
+
+const happyBar = document.getElementById('happy-bar')         // うれしさバー
+const happyMark = document.getElementById('happy-mark')       // うれしさの光部分
+let happy = 0                                              // うれしさ初期値
+happyBar.style.width = "0%"                            // うれしさ初期幅
+// *** ライフ変更処理 ***
+function alterHappy(value) {
+    if (value <= 6) {
+        happy_width = (value - 1) * 90 / 5
+        // スタイル(幅)を更新する
+        happyBar.style.width = happy_width + "%"
+    }
+}
