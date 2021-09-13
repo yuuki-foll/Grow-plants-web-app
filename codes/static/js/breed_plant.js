@@ -144,7 +144,9 @@ let happy = 0                                              // うれしさ初期
 happyBar.style.width = "0%"                            // うれしさ初期幅
 // *** ライフ変更処理 ***
 function alterHappy(value) {
-    happy_width = (value-1) * 100 / 5
-    // スタイル(幅)を更新する
-    happyBar.style.width = happy_width + "%"
+    if (value <= 6) {
+        happy_width = (value - 1) * 90 / 5
+        // スタイル(幅)を更新する
+        happyBar.style.width = happy_width + "%"
+    }
 }
