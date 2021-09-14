@@ -323,9 +323,10 @@ body {
   z-index: 2;
   cursor: pointer;
 }
+/*
 .plant-explanation {
-  /* border: solid 1px black; */
-}
+  border: solid 1px black;
+}*/
 .black-background-picbook {
   position: absolute;
   left: 0;

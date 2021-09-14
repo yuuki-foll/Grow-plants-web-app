@@ -16,10 +16,12 @@ input {
   margin: 10px;
 }
 .btn-hov {
+  display: inline-block;
   position: relative;
   overflow: hidden;
   border-width: 3px;
   z-index: 1;
+  font-family: "Yusei Magic", sans-serif;
 }
 .btn-hov::before {
   content: "";
@@ -41,9 +43,11 @@ input {
   transform: none;
 }
 h1 {
+  font-family: "Otomanopee One", sans-serif;
   color: rgb(16, 185, 58);
 }
 .table {
+  font-family: "Yusei Magic", sans-serif;
   padding: 1em 1em;
   margin: 2em 0;
   font-weight: bold;
@@ -65,4 +69,10 @@ h1 {
 thead th {
   height: 70px;
   border-bottom: 1px solid black;
+}
+.alert {
+  font-family: "Yusei Magic", sans-serif;
+}
+.panel-body {
+  font-family: "Yusei Magic", sans-serif;
 }
