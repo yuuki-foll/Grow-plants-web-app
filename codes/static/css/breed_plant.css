@@ -474,15 +474,14 @@ h1 {
 }
 .heart_area {
   position: relative;
-  /* border: solid 1px black; */
   margin: auto;
-  width: 100px;
-  height: 100px;
+  width: calc(min(10vh, 10vw));
+  height: calc(min(10vh, 10vw));
 }
 #senti_heart {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: calc(min(10vh, 10vw));
+  height: calc(min(10vh, 10vw));
   left: 0px;
   top: 0px;
   z-index: 2;
@@ -490,8 +489,8 @@ h1 {
 #heart_color {
   position: absolute;
   margin: auto;
-  width: 100px;
-  height: 0px;
+  width: calc(min(10vh, 10vw));
+  height: 0%;
   left: 0px;
   bottom: 0px;
   background: rgb(255, 0, 0);
@@ -506,7 +505,6 @@ h1 {
 .happy-meter {
   position: absolute;
   height: 10%;
-  top: 85%;
   width: 100%;
   left: 0%;
   /* border: solid 1px black; */
@@ -516,16 +514,16 @@ h1 {
 #empty_heart {
   /* border: solid 1px black; */
   position: absolute;
-  left: 5%;
-  width: 15%;
-  height: 100%;
+  left: calc(20% - min(4vh, 4vw));
+  width: calc(min(4vh, 4vw));
+  height: calc(min(4vh, 4vw));
 }
 #max_heart {
   /* border: solid 1px black; */
   position: absolute;
   left: 80%;
-  width: 15%;
-  height: 100%;
+  width: calc(min(4vh, 4vw));
+  height: calc(min(4vh, 4vw));
 }
 #happy-frame {
   position: absolute;

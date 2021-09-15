@@ -33,12 +33,10 @@ function changeHeartColor(senti_neg, senti_pos) {
     console.log(senti_pos);
     if (senti_neg > senti_pos) {
         HeartBack.style.background = "rgb(0, 0, 255)"
-        var heart_height = 100 * senti_neg
-        HeartBack.style.height = heart_height + "px"
+        HeartBack.style.height = "calc(min(10vh, 10vw)*"+senti_neg+")";
     } else {
         HeartBack.style.background = "rgb(255, 0, 0)"
-        var heart_height = 100 * senti_pos
-        HeartBack.style.height = heart_height + "px"
+        HeartBack.style.height = "calc(min(10vh, 10vw)*"+senti_pos+")";
     }
 }
 
