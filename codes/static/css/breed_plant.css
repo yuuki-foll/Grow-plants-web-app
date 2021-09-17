@@ -650,4 +650,11 @@ p {
     height: 4em;
   }
 }
-
+#result-close {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 22px;
+}
+#result-tweet {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 22px;
+}
