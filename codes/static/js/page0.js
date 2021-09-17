@@ -428,11 +428,12 @@ recognition.lang = 'ja';
 
 //使用する変数を用意
 const btn = document.getElementById('btn');
-
+const recode_modal = document.getElementById('js-recode-now');
 // ボタンと処理
 btn.addEventListener('click', function () {
     // 音声認識をスタート
     if (life > 0) {
+        recode_modal.classList.add('is-show');
         recognition.start();
     } else {
         /* ニューゲームを押したら初期化処理を行う */
@@ -446,13 +447,16 @@ btn.addEventListener('click', function () {
     }
     
 });
-
+recognition.onend = () => {
+    recode_modal.classList.remove("is-show");
+}
 // 音声認識結果を表示
 recognition.addEventListener('result', function (evt) {
     var sentence = ""; //解析したテキストを代入
     // 音声認識で取得した情報を、コンソール画面に表示
     console.log(evt);
     const txt = evt.results[0][0].transcript; //テキスト部分
+    // recode_modal.classList.remove('is-show');
     if (txt) {
         sentence += `${txt}\n`;
         // テキストを「voice_recognition」としてHTML Elementにする

@@ -94,6 +94,15 @@
         </div>
         <div class="black-background-result"></div>
     </div>
+    <div class="recode-now" id="js-recode-now">
+        <div class="recode-inner">
+            <div class="loader"></div>
+            <div class="recode-font">
+                録音中
+            </div>
+        </div>
+        <div class="black-background-recode"></div>
+    </div>
     <!-- セーブボタン　＆　タイトルバックボタン-->
     <div>
         <div class="save-btn"><button class="btn" id="save_btn">きろくする</button></div>
