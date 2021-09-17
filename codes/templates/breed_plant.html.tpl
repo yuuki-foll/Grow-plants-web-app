@@ -88,8 +88,8 @@
                 <input type="image" name="plant" id="results-plant-img" src="">
             </div>
             <div class="results-btn">
-                <button id="result-close" class="btn">閉じる</button>
-                <button id="result-tweet" class="btn">twitterで共有</button>
+                <button id="result-close" class="btn">とじる</button>
+                <button id="result-tweet" class="btn">ツイートする</button>
             </div>
         </div>
         <div class="black-background-result"></div>
