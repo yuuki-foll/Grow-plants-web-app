@@ -462,7 +462,7 @@ recognition.addEventListener('result', function (evt) {
         // テキストを「voice_recognition」としてHTML Elementにする
         
         /* 秘密の呪文関係（簡易的なもの） */
-        if (txt == "ありがとうございます") {
+        if (txt == "トイトイ") {
             img = ["https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rafflesia.png?alt=media&token=91d6cdbb-9033-482c-87f1-3f7f4ae88a7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rafflesia.png?alt=media&token=91d6cdbb-9033-482c-87f1-3f7f4ae88a7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rafflesia.png?alt=media&token=91d6cdbb-9033-482c-87f1-3f7f4ae88a7c","https://firebasestorage.googleapis.com/v0/b/grow-plant-webapp.appspot.com/o/rafflesia.png?alt=media&token=91d6cdbb-9033-482c-87f1-3f7f4ae88a7c"]
         }
         document.getElementById("voice_recognition").innerHTML = sentence;
