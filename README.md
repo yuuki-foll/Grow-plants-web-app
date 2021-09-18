@@ -34,7 +34,8 @@ https://grow-plant-app.herokuapp.com/home
 * Firebase : アプリ内の画像, BGM, ユーザ情報の保存
 * heroku : デプロイ
 
-## Venv
+## メモ
+#### venv
 - pip install Flask
 - pip install textblob
 - pip install googletrans==4.0.0-rc1
