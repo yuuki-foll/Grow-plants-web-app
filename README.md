@@ -1,5 +1,8 @@
 # Grow plants web app(植物を育てよう)
 
+## ゲームアプリURL
+https://grow-plant-app.herokuapp.com/home
+
 ## 遊び方
 1. ゲストで始める or Googleアカウントでログインして始める
 2. はじめに育てる植物を選択する
