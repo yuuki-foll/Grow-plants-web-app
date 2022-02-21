@@ -40,6 +40,7 @@ body {
   background-color: rgb(74, 240, 74);
   border-bottom: 5px solid #000400;
   border-radius: 100vh;
+  cursor: pointer;
 }
 .btn:hover {
   background-color: #03a803;
@@ -115,6 +116,7 @@ body {
   background-color: orange;
   font-size: 20px;
   font-family: "Yusei Magic", sans-serif;
+  cursor: pointer;
 }
 #btn:hover {
   transform: translate(0, 3px);
@@ -321,7 +323,6 @@ body {
   padding: 50px;
   background-color: #fff;
   z-index: 2;
-  cursor: pointer;
 }
 /*
 .plant-explanation {
