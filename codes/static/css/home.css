@@ -22,6 +22,7 @@ input {
   border-width: 3px;
   z-index: 1;
   font-family: "Yusei Magic", sans-serif;
+  cursor: pointer;
 }
 .btn-hov::before {
   content: "";
